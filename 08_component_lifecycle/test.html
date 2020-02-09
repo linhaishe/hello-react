@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>08_ComponentLife</title>
+  </head>
+  <body>
+    <div id="example"></div>
+
+    <script type="text/javascript" src="../js2/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../js2/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../js2/babel.min.js"></script>
+    <script type="text/babel">
+      /*
+  需求: 自定义组件
+    1. 让指定的文本做显示/隐藏的动画
+    2. 切换时间为2S
+    3. 点击按钮从界面中移除组件界面
+   */
+
+      class LifeCircle extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.state = {
+            opacity: 1
+          };
+
+          this.distroyComponent = this.distroyComponent.bind(this);
+        }
+
+        distroyComponent() {
+          //移除组件
+          ReactDOM.unmountComponentAtNode(document.getElementById("example"));
+        }
+
+        componentWillMount() {
+          console.log("componentWillMount()");
+        }
+
+        componentDidMount() {
+          console.log("componentDidMount");
+          //启动循环定时器
+          //重写已经内置好的componentDidMount()函数，所以需要bind(this)
+          //注意this的指向,setInterval的回调函数是window
+          this.intervalid = setInterval(
+            function() {
+              console.log("启动循环定时器");
+              let { opacity } = this.state;
+              opacity -= 0.1;
+              if (opacity <= 0) {
+                opacity = 1;
+              }
+              this.setState({ opacity });
+            }.bind(this),
+            200
+          );
+        }
+
+        componentWillUnmount() {
+          //清理定时器
+          //clearInterval是已经写好的函数MDN
+          clearInterval(this.intervalid);
+        }
+
+        render() {
+          const { opacity } = this.state;
+          return (
+            <div>
+              {/*注意两个大括号是不同的作用，第一个大括号是表示jsx语法，第二个是对象*/}
+              <h2 style={{ opacity: opacity }}>{this.props.msg}</h2>
+              <button onClick={this.distroyComponent}>give up</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <LifeCircle msg="react is so hard" />,
+        document.getElementById("example")
+      );
+    </script>
+  </body>
+</html>

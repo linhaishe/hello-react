@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>07_form</title>
+  </head>
+  <body>
+    <div id="example"></div>
+
+    <script type="text/javascript" src="../js2/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../js2/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../js2/babel.min.js"></script>
+    <script type="text/babel">
+      /*
+  需求: 自定义包含表单的组件
+    1. 界面如下所示
+    2. 输入用户名密码后, 点击登陆提示输入信息
+    3. 不提交表单
+  */
+
+      //定义组件
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          //初始化状态
+          this.state = {
+            pwd: ""
+          };
+          this.handleSubmit = this.handleSubmit.bind(this);
+          this.handleChange = this.handleChange.bind(this);
+        }
+
+        handleSubmit(event) {
+          //阻止事件的默认行为，即阻止表单提交，点击login后会自动进行提交行为
+          event.preventDefault();
+          //获得input中的内容
+          const name = this.nameInput.value;
+          const { pwd } = this.state;
+          alert(`uername is ${name} , password is ${pwd}`);
+        }
+
+        handleChange(event) {
+          //读取pwd输入框的值
+          const pwd = event.target.value;
+          //更新输入框的状态
+          this.setState({ pwd });
+        }
+
+        render() {
+          return (
+            <div>
+              <form onSubmit={this.handleSubmit}>
+                username :{" "}
+                <input type="text" ref={input => (this.nameInput = input)} />
+                <br />
+                {/*设置pwd默认属性后，输入框不能输入，需要用到onchange
+          我们需要将交互中的输入内容传输到state状态中         
+          */}
+                password :{" "}
+                <input
+                  type="password"
+                  value={this.state.pwd}
+                  onChange={this.handleChange}
+                />
+                <br />
+                <input type="submit" value="login" />
+              </form>
+            </div>
+          );
+        }
+      }
+
+      //渲染组件标签
+      ReactDOM.render(<App />, document.getElementById("example"));
+    </script>
+  </body>
+</html>
