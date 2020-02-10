@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CommentAdd from "../comment-add/comment-add";
+import CommentList from "../comment-list/comment-list";
 
 export default class App extends Component {
   render() {
@@ -14,62 +16,8 @@ export default class App extends Component {
           </div>
         </header>
         <div className="container">
-          <div className="col-md-4">
-            <form className="form-horizontal">
-              <div className="form-group">
-                <label>用户名</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="用户名"
-                />
-              </div>
-              <div className="form-group">
-                <label>评论内容</label>
-                <textarea
-                  className="form-control"
-                  rows="6"
-                  placeholder="评论内容"
-                ></textarea>
-              </div>
-              <div className="form-group">
-                <div className="col-sm-offset-2 col-sm-10">
-                  <button type="button" className="btn btn-default pull-right">
-                    提交
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div className="col-md-8">
-            <h3 className="reply">评论回复：</h3>
-            {/*注意style的写法,display: none,这样写的话，none就是变量，必须加引号。*/}
-            <h2 style={{ display: "none" }}>
-              暂无评论，点击左侧添加评论！！！
-            </h2>
-            <ul className="list-group">
-              <li className="list-group-item">
-                <div className="handle">
-                  <a href="javascript:;">删除</a>
-                </div>
-                <p className="user">
-                  <span>xxx</span>
-                  <span>说:</span>
-                </p>
-                <p className="centence">React不错!</p>
-              </li>
-              <li className="list-group-item">
-                <div className="handle">
-                  <a href="javascript:;">删除</a>
-                </div>
-                <p className="user">
-                  <span>yyy</span>
-                  <span>说:</span>
-                </p>
-                <p className="centence">React有点难!</p>
-              </li>
-            </ul>
-          </div>
+          <CommentAdd />
+          <CommentList />
         </div>
       </div>
     );
