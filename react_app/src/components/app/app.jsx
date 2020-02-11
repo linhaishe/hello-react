@@ -3,7 +3,24 @@ import CommentAdd from "../comment-add/comment-add";
 import CommentList from "../comment-list/comment-list";
 
 export default class App extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     comments: [
+  //       { username: "tom", content: "react is good!" },
+  //       { username: "jack", content: "react is so hard!" }
+  //     ]
+  //   };
+  // }
+  //给组件对象添加state属性，默认的原始值是null,组件对象是this.state中的this
+  state = {
+    comments: [
+      { username: "tom", content: "react is good!" },
+      { username: "jack", content: "react is so hard!" }
+    ]
+  };
   render() {
+    const { comments } = this.state;
     return (
       <div>
         <header className="site-header jumbotron">
@@ -17,7 +34,7 @@ export default class App extends Component {
         </header>
         <div className="container">
           <CommentAdd />
-          <CommentList />
+          <CommentList comments={comments} />
         </div>
       </div>
     );
