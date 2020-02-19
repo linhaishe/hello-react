@@ -16,19 +16,28 @@ export default class CommentList extends Component {
 
   //用static 给组件类指定属性
   static propTypes = {
-    comments: PropTypes.array.isRequired
+    comments: PropTypes.array.isRequired,
+    deleteComment: PropTypes.array.isRequired
   };
 
   render() {
-    const { comments } = this.props;
+    const { comments, deleteComment } = this.props;
+    //计算出是否显示
+    const display = comments.length === 0 ? "block" : "none";
     return (
       <div className="col-md-8">
         <h3 className="reply">评论回复：</h3>
         {/*注意style的写法,display: none,这样写的话，none就是变量，必须加引号。*/}
-        <h2 style={{ display: "none" }}>暂无评论，点击左侧添加评论！！！</h2>
+        {/* display的值应该是动态的值，因为需要在评论0时显示，有评论时消失，用变量进行定义 */}
+        <h2 style={{ display }}>暂无评论，点击左侧添加评论！！！</h2>
         <ul className="list-group">
           {comments.map((c, index) => (
-            <CommentItem comment={c} key={index} />
+            <CommentItem
+              comment={c}
+              key={index}
+              deleteComment={deleteComment}
+              index={index}
+            />
           ))}
         </ul>
       </div>

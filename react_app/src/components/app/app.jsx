@@ -19,6 +19,25 @@ export default class App extends Component {
       { username: "jack", content: "react is so hard!" }
     ]
   };
+  //数据在哪个组件，更新数据的行为就应该定义在在哪个组件
+  //这个函数自己不用，放在app.js内
+  addComment = comment => {
+    const { comments } = this.state;
+    comments.unshift(comment);
+    this.setState({ comments });
+  };
+
+  //delete comment
+  deleteComment = index => {
+    const { comments } = this.state;
+
+    //根据元素下标进行删除
+
+    comments.splice(index, 1);
+
+    this.setState({ comments });
+  };
+
   render() {
     const { comments } = this.state;
     return (
@@ -33,8 +52,8 @@ export default class App extends Component {
           </div>
         </header>
         <div className="container">
-          <CommentAdd />
-          <CommentList comments={comments} />
+          <CommentAdd addComment={this.addComment} />
+          <CommentList comments={comments} deleteComment={this.deleteComment} />
         </div>
       </div>
     );
