@@ -1,7 +1,3 @@
-fetch(url, { method: "POST", body: JSON.stringify(data) })
-  .then(function(data) {
-    console.log(data);
-  })
-  .catch(function(e) {
-    console.log(e);
-  });
+{
+  /* style={{ width: 100 }}可以不用写标量，它会自动帮你加，整个row只需要留一个card就可以了，其他的都是动态生成的 */
+}
