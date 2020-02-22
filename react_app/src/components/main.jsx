@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import PubSub from "pubsub-js";
+
 //下载axios
 //npm install --save axios
 
 export default class Main extends Component {
-  static propTypes = {
-    searchName: PropTypes.string.isRequired
-  };
+  // static propTypes = {
+  //   searchName: PropTypes.string.isRequired
+  // };
 
   // 整个页面会有4个状态，搜索前提示输入，搜索时loading,搜索结果呈现，搜索错误呈现
   state = {
@@ -21,41 +23,43 @@ export default class Main extends Component {
     errorMsg: null
   };
 
-  //当组件接收到新的属性时进行回调
-  //生命周期的函数
-  componentWillReceiveProps(newProps) {
-    //指定了新的搜索关键字，需要请求
-    const { searchName } = newProps;
-    //更新状态(请求中)
-    this.setState({
-      initView: false,
-      loading: true
-    });
-    //发送请求
-    const url = `https://api.github.com/search/users?q=${searchName}`;
-    axios
-      .get(url)
-      .then(response => {
-        //得到响应数据
-        const result = response.data;
-        console.log(result);
-        //更新状态(成功)
-        //返回的数据冗杂，只想留下想要的信息(处理点)
-        //main中取数据的时候不是用的api的属性名(处理点)
-        const users = result.items.map(item => {
-          return {
-            name: item.login,
-            url: item.html_url,
-            avatarUrl: item.avatar_url
-          };
-        });
-        //更新状态
-        this.setState({ loading: false, users });
-      })
-      .catch(error => {
-        //更新状态(失败/错误)
-        this.setState({ loading: false, errorMsg: error.message });
+  componentDidMount() {
+    //订阅消息(search)
+    //消息名，回调函数
+    //回调函数都写箭头函数，回调函数的this不是组件对象，也可以不用bind
+    PubSub.subscribe("search", (msg, searchName) => {
+      //指定了新的搜索关键字，需要请求
+      //更新状态(请求中)
+      this.setState({
+        initView: false,
+        loading: true
       });
+      //发送请求
+      const url = `https://api.github.com/search/users?q=${searchName}`;
+      axios
+        .get(url)
+        .then(response => {
+          //得到响应数据
+          const result = response.data;
+          console.log(result);
+          //更新状态(成功)
+          //返回的数据冗杂，只想留下想要的信息(处理点)
+          //main中取数据的时候不是用的api的属性名(处理点)
+          const users = result.items.map(item => {
+            return {
+              name: item.login,
+              url: item.html_url,
+              avatarUrl: item.avatar_url
+            };
+          });
+          //更新状态
+          this.setState({ loading: false, users });
+        })
+        .catch(error => {
+          //更新状态(失败/错误)
+          this.setState({ loading: false, errorMsg: error.message });
+        });
+    });
   }
 
   render() {
