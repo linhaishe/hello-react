@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+
 import MyNavLink from "./my-nav-link";
 import About from "../views/about";
 import Home from "../views/home";
