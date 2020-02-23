@@ -27,6 +27,8 @@ export default class Message extends React.Component {
     }, 1000);
   }
 
+  //history对象的Push方法
+
   ShowDetail = id => {
     this.props.history.push(`/home/message/${id}`);
   };
@@ -43,6 +45,11 @@ export default class Message extends React.Component {
     this.props.history.goForward();
   };
 
+  reqPage = () => {
+    //通过js进行页面跳转
+    window.location = "http://www.baidu.com";
+  };
+
   render() {
     const path = this.props.match.path;
 
@@ -56,7 +63,9 @@ export default class Message extends React.Component {
                 {/* a 标签导致链接成为非路由链接，点击的时候会发送请求的 */}
                 {/* 使用link或者其他的组件成为路由链接 */}
                 <Link to={`${path}/${m.id}`}>{m.title}</Link>
-                &nbsp;&nbsp;&nbsp;
+                {/* &nbsp;&nbsp;&nbsp;
+                事件回调函数，自动传递event参数，但是我们需要id数据，所以我们传递id数据给回调函数
+                <button onClick={this.ShowDetail}>查看详情</button> */}
                 <button onClick={() => this.ShowDetail(m.id)}>
                   查看详情(push)
                 </button>
@@ -71,6 +80,8 @@ export default class Message extends React.Component {
         <p>
           <button onClick={this.back}>返回</button>&nbsp;
           <button onClick={this.forward}>前进</button>&nbsp;
+          <hr />
+          <button onClick={this.reqPage}>页面跳转至百度</button>
         </p>
         <hr />
         {/* <Route path="/home/message/messagedetail/:id" component={MessageDetail}></Route> */}
