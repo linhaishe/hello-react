@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-
 import MyNavLink from "./my-nav-link";
 import About from "../views/about";
 import Home from "../views/home";
@@ -33,7 +32,7 @@ export default class App extends React.Component {
             <div className="panel">
               <div className="panel-body">
                 {/*可切换的路由组件*/}
-
+                {/* 用switch组件将路由组件进行控制，所以才需要将内容放进switch中 */}
                 <Switch>
                   <Route path="/about" component={About} />
                   <Route path="/home" component={Home} />
