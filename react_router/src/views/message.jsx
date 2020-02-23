@@ -53,6 +53,8 @@ export default class Message extends React.Component {
             return (
               <li key={index}>
                 {/* <a href={`/home/message/messagedetail/${m.id}`}>{m.title}</a> */}
+                {/* a 标签导致链接成为非路由链接，点击的时候会发送请求的 */}
+                {/* 使用link或者其他的组件成为路由链接 */}
                 <Link to={`${path}/${m.id}`}>{m.title}</Link>
                 &nbsp;&nbsp;&nbsp;
                 <button onClick={() => this.ShowDetail(m.id)}>
