@@ -36,7 +36,7 @@
           //绑定方法1，这种方法的效率更高，因为不需要再渲染一遍，只需要渲染一次即可
           this.handleClick = this.handleClick.bind(this);
 
-          //绑定方法3，箭头函数，方法没有this
+          //绑定方法3，使用箭头函数，方法没有this，简单不易出错
         }
 
         //新添加的方法，内部的this默认不是组件对象，而是undefined，必须是其this指向组件对象，使用bind()
