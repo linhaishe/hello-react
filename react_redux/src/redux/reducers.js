@@ -1,21 +1,26 @@
 import {combineReducers} from 'redux'
+
 import {
-  INCREMENT,
-  DECREMENT
+  ADD_COMMENT,
+  DELETE_COMMENT,
+  RECEIVE_COMMENTS
 } from './action-types'
 
-function counter(state = 0, action) {
-  console.log('counter', state, action)
+const initComments = []
+
+function comments(state = initComments, action) {
   switch (action.type) {
-    case INCREMENT:
-      return state + action.number
-    case DECREMENT:
-      return state - action.number
+    case ADD_COMMENT:
+      return [...state, action.data]
+    case DELETE_COMMENT:
+      return state.filter((c, index) => index !== action.data)
+    case RECEIVE_COMMENTS:
+      return action.data
     default:
       return state
   }
 }
 
 export default combineReducers({
-  counter
+  comments
 })
