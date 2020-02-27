@@ -52,6 +52,7 @@
         render() {
           return (
             <div>
+              {/*一般表单会自动提交，我们这个功能不需要表单进行提交需要阻止默认行为*/}
               <form onSubmit={this.handleSubmit}>
                 username :{" "}
                 <input type="text" ref={input => (this.nameInput = input)} />
