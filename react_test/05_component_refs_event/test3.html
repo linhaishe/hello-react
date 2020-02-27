@@ -18,19 +18,25 @@
         constructor(props) {
           super(props);
           this.showInput = this.showInput.bind(this);
+          this.handleBlur = this.handleBlur.bind(this);
         }
 
         showInput() {
-          //不明白refs的意思
+          //获得Input的输入值
+          //不明白这里为什么不是ref.content?
           const input = this.refs.content;
           alert(input.value);
+        }
+
+        handleBlur(event) {
+          alert(event.target.value);
         }
 
         render() {
           return (
             <div>
               {/*官方不建议用的方式*/}
-              {/*ref 的 回调函数input 是当前input dom元素，将input保存到 this.input(组件对象上) = input */}
+
               <input type="text" ref="content" />
               <br />
               {/*交互绑定事件监听,绑定事件监听函数的时候不能加上()进行调用*/}

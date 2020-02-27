@@ -18,9 +18,9 @@
     <script type="text/babel">
       /*
     需求: 自定义组件, 功能说明如下:
-      1. 界面如果页面所示 
+      1. 界面如页面所示 
       2. 点击按钮, 提示第一个输入框中的值
-      3. 当第2个输入框失去焦点时, 提示这个输入框中 的值
+      3. 当第2个输入框失去焦点时, 提示这个输入框中的值
    */
 
       //定义组件
@@ -31,12 +31,15 @@
           super(props);
           this.showInput = this.showInput.bind(this);
           this.showInput = this.handleBlur.bind(this);
+          // this.input = React.createRef();
         }
 
         showInput() {
           //多个ref的集合，可能是数组也可能是对象，所以用refs
           //标示组件内部的元素
           const input = this.refs.content;
+          //console.log(input);
+          //不能实现?????????
           alert(this.input.value);
         }
 
@@ -47,7 +50,10 @@
         render() {
           return (
             <div>
+            {/*ref 的 回调函数input 是当前input dom元素，将input保存到 this.input(组件对象上) = input */}
               <input type="text" ref={input => (this.input = input)} />
+             {/* <input type="text" ref={this.input} />*/}
+
               <br />
               {/*交互绑定事件监听,绑定事件监听函数的时候不能加上()进行调用*/}
               <button onClick={this.showInput}>plz input sth...</button>
