@@ -94,9 +94,11 @@
       //ReactDOM.render(<Person name={p1.name} age={p1.age} gender={p1.gender} />, document.getElementById('example1'))
       //此时p1为对象
       ReactDOM.render(<Person {...p1} />, document.getElementById("example1"));
+
       const p2 = {
         name: "jack"
       };
+
       ReactDOM.render(
         <Person name={p2.name} />,
         document.getElementById("example2")
@@ -106,11 +108,14 @@
         name: "jackson"
       };
 
-      //ReactDOM.render(<Person name={p3.name} age={20} />, document.getElementById('example3')) //right
+      //success
+      //ReactDOM.render(<Person name={p3.name} age={20} />, document.getElementById('example3'))
 
       //error
       ReactDOM.render(<Person age="20" />, document.getElementById("example3"));
+
       //type: The prop `name` is marked as required in `Person`, but its value is `undefined`.in Person
+
       //type: Invalid prop `age` of type `string` supplied to `Person`, expected `number`.in Person
     </script>
   </body>
