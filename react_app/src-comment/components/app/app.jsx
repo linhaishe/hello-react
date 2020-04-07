@@ -36,6 +36,7 @@ export default class App extends Component {
     comments.splice(index, 1);
 
     this.setState({ comments });
+    
   };
 
   render() {

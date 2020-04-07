@@ -18,8 +18,8 @@ export default class App extends Component {
   state = {
     comments: [
       { username: "tom", content: "react is good!" },
-      { username: "jack", content: "react is so hard!" }
-    ]
+      { username: "jack", content: "react is so hard!" },
+    ],
   };
 
   componentDidMount() {
@@ -30,14 +30,14 @@ export default class App extends Component {
   }
   //数据在哪个组件，更新数据的行为就应该定义在在哪个组件
   //这个函数自己不用，放在app.js内
-  addComment = comment => {
+  addComment = (comment) => {
     const { comments } = this.state;
     comments.unshift(comment);
     this.setState({ comments });
   };
 
   //delete comment
-  deleteComment = index => {
+  deleteComment = (index) => {
     const { comments } = this.state;
 
     //根据元素下标进行删除
