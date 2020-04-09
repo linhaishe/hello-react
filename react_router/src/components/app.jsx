@@ -32,10 +32,12 @@ export default class App extends React.Component {
             <div className="panel">
               <div className="panel-body">
                 {/*可切换的路由组件*/}
-                {/* 用switch组件将路由组件进行控制，所以才需要将内容放进switch中 */}
+                {/* 用switch组件将路由组件进行控制，所以才需要将内容放进switch中
+                只能显示其中一个，需要用switch包装起来进行调用转换 */}
                 <Switch>
                   <Route path="/about" component={About} />
                   <Route path="/home" component={Home} />
+                  {/* 自动定向，因为有两个路由，为了不让页面空白，选择自动选择路由显示 */}
                   <Redirect to="/about" />
                 </Switch>
               </div>

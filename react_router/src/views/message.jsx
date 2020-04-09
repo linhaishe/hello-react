@@ -9,7 +9,7 @@ export default class Message extends React.Component {
       // { id: 1, title: "Message001" },
       // { id: 3, title: "Message003" },
       // { id: 6, title: "Message006" }
-    ]
+    ],
   };
 
   componentDidMount() {
@@ -18,22 +18,22 @@ export default class Message extends React.Component {
       const data = [
         { id: 1, title: "Message001" },
         { id: 3, title: "Message003" },
-        { id: 6, title: "Message006" }
+        { id: 6, title: "Message006" },
       ];
       //获取数据后更新状态
       this.setState({
-        messages: data
+        messages: data,
       });
     }, 1000);
   }
 
   //history对象的Push方法
 
-  ShowDetail = id => {
+  ShowDetail = (id) => {
     this.props.history.push(`/home/message/${id}`);
   };
 
-  ShowDetail2 = id => {
+  ShowDetail2 = (id) => {
     this.props.history.replace(`/home/message/${id}`);
   };
 
@@ -51,6 +51,7 @@ export default class Message extends React.Component {
   };
 
   render() {
+    //在matach数据下获取path参数
     const path = this.props.match.path;
 
     return (
