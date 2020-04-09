@@ -35,7 +35,7 @@
             <div>
               {/*官方建议用的方式*/}
               {/*ref里第一个input代表当前的input dom元素*/}
-              <input type="text" ref={input => (this.content = input)} />
+              <input type="text" ref={(input) => (this.content = input)} />
               <br />
 
               <button onClick={this.showInput}>plz input sth2...</button>

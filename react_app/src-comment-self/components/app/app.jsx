@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CommentAdd from "../../../src/components/comment-add/comment-add";
-import CommentList from "../../../src/components/comment-list/comment-list";
+import CommentAdd from "../comment-add/comment-add";
+import CommentList from "../comment-list/comment-list";
 
 export default class App extends Component {
   state = {

@@ -7,11 +7,11 @@ import Main from "./main";
 export default class App extends Component {
   state = {
     //一旦点击搜索按钮，则会更新这个状态
-    searchName: ""
+    searchName: "",
   };
 
-  setSearchName = searchName => {
-    // this.searchName = searchName;
+  setSearchName = (searchName) => {
+    // .this.searchName = searchName;
     this.setState({ searchName });
   };
   render() {

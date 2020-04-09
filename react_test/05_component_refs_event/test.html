@@ -50,9 +50,9 @@
         render() {
           return (
             <div>
-            {/*ref 的 回调函数input 是当前input dom元素，将input保存到 this.input(组件对象上) = input */}
-              <input type="text" ref={input => (this.input = input)} />
-             {/* <input type="text" ref={this.input} />*/}
+              {/*ref 的 回调函数input 是当前input dom元素，将input保存到 this.input(组件对象上) = input */}
+              <input type="text" ref={(input) => (this.input = input)} />
+              {/* <input type="text" ref={this.input} />*/}
 
               <br />
               {/*交互绑定事件监听,绑定事件监听函数的时候不能加上()进行调用*/}

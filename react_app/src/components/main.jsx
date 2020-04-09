@@ -6,10 +6,10 @@ import axios from "axios";
 
 export default class Main extends Component {
   static propTypes = {
-    searchName: PropTypes.string.isRequired
+    searchName: PropTypes.string.isRequired,
   };
 
-  // 整个页面会有4个状态，搜索前提示输入，搜索时loading,搜索结果呈现，搜索错误呈现
+  // .整个页面会有4个状态，搜索前提示输入，搜索时loading,搜索结果呈现，搜索错误呈现
   state = {
     //判断显示初始页面
     initView: true,
@@ -18,41 +18,42 @@ export default class Main extends Component {
     //显示搜索结果用户列表，得到一个数组显示列表，开始时是没有值的
     users: null,
     //开始没有值，请求出错再赋值
-    errorMsg: null
+    errorMsg: null,
   };
 
   //当组件接收到新的属性时进行回调
   //生命周期的函数
   componentWillReceiveProps(newProps) {
     //指定了新的搜索关键字，需要请求
+    //这个点没明白，为什么searchname = newprops.searchname
     const { searchName } = newProps;
     //更新状态(请求中)
     this.setState({
       initView: false,
-      loading: true
+      loading: true,
     });
     //发送请求
     const url = `https://api.github.com/search/users?q=${searchName}`;
     axios
       .get(url)
-      .then(response => {
+      .then((response) => {
         //得到响应数据
         const result = response.data;
         console.log(result);
         //更新状态(成功)
         //返回的数据冗杂，只想留下想要的信息(处理点)
         //main中取数据的时候不是用的api的属性名(处理点)
-        const users = result.items.map(item => {
+        const users = result.items.map((item) => {
           return {
             name: item.login,
             url: item.html_url,
-            avatarUrl: item.avatar_url
+            avatarUrl: item.avatar_url,
           };
         });
         //更新状态
         this.setState({ loading: false, users });
       })
-      .catch(error => {
+      .catch((error) => {
         //更新状态(失败/错误)
         this.setState({ loading: false, errorMsg: error.message });
       });
