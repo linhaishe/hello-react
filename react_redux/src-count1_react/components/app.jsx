@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class App extends Component {
   state = {
-    count: 0
+    count: 0,
   };
 
   increment = () => {
@@ -46,6 +46,10 @@ export default class App extends Component {
       <div>
         <p>click {count} times </p>
         {/* 有两种处理方法，受控组件和非受控组件，此处用非受控组件处理 */}
+        {/* 受控组件未使用箭头函数指定函数对象，在获取非受控组件时则需要写this.refs中获取数据 */}
+        {/* const num = this.refs.numSelect.value * 1; */}
+        {/* 如果ref由箭头函数指定，则不需要从this.refs中获取数据 */}
+        {/* const number = this.numSelect.value * 1; */}
         <select ref="numSelect">
           <option value="1">1</option>
           <option value="2">2</option>
