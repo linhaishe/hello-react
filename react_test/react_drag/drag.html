@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>hello react</title>
+  </head>
+  <style>
+    #div1 {
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+  <body>
+    <div id="div1">7777</div>
+
+    <script type="text/javascript" src="../js2/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../js2/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../js2/babel.min.js"></script>
+
+    <script>
+      class Darg extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            disX: 0,
+            disY: 0,
+            x: 0,
+            y: 0,
+            oldX: 0,
+            oldY: 0,
+          };
+        }
+
+        fnDown(ev) {
+          this.setState({
+            disX: ev.pageX - ev.target.offsetLeft,
+            disY: ev.pageY - ev.target.offsetTop,
+          });
+          document.onmousemove = this.fnMove;
+          document.onmouseup = this.fnUp;
+          ev.preventDefault();
+        }
+
+        fnMove = (ev) => {
+          this.setState({
+            x: ev.pageX - this.state.disX + this.state.oldX,
+            y: ev.pageY - this.state.disY + this.state.oldY,
+          });
+        };
+
+        fnUp = () => {
+          this.setState({
+            oldX: this.state.x,
+            oldY: this.state.y,
+          });
+          document.onmousemove = null;
+          document.onmouseup = null;
+        };
+
+        //style由于格式化的原因在后面加上了逗号，所以显示出了问题
+        render() {
+          return (
+            <div
+              style={{
+                transform: `translate(${this.state.x}px,${this.state.y}px)`,
+              }}
+              onMouseDown={this.fnDown.bind(this)}
+            ></div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Darg />, document.querySelector("#div1"));
+    </script>
+  </body>
+</html>
