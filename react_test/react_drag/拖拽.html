@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script type="text/babel">
+    class Darg extends React.Component{
+        constructor(){
+            super();
+            this.state={
+                disX:0,
+                disY:0,
+                x:0,
+                y:0,
+                oldX:0,
+                oldY:0
+            }
+        }
+        
+        fnDown(ev){
+            this.setState({
+                disX:ev.pageX-ev.target.offsetLeft,
+                disY:ev.pageY-ev.target.offsetTop
+            })
+            document.onmousemove=this.fnMove;
+            document.onmouseup=this.fnUp;
+            ev.preventDefault();
+        }
+
+        fnMove=(ev)=>{
+            this.setState({
+                x:ev.pageX-this.state.disX+this.state.oldX,
+                y:ev.pageY-this.state.disY+this.state.oldY
+            })
+        }
+
+        fnUp=()=>{
+            this.setState({
+                oldX:this.state.x,
+                oldY:this.state.y
+            })
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+
+        render(){
+            return <div style={{transform:`translate(${this.state.x}px,${this.state.y}px)`}} onMouseDown={this.fnDown.bind(this)} className="box"></div>
+        }
+    }
+
+    ReactDOM.render(<Darg/>,document.querySelector('#div1'))
+</script>

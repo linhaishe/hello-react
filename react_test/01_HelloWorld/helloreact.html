@@ -12,6 +12,8 @@
     <div id="test2"></div>
     <div id="test3"></div>
     <div id="test4"></div>
+    <div id="test5"></div>
+    <div id="test6"></div>
 
     <script type="text/javascript" src="../js2/react.development.js"></script>
     <script
@@ -70,6 +72,31 @@
       );
 
       ReactDOM.render(ul, document.getElementById("test4"));
+
+      //以下例子可以看到虚拟DOM操作到的节点比较少，性能更好
+      setInterval(() => {
+        let oDate1 = new Date();
+        let oDiv1 = (
+          <div>
+            <p>web258</p>
+            <h1>
+              北京时间 {oDate1.getHours()}:{oDate1.getMinutes()}:
+              {oDate1.getSeconds()}
+            </h1>
+          </div>
+        );
+        ReactDOM.render(oDiv1, document.querySelector("#test5"));
+      }, 1000);
+
+      setInterval(() => {
+        let oDate = new Date();
+        let oDiv = `<div>
+            <p>web258</p>
+            <h1>北京时间：${oDate.getHours()}:${oDate.getMinutes()}:${oDate.getSeconds()}</h1>
+        </div>`;
+        document.querySelector("#test6").innerHTML = oDiv;
+      }, 1000);
+      //ReactDOM.render(oDiv,document.querySelector('#app'));
     </script>
   </body>
 </html>
