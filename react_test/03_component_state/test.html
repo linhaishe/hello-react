@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <title>03_component_state</title>
   </head>
-
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
   <body>
     <div id="example"></div>
 
@@ -29,7 +35,7 @@
           //a. 初始化状态,设置this.state的状态，未设置时为null
           //建议当只有两个状态的时候用布尔类型进行判断
           this.state = {
-            isInput: false
+            isInput: false,
           };
 
           //将新增的方法中的this强制绑定为组件对象

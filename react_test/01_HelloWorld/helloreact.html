@@ -1,71 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>hello react</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="test"></div>
     <div id="test2"></div>
     <div id="test3"></div>
     <div id="test4"></div>
 
-
     <script type="text/javascript" src="../js2/react.development.js"></script>
-    <script type="text/javascript" src="../js2/react-dom.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../js2/react-dom.development.js"
+    ></script>
     <script type="text/javascript" src="../js2/babel.min.js"></script>
 
     <!--告诉babel.js解析里面的jsx的代码-->
     <script type="text/babel">
-        /*因为没有引入react，所以react工具不能识别*/
+      /*因为没有引入react，所以react工具不能识别*/
 
-        /*告诉babel.js解析里面的jsx的代码*/
-        //1.创建虚拟dom元素对象
-        var vDom = <h1>hello react</h1>
-        //2.将虚拟dom渲染到页面真实dom容器中
-        ReactDOM.render(vDom, document.getElementById('test'))
+      /*告诉babel.js解析里面的jsx的代码*/
+      //1.创建虚拟dom元素对象
+      var vDom = <h1>hello react</h1>;
+      //2.将虚拟dom渲染到页面真实dom容器中
+      ReactDOM.render(vDom, document.getElementById("test"));
 
-        const myId = 'ReactTest';
-        const msg = 'I love you';
+      const myId = "ReactTest";
+      const msg = "Hello world";
 
-        //two ways to create react Dom
+      //two ways to create react Dom
 
-        //1.纯js(一般不用)
-        //a.创建虚拟dom
-        //var element = React.createElement('h1',{id:'myTitle'},'hello vDom1')
-        const vDom1 = React.createElement('h2', { id: myId.toLowerCase() }, msg.toUpperCase())
-        //b.渲染虚拟dom
-        ReactDOM.render(vDom1, document.getElementById('test2'))
+      //1.纯js(一般不用)
+      //a.创建虚拟dom
+      //var element = React.createElement('h1',{id:'myTitle'},'hello vDom1')
+      const vDom1 = React.createElement(
+        "h2",
+        { id: myId.toLowerCase() },
+        msg.toUpperCase()
+      );
+      //b.渲染虚拟dom
+      ReactDOM.render(vDom1, document.getElementById("test2"));
 
-        //2.jsx
-        const vDom2 = <h3 id={myId.toUpperCase()}>{msg.toLowerCase()}</h3>
-        ReactDOM.render(vDom2, document.getElementById('test3'))
+      //2.jsx
+      const vDom2 = <h3 id={myId.toUpperCase()}>{msg.toLowerCase()}</h3>;
+      ReactDOM.render(vDom2, document.getElementById("test3"));
 
-        //动态展示列表数据
-        /*
+      //动态展示列表数据
+      /*
         将一个数据的数组转化为一个标签的数组
         */
-        /*
+      /*
         <ul>
         <li>{name}</li>
         </ul>
         */
-        const names = ['jquery', 'zepto', 'angular', 'react', 'vue'];
+      const names = ["jquery", "zepto", "angular", "react", "vue"];
 
-        const ul = (
-            <ul>
-                {
-                    names.map((name, index) => <li key={index}>{name}</li>)
-                }
-            </ul>
-        )
+      const ul = (
+        <ul>
+          {names.map((name, index) => (
+            <li key={index}>{name}</li>
+          ))}
+        </ul>
+      );
 
-        ReactDOM.render(ul, document.getElementById('test4'))
+      ReactDOM.render(ul, document.getElementById("test4"));
     </script>
-</body>
-
+  </body>
 </html>
