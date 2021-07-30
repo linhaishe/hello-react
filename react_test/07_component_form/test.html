@@ -27,7 +27,7 @@
           super(props);
           //初始化状态
           this.state = {
-            pwd: ""
+            pwd: "",
           };
           this.handleSubmit = this.handleSubmit.bind(this);
           this.handleChange = this.handleChange.bind(this);
@@ -55,7 +55,7 @@
               {/*一般表单会自动提交，我们这个功能不需要表单进行提交需要阻止默认行为*/}
               <form onSubmit={this.handleSubmit}>
                 username :{" "}
-                <input type="text" ref={input => (this.nameInput = input)} />
+                <input type="text" ref={(input) => (this.nameInput = input)} />
                 <br />
                 {/*设置pwd默认属性后，输入框不能输入，需要用到onchange
           我们需要将交互中的输入内容传输到state状态中         
@@ -66,6 +66,14 @@
                   value={this.state.pwd}
                   onChange={this.handleChange}
                 />
+                <br />
+                <input type="checkbox" /> 篮球
+                <input type="checkbox" /> 足球
+                <br />
+                <select name="" id="">
+                  <option value="male">男</option>
+                  <option value="female">女</option>
+                </select>
                 <br />
                 <input type="submit" value="login" />
               </form>

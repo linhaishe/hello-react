@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>03_component_state</title>
+  </head>
+  <style>
+    * {
+      font-family: sans-serif;
+      margin: 0;
+    }
+    button {
+      height: 40px;
+      width: 200px;
+    }
+    .warning {
+      background-color: red;
+      text-align: center;
+      width: 100%;
+      padding: 10px;
+
+      font-size: 14pt;
+      color: white;
+    }
+
+    .box {
+      height: 200px;
+      width: 200px;
+      background-color: pink;
+      margin-top: 20px;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../js2/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../js2/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../js2/babel.min.js"></script>
+
+    <script type="text/babel">
+      let Box1 = function Box1(props) {
+        return <div className="box">box1</div>;
+      };
+
+      let Box2 = function Box2(props) {
+        return <div className="box">box2</div>;
+      };
+
+      let Box3 = function Box3(props) {
+        return <div className="box">box3</div>;
+      };
+
+      //{this.state.sel==0?<Box1/>:this.state.sel==1?<Box2/>:<Box3/>}
+      // onClick={this.handleToggleClick(0)}
+      class Page extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { sel: 0 };
+          //this.handleToggleClick = this.handleToggleClick.bind(this);
+        }
+
+        handleToggleClick(n) {
+          let num = n;
+          this.setState({
+            sel: num,
+          });
+        }
+
+        render() {
+          return (
+            <div>
+              <button onClick={this.handleToggleClick.bind(this, 0)}>
+                box1Show2
+              </button>
+              <button onClick={this.handleToggleClick.bind(this, 1)}>
+                box2Show
+              </button>
+              <button onClick={this.handleToggleClick.bind(this, 2)}>
+                box3Show
+              </button>
+              {this.state.sel == 0 ? (
+                <Box1 />
+              ) : this.state.sel == 1 ? (
+                <Box2 />
+              ) : (
+                <Box3 />
+              )}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Page />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
