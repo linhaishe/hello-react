@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>简易留言板</title>
+  </head>
+  <style>
+    * {
+      font-family: sans-serif;
+      margin: 0;
+    }
+    button {
+      height: 40px;
+      width: 200px;
+    }
+    .warning {
+      background-color: red;
+      text-align: center;
+      width: 100%;
+      padding: 10px;
+
+      font-size: 14pt;
+      color: white;
+    }
+
+    .box {
+      height: 200px;
+      width: 200px;
+      background-color: pink;
+      margin-top: 20px;
+    }
+
+    ol {
+      display: flex;
+    }
+    ol li {
+      list-style: none;
+    }
+    .active {
+      color: pink;
+      margin: 0 10px;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="../js2/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../js2/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../js2/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Page extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { list: [], msg: "" };
+        }
+
+        del(index) {
+          let list = this.state.list;
+          list.splice(index, 1);
+          this.setState({ list });
+        }
+
+        submit(event) {
+          event.preventDefault();
+          const msg = this.state.msg;
+          const list = this.state.list;
+          list.unshift(msg);
+          this.setState({
+            list,
+            msg: "",
+            page: 1,
+            count: 5,
+          });
+        }
+
+        formData(ev) {
+          //   console.log(ev);
+          const msg = this.textInput.value;
+          this.setState({
+            msg,
+          });
+        }
+
+        changePage(page) {
+          this.setState({ page });
+        }
+
+        render() {
+          let page = "";
+          if (this.state.list.length > 5) {
+            page = [];
+            for (
+              let i = 1;
+              i < Math.ceil(this.state.list.length / this.state.count);
+              i++
+            ) {
+              page.push(
+                <li>
+                  <a
+                    onClick={this.changePage.bind(this, i)}
+                    className={this.state.page == i ? "active" : ""}
+                  >
+                    {i}
+                  </a>
+                </li>
+              );
+            }
+          }
+          return (
+            //   输入框
+            <div>
+              <form onSubmit={this.submit.bind(this)}>
+                <label for="">发送内容</label>
+                <input
+                  type="text"
+                  onChange={this.formData.bind(this)}
+                  value={this.state.msg}
+                  ref={(input) => (this.textInput = input)}
+                />
+                <button>提交</button>
+              </form>
+              <ul>
+                {this.state.list
+                  .map((v, i) => (
+                    <li key={i}>
+                      {v}{" "}
+                      <a onClick={this.del.bind(this, i)} href="javascript:;">
+                        del
+                      </a>
+                    </li>
+                  ))
+                  .slice(
+                    (this.state.page - 1) * this.state.count,
+                    this.state.page * this.state.count
+                  )}
+              </ul>
+
+              <ol>{page}</ol>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Page />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
