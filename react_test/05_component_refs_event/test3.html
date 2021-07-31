@@ -24,6 +24,8 @@
         showInput() {
           //获得Input的输入值
           //不明白这里为什么不是ref.content?
+          //可以看到this的内容，里面有refs，从里面拿到content 的值
+          console.log(this);
           const input = this.refs.content;
           alert(input.value);
         }

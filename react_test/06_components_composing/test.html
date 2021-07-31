@@ -75,11 +75,11 @@
       class Content extends React.Component {
         constructor(props) {
           super(props);
-
           this.add = this.add.bind(this);
         }
 
-        add() {
+        add(ev) {
+          ev.preventDefault();
           //  1. 读取输入的数据
           const todo = this.todoInput.value.trim();
           //  2. 检查输入的合法性
@@ -94,9 +94,11 @@
         render() {
           return (
             <div>
-              <input type="text" ref={(input) => (this.todoInput = input)} />
-              <br />
-              <button onClick={this.add}>add #{this.props.count + 1}</button>
+              <form action="" onSubmit={this.add}>
+                <input type="text" ref={(input) => (this.todoInput = input)} />
+                <br />
+                <button>add #{this.props.count + 1}</button>
+              </form>
             </div>
           );
         }

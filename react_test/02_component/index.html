@@ -40,6 +40,12 @@
         return <div className="customClass">xxxx</div>;
       };
 
+      /* 
+			执行了ReactDOM.render(<MyComponent/>.......之后，发生了什么？
+					1.React解析组件标签，找到了MyComponent组件。
+					2.发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，随后呈现在页面中。
+		*/
+
       ReactDOM.render(<DemoComponent2 />, document.getElementById("example2"));
 
       // 2. use ES6 `class` syntax 类组件使用
@@ -50,6 +56,13 @@
       }
 
       ReactDOM.render(<DemoComponent3 />, document.getElementById("example3"));
+
+      /* 
+			执行了ReactDOM.render(<MyComponent/>.......之后，发生了什么？
+					1.React解析组件标签，找到了MyComponent组件。
+					2.发现组件是使用类定义的，随后new出来该类的实例，并通过该实例调用到原型上的render方法。
+					3.将render返回的虚拟DOM转为真实DOM，随后呈现在页面中。
+		*/
     </script>
   </body>
 </html>
