@@ -2,8 +2,6 @@
 
 ### src-githubusers
 
-#### src-githubusers-nopubsub
-
 1. 设计状态时要考虑全面，例如带有网络请求的组件，要考虑请求失败怎么办。
 2. ES6 小知识点：解构赋值+重命名
 
