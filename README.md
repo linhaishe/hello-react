@@ -17,3 +17,7 @@ react_pracs
 7. form
 8. 生命周期
 9. ajax
+
+## notes
+
+文件内所有的根组件 App 都放在了 component 文件夹中，实际操作中应该放在最外层的文件中，和 index.js 文件同层级。由于过多文件如此，就不一一修改了。
