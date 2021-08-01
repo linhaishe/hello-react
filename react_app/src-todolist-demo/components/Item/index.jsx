@@ -33,6 +33,7 @@ export default class Item extends Component {
 		return (
 			<li style={{backgroundColor:mouse ? '#ddd' : 'white'}} onMouseEnter={this.handleMouse(true)} onMouseLeave={this.handleMouse(false)}>
 				<label>
+					{/*defaultChecked={done},可以实现后期的checkbox的可勾选功能,但是只会执行一次，所以不建议用*/}
 					<input type="checkbox" checked={done} onChange={this.handleCheck(id)}/>
 					<span>{name}</span>
 				</label>

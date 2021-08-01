@@ -1,6 +1,8 @@
+
+//第三方的引入放上面，自己的额放下面，样式放最后
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import {nanoid} from 'nanoid'
+import {nanoid} from 'nanoid'
 import './index.css'
 
 export default class Header extends Component {
@@ -22,7 +24,7 @@ export default class Header extends Component {
 			return
 		}
 		//准备好一个todo对象
-		const todoObj = {id:1,name:target.value,done:false}
+		const todoObj = {id:nanoid(),name:target.value,done:false}
 		//将todoObj传递给App
 		this.props.addTodo(todoObj)
 		//清空输入
