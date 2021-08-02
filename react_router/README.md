@@ -44,6 +44,22 @@
 #### 5.2.1. 内置组件
 
 1. `<BrowserRouter>`
+   所有的路由都由一个路由器控制，即整个 app 应用中，只需要一个路由器去控制即可。
+   有两种路由，BrowserRouter，HashRouter，按情况使用其中一种路由即可。为了方便，将路由包裹在根组件入口文件的地方。
+   ```
+   ReactDOM.render(
+   //一旦用了router,必须用路由组件包裹起来，用路由组件管理整个应用
+   <BrowserRouter>
+    <App />
+   </BrowserRouter>,
+   /*<HashRouter>
+      <App />
+    </HashRouter>*/
+   document.getElementById("root")
+   );
+   ```
+
+```
 2. `<HashRouter>`
 3. `<Route>`
 4. `<Redirect>`
@@ -56,3 +72,4 @@
 1. history 对象
 2. match 对象
 3. withRouter 函数
+```
