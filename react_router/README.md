@@ -1,5 +1,7 @@
 ## 第 5 章：React 路由
 
+1. 下载 react-router-dom: npm install --save react-router-dom
+
 ### 5.1. 相关理解
 
 #### 5.1.1. SPA 的理解

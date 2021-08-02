@@ -6,8 +6,9 @@ react_pracs
 
 ### react_app
 
-写了一些 demo,留言板，github 用户搜素请求，todolist，留言板和 github 用户请求分 pubsub 写法和非 pubsub 写法。
-发现不足的地方是 app 组件应该放在根目录下方。但是不影响整体运行。
+1. 写了一些 demo,留言板，github 用户搜素请求，todolist，留言板和 github 用户请求分 pubsub 写法和非 pubsub 写法。
+2. 发现不足的地方是 app 组件应该放在根目录下方。但是不影响整体运行。
+3. pubsub github user 讲解 react ajax(fetch)的使用
 
 ### react_test
 
