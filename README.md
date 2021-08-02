@@ -30,4 +30,8 @@ react_pracs
 
 ### notes
 
-文件内所有的根组件 App 都放在了 component 文件夹中，实际操作中应该放在最外层的文件中，和 index.js 文件同层级。由于过多文件如此，就不一一修改了。
+1. 文件内所有的根组件 App 都放在了 component 文件夹中，实际操作中应该放在最外层的文件中，和 index.js 文件同层级。由于过多文件如此，就不一一修改了。
+2. less 安装
+   npm i less
+   npm less-loader@6.0
+3. antUI
