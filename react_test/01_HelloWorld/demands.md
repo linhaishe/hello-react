@@ -13,3 +13,9 @@
 1. react.js react 的核心语法
 2. react-dom.js react 的虚拟 dom 文件
 3. babel.js 解析浏览器不认识的 js 语法
+
+4. react 中{}为分隔符，只有在这里面...p 才能展开对象，仅适用于标签属性传递时使用。
+
+```
+<Com {...person}/>
+```
