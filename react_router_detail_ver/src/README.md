@@ -26,8 +26,8 @@ public ---- 静态资源文件夹
 		index.html -------- 主页面
 		logo192.png ------- logo图
 		logo512.png ------- logo图
-		manifest.json ----- 应用加壳的配置文件，移动端的配置
-		robots.txt -------- 爬虫协议文件，类似小程序的sitemap,给浏览器搜索引擎用的，写入相关关键词，浏览器可搜索到。
+		manifest.json ----- 应用加壳的配置文件
+		robots.txt -------- 爬虫协议文件
 src ---- 源码文件夹
 		App.css -------- App组件的样式
 		App.js --------- App组件
