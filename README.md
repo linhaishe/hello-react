@@ -1,12 +1,21 @@
 ## react_pracs
 
-1. 脚手架安装报错
-   https://stackoverflow.com/questions/67399785/how-to-solve-npm-install-error-npm-err-code-1
-2. 由于自己下载的是 node 最新版本 16.XX,导致安装失败，一直报错。
-3. 使用 nvm 版本管理，下载了最新的稳定版本。并使用 nvm use 14.17.4,转换为稳定版本。nvm ls 查看通过 nvm 下载的 node 版本进行切换
-4. 由于 node 删除失败，选择通过 nvm 进行版本转换。
-5. nvm use 14.17.4,转换 node 版本
-6. 相关资料：
+### 脚手架创建
+
+1. 第一步，全局安装：npm i -g create-react-app
+2. 第二步，切换到想创项目的目录，使用命令：create-react-app hello-react
+3. 第三步，进入项目文件夹：cd hello-react
+4. 第四步，启动项目：npm start
+
+#### 脚手架安装报错
+
+5. https://stackoverflow.com/questions/67399785/how-to-solve-npm-install-error-npm-err-code-1
+6. 由于自己下载的是 node 最新版本 16.XX,导致安装失败，一直报错。
+7. 使用 nvm 版本管理，下载了最新的稳定版本。并使用 nvm use 14.17.4,转换为稳定版本。nvm ls 查看通过 nvm 下载的 node 版本进行切换
+8. 由于 node 删除失败，选择通过 nvm 进行版本转换。
+9. nvm use 14.17.4,转换 node 版本
+10. 使用以下命令可以改变默认的版本：nvm alias default v4.3.0 这样就不用每次都切换版本了
+11. 相关资料：
 
 - https://segmentfault.com/a/1190000039188394
 - https://zhuanlan.zhihu.com/p/99841609
