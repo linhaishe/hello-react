@@ -51,25 +51,86 @@ export default class Message extends React.Component {
     window.location = "http://www.baidu.com";
   };
 
+  // 编程式路由导航开始
+
+  replaceShow2 = (id, title) => {
+    //replace跳转+携带params参数
+    //this.props.history.replace(`/home/message/detail/${id}/${title}`)
+
+    //replace跳转+携带search参数
+    // this.props.history.replace(`/home/message/detail?id=${id}&title=${title}`)
+
+    //replace跳转+携带state参数
+    this.props.history.replace(`/home/message/detail`, { id, title });
+  };
+
+  pushShow2 = (id, title) => {
+    //push跳转+携带params参数
+    // this.props.history.push(`/home/message/detail/${id}/${title}`)
+
+    //push跳转+携带search参数
+    // this.props.history.push(`/home/message/detail?id=${id}&title=${title}`)
+
+    //push跳转+携带state参数
+    this.props.history.push(`/home/message/detail`, { id, title });
+  };
+
+  back2 = () => {
+    this.props.history.goBack();
+  };
+
+  forward2 = () => {
+    this.props.history.goForward();
+  };
+
+  go2 = () => {
+    this.props.history.go(-2);
+  };
+
+  //编程式路由导航结尾
   render() {
     //在matach数据下获取path参数
     const path = this.props.match.path;
 
     return (
       <div>
+        {/* <a href={`/home/message/messagedetail/${m.id}`}>{m.title}</a> */}
+        {/* a 标签导致链接成为非路由链接，点击的时候会发送请求的 */}
+        {/* 使用link或者其他的组件成为路由链接 */}
         <ul>
           {this.state.messages.map((m, index) => {
             return (
               <li key={index}>
-                {/* <a href={`/home/message/messagedetail/${m.id}`}>{m.title}</a> */}
-                {/* a 标签导致链接成为非路由链接，点击的时候会发送请求的 */}
-                {/* 使用link或者其他的组件成为路由链接 */}
                 {/* params 参数 */}
                 {/* <Link to={`${path}/${m.id}`}>{m.title}</Link> */}
                 {/* search 参数 */}
-                <Link to={`${path}?id=${m.id}&title=${m.title}`}>
+                {/* <Link to={`${path}?id=${m.id}&title=${m.title}`}>
+                  {m.title}
+                </Link> */}
+                {/* state 参数 */}
+                <Link
+                  to={{
+                    pathname: `${path}`,
+                    state: { id: m.id, title: m.title },
+                  }}
+                >
                   {m.title}
                 </Link>
+                {/* 编程式路由导航开始 */}
+                {/* 向路由组件传递params参数 */}
+                {/* <Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link> */}
+                {/* 向路由组件传递search参数 */}
+                {/* <Link to={`/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link> */}
+                {/* 向路由组件传递state参数 */}
+                {/* <Link
+                  to={{
+                    pathname: "/home/message/detail",
+                    state: { id: msgObj.id, title: msgObj.title },
+                  }}
+                >
+                  {msgObj.title}
+                </Link> */}
+                {/* 编程式路由导航结尾 */}
                 {/* &nbsp;&nbsp;&nbsp;
                 事件回调函数，自动传递event参数，但是我们需要id数据，所以我们传递id数据给回调函数
                 <button onClick={this.ShowDetail}>查看详情</button> */}
@@ -92,9 +153,15 @@ export default class Message extends React.Component {
 
         {/* <Route path="/home/message/messagedetail/:id" component={MessageDetail}></Route> */}
         {/* :id,即是占位符，也是也个标识名称，是可以换名称的，尽量根据用法取名 */}
+
         {/* params 参数使用此列 */}
         {/* <Route path={`${path}/:id`} component={MessageDetail}></Route> */}
-        <Route path={`${path}`} component={MessageDetail}></Route>
+
+        {/* search参数无需声明接收，正常注册路由即可 */}
+        {/* <Route path={`${path}`} component={MessageDetail}></Route> */}
+
+        {/* state参数无需声明接收，正常注册路由即可 */}
+        <Route path={`${path}`} component={MessageDetail} />
       </div>
     );
   }

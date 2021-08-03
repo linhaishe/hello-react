@@ -130,7 +130,7 @@ export default class App extends Component {
    路由组件：`<Route path="/demo" component={Demo}/>`
 2. 存放位置不同：
    一般组件：components
-   路由组件：pages
+   路由组件：pages/views
 3. 接收到的 props 不同：
    一般组件：写组件标签时传递了什么，就能收到什么
    路由组件：接收到三个固定的属性
@@ -339,52 +339,70 @@ export default class App extends Component {
 
 ## 十二、编程式路由导航
 
-    				借助this.prosp.history对象上的API对操作路由跳转、前进、后退
-    						-this.prosp.history.push()
-    						-this.prosp.history.replace()
-    						-this.prosp.history.goBack()
-    						-this.prosp.history.goForward()
-    						-this.prosp.history.go()
+1. 借助 this.prosp.history 对象上的 API 对操作路由跳转、前进、后退
+
+- this.prosp.history.push()
+- this.prosp.history.replace()
+- this.prosp.history.goBack()
+- this.prosp.history.goForward()
+- this.prosp.history.go()
 
 ## 十三、BrowserRouter 与 HashRouter 的区别
 
-    		1.底层原理不一样：
-    					BrowserRouter使用的是H5的history API，不兼容IE9及以下版本。
-    					HashRouter使用的是URL的哈希值。
-    		2.path表现形式不一样
-    					BrowserRouter的路径中没有#,例如：localhost:3000/demo/test
-    					HashRouter的路径包含#,例如：localhost:3000/#/demo/test
-    		3.刷新后对路由state参数的影响
-    					(1).BrowserRouter没有任何影响，因为state保存在history对象中。
-    					(2).HashRouter刷新后会导致路由state参数的丢失！！！
-    		4.备注：HashRouter可以用于解决一些路径错误相关的问题。
+1. 底层原理不一样：
+
+- BrowserRouter 使用的是 H5 的 history API，不兼容 IE9 及以下版本。
+- HashRouter 使用的是 URL 的哈希值。
+- react 中的 history 的方法都是对原生的方法的二次封装
+
+2. path 表现形式不一样
+
+- BrowserRouter 的路径中没有#,例如：localhost:3000/demo/test
+- HashRouter 的路径包含#,例如：localhost:3000/#/demo/test
+
+3. 刷新后对路由 state 参数的影响
+
+- (1).BrowserRouter 没有任何影响，因为 state 保存在 history 对象中。
+- (2).HashRouter 刷新后会导致路由 state 参数的丢失！！！，因为没有 history 这个对象存储 state 数据
+
+4. 备注：HashRouter 可以用于解决一些路径错误相关的问题。
 
 ## 十四、antd 的按需引入+自定主题
 
-    		1.安装依赖：yarn add react-app-rewired customize-cra babel-plugin-import less less-loader
-    		2.修改package.json
-    				....
-    					"scripts": {
-    						"start": "react-app-rewired start",
-    						"build": "react-app-rewired build",
-    						"test": "react-app-rewired test",
-    						"eject": "react-scripts eject"
-    					},
-    				....
-    		3.根目录下创建config-overrides.js
-    				//配置具体的修改规则
-    				const { override, fixBabelImports,addLessLoader} = require('customize-cra');
-    				module.exports = override(
-    					fixBabelImports('import', {
-    						libraryName: 'antd',
-    						libraryDirectory: 'es',
-    						style: true,
-    					}),
-    					addLessLoader({
-    						lessOptions:{
-    							javascriptEnabled: true,
-    							modifyVars: { '@primary-color': 'green' },
-    						}
-    					}),
-    				);
-    			4.备注：不用在组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉
+1. 安装依赖：yarn add react-app-rewired customize-cra babel-plugin-import less less-loader
+2. 修改 package.json
+
+```
+   "scripts": {
+   "start": "react-app-rewired start",
+   "build": "react-app-rewired build",
+   "test": "react-app-rewired test",
+   "eject": "react-scripts eject"
+   },
+```
+
+3. 根目录下创建 config-overrides.js
+
+```
+   //配置具体的修改规则
+    const {
+      override,
+      fixBabelImports,
+      addLessLoader,
+    } = require("customize-cra");
+    module.exports = override(
+      fixBabelImports("import", {
+        libraryName: "antd",
+        libraryDirectory: "es",
+        style: true,
+      }),
+      addLessLoader({
+        lessOptions: {
+          javascriptEnabled: true,
+          modifyVars: { "@primary-color": "green" },
+        },
+      })
+    );
+```
+
+4. 备注：不用在组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉

@@ -1,4 +1,6 @@
 import React from "react";
+
+//接收search参数
 import qs from "querystring";
 
 const messageDetails = [
@@ -15,8 +17,11 @@ export default function MessageDetail(props) {
   // const id = props.match.params.id;
 
   // 接收search参数
-  const { search } = props.location;
-  const { id, title } = qs.parse(search.slice(1));
+  // const { search } = props.location;
+  // const { id, title } = qs.parse(search.slice(1));
+
+  // 接收state参数
+  const { id, title } = props.location.state || {};
 
   //debugger
   //字符串1和数字1类型不同，所欲id*1将字符串变为数字类型
