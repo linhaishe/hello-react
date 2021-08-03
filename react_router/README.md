@@ -347,7 +347,52 @@ export default class App extends Component {
 - this.prosp.history.goForward()
 - this.prosp.history.go()
 
-## 十三、BrowserRouter 与 HashRouter 的区别
+## 十三、withRouter
+
+1. 将组件形成高阶组件
+
+```
+import React, { Component } from 'react'
+
+import {withRouter} from 'react-router-dom'
+
+class Header extends Component {
+
+    back = ()=>{
+    	this.props.history.goBack()
+    }
+
+    forward = ()=>{
+    	this.props.history.goForward()
+    }
+
+    go = ()=>{
+    	this.props.history.go(-2)
+    }
+
+    render() {
+    	console.log('Header组件收到的props是',this.props);
+    	return (
+    		<div className="page-header">
+    			<h2>React Router Demo</h2>
+    			<button onClick={this.back}>回退</button>&nbsp;
+    			<button onClick={this.forward}>前进</button>&nbsp;
+    			<button onClick={this.go}>go</button>
+    		</div>
+    	)
+    }
+
+}
+
+export default withRouter(Header)
+
+//withRouter 可以加工一般组件，让一般组件具备路由组件所特有的 API
+//withRouter 的返回值是一个新组件
+
+
+```
+
+## 十四、BrowserRouter 与 HashRouter 的区别
 
 1. 底层原理不一样：
 
@@ -367,42 +412,50 @@ export default class App extends Component {
 
 4. 备注：HashRouter 可以用于解决一些路径错误相关的问题。
 
-## 十四、antd 的按需引入+自定主题
+## 十五、antd 的按需引入+自定主题
 
 1. 安装依赖：yarn add react-app-rewired customize-cra babel-plugin-import less less-loader
 2. 修改 package.json
 
 ```
-   "scripts": {
-   "start": "react-app-rewired start",
-   "build": "react-app-rewired build",
-   "test": "react-app-rewired test",
-   "eject": "react-scripts eject"
-   },
+
+"scripts": {
+"start": "react-app-rewired start",
+"build": "react-app-rewired build",
+"test": "react-app-rewired test",
+"eject": "react-scripts eject"
+},
+
 ```
 
 3. 根目录下创建 config-overrides.js
 
 ```
-   //配置具体的修改规则
-    const {
-      override,
-      fixBabelImports,
-      addLessLoader,
-    } = require("customize-cra");
-    module.exports = override(
-      fixBabelImports("import", {
-        libraryName: "antd",
-        libraryDirectory: "es",
-        style: true,
-      }),
-      addLessLoader({
-        lessOptions: {
-          javascriptEnabled: true,
-          modifyVars: { "@primary-color": "green" },
-        },
-      })
-    );
+
+//配置具体的修改规则
+const {
+override,
+fixBabelImports,
+addLessLoader,
+} = require("customize-cra");
+module.exports = override(
+fixBabelImports("import", {
+libraryName: "antd",
+libraryDirectory: "es",
+style: true,
+}),
+addLessLoader({
+lessOptions: {
+javascriptEnabled: true,
+modifyVars: { "@primary-color": "green" },
+},
+})
+);
+
 ```
 
 4. 备注：不用在组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉
+
+```
+
+```
