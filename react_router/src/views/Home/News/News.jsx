@@ -1,8 +1,7 @@
 import React from "react";
-
 export default class News extends React.Component {
   state = {
-    newsArr: ["news001", "news002", "news003"]
+    newsArr: ["news001", "news002", "news003"],
   };
 
   render() {

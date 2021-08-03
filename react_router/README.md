@@ -253,6 +253,7 @@ export default function MyNavLink(props) {
 1. 默认使用的是模糊匹配（简单记：【输入的路径】必须包含要【匹配的路径】，且顺序要一致）
 
 - 即 `<MyNavLink to="/home/a/b">Home</MyNavLink>` `<Route path="/home" component={Home}/>`即使 route 路径中写的/home,则还是会进行路由跳转
+- `<Route path="/a/home" component={Home}/>` 顺序不一致，则也不会跳转
 
 2. 开启严格匹配：`<Route exact={true} path="/about" component={About}/>`,那么上面的例子，路由就不能跳转
 3. 严格匹配不要随便开启，需要再开，有些时候开启会导致无法继续匹配二级路由
@@ -294,35 +295,47 @@ export default class App extends Component {
 
 ## 九、Redirect 的使用
 
-    			1.一般写在所有路由注册的最下方，当所有路由都无法匹配时，跳转到Redirect指定的路由
-    			2.具体编码：
-    					<Switch>
-    						<Route path="/about" component={About}/>
-    						<Route path="/home" component={Home}/>
-    						<Redirect to="/about"/>
-    					</Switch>
+1. 一般写在所有路由注册的最下方，当所有路由都无法匹配时，跳转到 Redirect 指定的路由
+2. 具体写法
+
+```
+<Switch>
+   <Route path="/about" component={About}/>
+   <Route path="/home" component={Home}/>
+   <Redirect to="/about"/>
+</Switch>
+```
 
 ## 十、嵌套路由
 
-    			1.注册子路由时要写上父路由的path值
-    			2.路由的匹配是按照注册路由的顺序进行的
+1. 注册子路由时要写上父路由的 path 值； /home/news
+2. 路由的匹配是按照注册路由的顺序进行的
+
+- app.jsx 里的路由是先匹配的，所以回先匹配/home 路由。之后再在/home 路由里匹配/home/news 的路由
 
 ## 十一、向路由组件传递参数
 
-    			1.params参数
-    						路由链接(携带参数)：<Link to='/demo/test/tom/18'}>详情</Link>
-    						注册路由(声明接收)：<Route path="/demo/test/:name/:age" component={Test}/>
-    						接收参数：this.props.match.params
-    			2.search参数
-    						路由链接(携带参数)：<Link to='/demo/test?name=tom&age=18'}>详情</Link>
-    						注册路由(无需声明，正常注册即可)：<Route path="/demo/test" component={Test}/>
-    						接收参数：this.props.location.search
-    						备注：获取到的search是urlencoded编码字符串，需要借助querystring解析
-    			3.state参数
-    						路由链接(携带参数)：<Link to={{pathname:'/demo/test',state:{name:'tom',age:18}}}>详情</Link>
-    						注册路由(无需声明，正常注册即可)：<Route path="/demo/test" component={Test}/>
-    						接收参数：this.props.location.state
-    						备注：刷新也可以保留住参数
+1. params 参数
+
+- 路由链接(携带参数)：`<Link to='/demo/test/tom/18'}>详情</Link>`
+- 注册路由(声明接收)：`<Route path="/demo/test/:name/:age" component={Test}/>`
+- 接收参数：this.props.match.params
+
+2. search 参数（ajax 中的 query 参数传递）
+
+- 路由链接(携带参数)：`<Link to='/demo/test?name=tom&age=18'}>详情</Link>`
+- 注册路由(无需声明，正常注册即可)：`<Route path="/demo/test" component={Test}/>`
+- 接收参数：this.props.location.search
+- 备注：获取到的 search 是 urlencoded 编码字符串，需要借助 querystring 解析
+- 所有需要引入 `import qs from "querystring";`
+- `const {name,age} = qs.parse(search.slice(1))`
+
+3. state 参数
+
+- 路由链接(携带参数)：`<Link to={{pathname:'/demo/test',state:{name:'tom',age:18}}}>详情</Link>`
+- 注册路由(无需声明，正常注册即可)：`<Route path="/demo/test" component={Test}/>`
+- 接收参数：this.props.location.state
+- 备注：刷新也可以保留住参数；路由组件身上独有的一个参数，不会将参数显示在地址栏中，会把数据进行隐藏
 
 ## 十二、编程式路由导航
 

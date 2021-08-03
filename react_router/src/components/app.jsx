@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import MyNavLink from "./my-nav-link";
-import About from "../views/about";
-import Home from "../views/home";
+import About from "../views/About/About";
+import Home from "../views/Home/Home";
 
 export default class App extends React.Component {
   render() {
@@ -19,19 +19,27 @@ export default class App extends React.Component {
         <div className="row">
           <div className="col-xs-2 col-xs-offset-2">
             <div className="list-group">
-              {/*导航路由链接*/}
+              {/*导航路由链接，封装式写法*/}
               <MyNavLink className="list-group-item" to="/about">
                 About
               </MyNavLink>
               <MyNavLink className="list-group-item" to="/home">
                 Home
               </MyNavLink>
+              {/*导航路由链接，普通式写法*/}
+              {/* <Link className="list-group-item" to="/about">
+                About
+              </Link>
+              <Link className="list-group-item" to="/home">
+                Home
+              </Link> */}
             </div>
           </div>
+
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
-                {/*可切换的路由组件*/}
+                {/*可切换的路由组件,注册路由*/}
                 {/* 用switch组件将路由组件进行控制，所以才需要将内容放进switch中
                 只能显示其中一个，需要用switch包装起来进行调用转换 */}
                 <Switch>

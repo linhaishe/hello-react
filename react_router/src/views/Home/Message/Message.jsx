@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
-import MessageDetail from "./message-detail";
+import MessageDetail from "./Detail/Detail";
 
 export default class Message extends React.Component {
   state = {
@@ -30,6 +30,7 @@ export default class Message extends React.Component {
   //history对象的Push方法
 
   ShowDetail = (id) => {
+    //react不使用hook，原生做路径操作的方法
     this.props.history.push(`/home/message/${id}`);
   };
 
@@ -63,7 +64,12 @@ export default class Message extends React.Component {
                 {/* <a href={`/home/message/messagedetail/${m.id}`}>{m.title}</a> */}
                 {/* a 标签导致链接成为非路由链接，点击的时候会发送请求的 */}
                 {/* 使用link或者其他的组件成为路由链接 */}
-                <Link to={`${path}/${m.id}`}>{m.title}</Link>
+                {/* params 参数 */}
+                {/* <Link to={`${path}/${m.id}`}>{m.title}</Link> */}
+                {/* search 参数 */}
+                <Link to={`${path}?id=${m.id}&title=${m.title}`}>
+                  {m.title}
+                </Link>
                 {/* &nbsp;&nbsp;&nbsp;
                 事件回调函数，自动传递event参数，但是我们需要id数据，所以我们传递id数据给回调函数
                 <button onClick={this.ShowDetail}>查看详情</button> */}
@@ -81,13 +87,14 @@ export default class Message extends React.Component {
         <p>
           <button onClick={this.back}>返回</button>&nbsp;
           <button onClick={this.forward}>前进</button>&nbsp;
-          <hr />
           <button onClick={this.reqPage}>页面跳转至百度</button>
         </p>
-        <hr />
+
         {/* <Route path="/home/message/messagedetail/:id" component={MessageDetail}></Route> */}
         {/* :id,即是占位符，也是也个标识名称，是可以换名称的，尽量根据用法取名 */}
-        <Route path={`${path}/:id`} component={MessageDetail}></Route>
+        {/* params 参数使用此列 */}
+        {/* <Route path={`${path}/:id`} component={MessageDetail}></Route> */}
+        <Route path={`${path}`} component={MessageDetail}></Route>
       </div>
     );
   }
