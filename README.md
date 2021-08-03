@@ -1,5 +1,18 @@
 ## react_pracs
 
+1. 脚手架安装报错
+   https://stackoverflow.com/questions/67399785/how-to-solve-npm-install-error-npm-err-code-1
+2. 由于自己下载的是 node 最新版本 16.XX,导致安装失败，一直报错。
+3. 使用 nvm 版本管理，下载了最新的稳定版本。并使用 nvm use 14.17.4,转换为稳定版本。nvm ls 查看通过 nvm 下载的 node 版本进行切换
+4. 由于 node 删除失败，选择通过 nvm 进行版本转换。
+5. nvm use 14.17.4,转换 node 版本
+6. 相关资料：
+
+- https://segmentfault.com/a/1190000039188394
+- https://zhuanlan.zhihu.com/p/99841609
+- https://segmentfault.com/a/1190000004330350
+- https://zhuanlan.zhihu.com/p/89158928
+
 react_pracs
 
 ![comment_component.gif](http://ww1.sinaimg.cn/large/005NUwyggy1gbr6jj0plcg30r70gagr9.gif)

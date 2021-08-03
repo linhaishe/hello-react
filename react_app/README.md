@@ -2,6 +2,13 @@
 
 脚手架 baisc 文件，在此基础上复制粘贴即可，不需要再 create react app 了
 
+### 创建项目并启动
+
+1. 第一步，全局安装：npm i -g create-react-app
+2. 第二步，切换到想创项目的目录，使用命令：create-react-app hello-react
+3. 第三步，进入项目文件夹：cd hello-react
+4. 第四步，启动项目：npm start
+
 ## react_app
 
 这个文件夹主要写了一些 demo,todolist githubusers,commentBoard,消息订阅的 demo
