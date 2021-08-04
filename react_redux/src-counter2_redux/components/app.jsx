@@ -9,17 +9,14 @@ import PropTypes from "prop-types";
 
 import * as actions from "../redux/actions";
 
-
-
 export default class App extends Component {
-
   //状态交给redux管理了
-// state = {
-//   count:0
-// }
+  // state = {
+  //   count:0
+  // }
 
   static propTypes = {
-    store: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired,
   };
 
   increment = () => {
@@ -58,8 +55,9 @@ export default class App extends Component {
   render() {
     // 取值失败
     // const {count} = this.props.store.getState()
+    //从redux上获取状态
     // 取值成功
-    const count = this.props.store.getState()
+    const count = this.props.store.getState();
 
     return (
       <div>

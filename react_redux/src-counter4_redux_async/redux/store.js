@@ -1,5 +1,6 @@
 import React from "react";
 import { createStore, applyMiddleware } from "redux";
+//用于支持异步action
 import thunk from "redux-thunk";
 //引入扩展插件chrome插件
 import { composeWithDevTools } from "redux-devtools-extension";

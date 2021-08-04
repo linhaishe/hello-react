@@ -9,9 +9,9 @@ import { increment, decrement } from "../redux/actions";
 
 import Counter from "../components/counter";
 
-// 向外暴露连接App组件的包装组件
+// 向外暴露连接App组件的包装组件，向外暴露容器组件
 //会将对象的属性结构全部交给counter组件
-export default connect(state => ({ count: state }), { increment, decrement })(
+export default connect((state) => ({ count: state }), { increment, decrement })(
   Counter
 );
 
