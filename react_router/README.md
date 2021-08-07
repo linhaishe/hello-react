@@ -68,6 +68,19 @@
 7. `<Switch>`
 ```
 
+Link 按钮
+
+to="/xxx" to={``} to={{}}
+
+```
+          to={{
+                pathname: "/courses",
+                search: "?sort=name",
+                hash: "#the-hash",
+                state: { fromDashboard: true }
+          }}
+```
+
 ### 5.2.2. 其它
 
 1. history 对象

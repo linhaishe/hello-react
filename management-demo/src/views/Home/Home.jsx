@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect, Link } from "react-router-dom";
 import { Layout, Menu, Breadcrumb } from "antd";
 import Tom from "../Home/home_user_tom/Tom";
+import "./home.scss";
+
+//import "./App.scss";
 
 import {
   DesktopOutlined,
