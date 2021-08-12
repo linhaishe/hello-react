@@ -5,7 +5,7 @@ import logo from "../logo.svg";
 // using an ES6 transpiler, like babel
 import { matchRoutes, renderRoutes } from "react-router-config";
 
-import { BrowserRouter, Redirect } from "react-router-dom";
+import { BrowserRouter, Redirect, Link, Switch } from "react-router-dom";
 
 // export default class App extends Component {
 //   render() {
@@ -64,7 +64,13 @@ const GrandChild = ({ someProp }) => (
   </div>
 );
 
+const TestHome = () => {
+  return <div>TextHome</div>;
+};
+
 const routes = [
+  // 如果将/home放在Root对象的下边，则不会显示了。
+  { path: "/home", exact: true, component: TestHome },
   {
     component: Root,
     routes: [
@@ -85,13 +91,27 @@ const routes = [
       },
     ],
   },
+
+  // {
+  //   path: "/home",
+  //   // exact: true,
+  //   component: Home,
+  // },
 ];
 
 function App() {
   return (
     <BrowserRouter>
       {/* kick it all off with the root route */}
+      <div>
+        <Link to="/">Roothome</Link>
+        |||||
+        <Link to="/home">toTesthome</Link> |||||
+        <Link to="/child/8">/child/8</Link> |||||
+        <Link to="/child/8/grand-child">to/child/8/grand-child</Link>
+      </div>
       {renderRoutes(routes)}
+      {/* <TestHome></TestHome> */}
     </BrowserRouter>
   );
 }
