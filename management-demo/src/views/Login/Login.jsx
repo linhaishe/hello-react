@@ -94,6 +94,7 @@ export default class Login extends Component {
             <div className="notes">Username:guest Passwoprd: guest</div>
           </div>
         </div>
+        <image className="rightImg"></image>
       </div>
     );
   }
