@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="08d9258c-aea6-4c97-a01a-e3e2ad9ed1dd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/public/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/public/users_page/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/users_page/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/public/users_page/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/users_page/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/public/users_page/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/users_page/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/READEME.md" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/READEME.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/components/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/components/app/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/components/comment-add/comment-add.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/components/comment-add/comment-add.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/components/comment-item/comment-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/components/comment-item/comment-item.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/components/comment-item/commentItem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/components/comment-item/commentItem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/components/comment-list/comment-list.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/components/comment-list/comment-list.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/components/comment-list/commentList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/components/comment-list/commentList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-demo/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-demo/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/components/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/components/app/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/components/comment-add/comment-add.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/components/comment-add/comment-add.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/components/comment-item/comment-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/components/comment-item/comment-item.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/components/comment-item/commentItem.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/components/comment-item/commentItem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/components/comment-list/comment-list.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/components/comment-list/comment-list.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/components/comment-list/commentList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/components/comment-list/commentList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-pubsub/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-pubsub/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-self/components/app/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-self/components/app/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-self/components/comment-add/comment-add.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-self/components/comment-add/comment-add.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-self/components/comment-item/comment-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-self/components/comment-item/comment-item.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-self/components/comment-list/comment-list.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-self/components/comment-list/comment-list.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-self/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-self/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-self/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-self/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-comment-self/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-comment-self/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/1_setState/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/1_setState/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/2_lazyLoad/About/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/2_lazyLoad/About/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/2_lazyLoad/Home/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/2_lazyLoad/Home/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/2_lazyLoad/Loading/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/2_lazyLoad/Loading/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/2_lazyLoad/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/2_lazyLoad/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/3_hooks/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/3_hooks/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/4_Fragment/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/4_Fragment/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/5_Context/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/5_Context/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/5_Context/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/5_Context/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/6_optimize/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/6_optimize/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/6_optimize/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/6_optimize/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/7_renderProps/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/7_renderProps/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/7_renderProps/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/7_renderProps/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/7_renderProps/test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/7_renderProps/test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/8_ErrorBoundary/Child.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/8_ErrorBoundary/Child.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/components/8_ErrorBoundary/Parent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/components/8_ErrorBoundary/Parent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-extend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-extend/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-githubusers-nopubsub/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src-githubusers-nopubsub/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-githubusers-nopubsub/components/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-githubusers-nopubsub/components/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-githubusers-nopubsub/components/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-githubusers-nopubsub/components/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-githubusers-nopubsub/components/search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-githubusers-nopubsub/components/search.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-githubusers-nopubsub/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-githubusers-nopubsub/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-githubusers-nopubsub/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-githubusers-nopubsub/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-githubusers-nopubsub/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-githubusers-nopubsub/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-githubusers-nopubsub/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-githubusers-nopubsub/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/components/Footer/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/components/Footer/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/components/Footer/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/components/Footer/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/components/Header/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/components/Header/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/components/Header/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/components/Header/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/components/Item/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/components/Item/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/components/Item/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/components/Item/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/components/List/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/components/List/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/components/List/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/components/List/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-todolist-demo/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-todolist-demo/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-users-pubsubjs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src-users-pubsubjs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-users-pubsubjs/components/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-users-pubsubjs/components/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-users-pubsubjs/components/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-users-pubsubjs/components/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-users-pubsubjs/components/search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src-users-pubsubjs/components/search.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-users-pubsubjs/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src-users-pubsubjs/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-users-pubsubjs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-users-pubsubjs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-users-pubsubjs/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-users-pubsubjs/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src-users-pubsubjs/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-users-pubsubjs/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src/components/Test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src/components/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_app/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/1_setState/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/2_lazyLoad/About/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/2_lazyLoad/Home/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/2_lazyLoad/Loading/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/2_lazyLoad/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/3_hooks/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/4_Fragment/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/5_Context/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/5_Context/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/6_optimize/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/6_optimize/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/7_renderProps/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/7_renderProps/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/8_ErrorBoundary/Child.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/components/8_ErrorBoundary/Parent.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_extension/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/2_src_redux精简版/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/2_src_redux精简版/components/Count/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/2_src_redux精简版/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/2_src_redux精简版/redux/count_reducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/2_src_redux精简版/redux/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/public/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter2_redux/components/app.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter2_redux/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter2_redux/redux/action-types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter2_redux/redux/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter2_redux/redux/reducers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter2_redux/redux/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter3_react-redux/components/counter.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter3_react-redux/containers/app.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter3_react-redux/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter3_react-redux/redux/action-types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter3_react-redux/redux/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter3_react-redux/redux/reducers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter4_redux_async/components/counter.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter4_redux_async/containers/app.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter4_redux_async/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter4_redux_async/redux/action-types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter4_redux_async/redux/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter4_redux_async/redux/reducers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src-counter4_redux_async/redux/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src/components/app.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/components/app/app.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/components/comment-add/comment-add.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/components/comment-item/comment-item.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/components/comment-item/commentItem.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/components/comment-list/comment-list.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/components/comment-list/commentList.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/redux/action-types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/redux/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/redux/reducers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/src_comment_redux/redux/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_redux/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/history_test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/comment_page/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/comment_page/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/comment_page/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/users_static/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/users_static/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/public/users_static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/components/app.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/components/my-nav-link.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/views/About/About.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/views/Home/Home.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/views/Home/Message/Detail/Detail.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/views/Home/Message/Message.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/src/views/Home/News/News.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_router/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/01_HelloWorld/01-without-comments.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/01_HelloWorld/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/01_HelloWorld/helloreact.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/02_component/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/02_component/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/03_component_state/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/03_component_state/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/04_component_props/3_props的简写方式.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/04_component_props/4_函数组件使用props.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/04_component_props/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/04_component_props/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/05_component_refs_event/2_回调函数形式的ref.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/05_component_refs_event/3_回调ref中回调执行次数的问题.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/05_component_refs_event/4_createRef的使用.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/05_component_refs_event/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/05_component_refs_event/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/05_component_refs_event/test2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/05_component_refs_event/test3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/06_components_composing/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/06_components_composing/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/06_components_composing/test2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/07_component_form/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/07_component_form/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/08_component_lifecycle/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/08_component_lifecycle/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/09_vDOM-DOM Diff/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/10_ajax/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/11_Conditional_Rendering/demands.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/11_Conditional_Rendering/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/12_组件的生命周期/1_引出生命周期.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/12_组件的生命周期/2_react生命周期(旧).html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/12_组件的生命周期/2_react生命周期(旧).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/12_组件的生命周期/3_react生命周期(新).html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/12_组件的生命周期/3_react生命周期(新).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/12_组件的生命周期/4_getSnapshotBeforeUpdate的使用场景.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/12_高阶函数_函数柯里化/1_高阶函数_函数柯里化.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/12_高阶函数_函数柯里化/2_不用函数柯里化的实现.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/13_DOM的Diffing算法/1_验证Diffing算法.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/13_DOM的Diffing算法/2_key的作用.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/14_src_配置代理/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/14_src_配置代理/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/14_src_配置代理/react脚手架配置代理.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/14_src_配置代理/setupProxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/draft.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js/babel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js/prop-types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js/react-dom.development.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js/react.development.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js/version.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js2/babel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js2/react-dom.development.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js2/react.development.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js2/version.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js3/babel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js3/react-dom.development.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js3/react.development.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/js3/version.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/message_board/board.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/react_drag/drag.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/react_drag/拖拽.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/复习/1_类的基本知识.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/复习/2_原生事件绑定.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/复习/3_类方法中的this指向.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/复习/4_展开运算符.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/复习/5_对象相关的知识.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_test/复习/6_演示函数的柯里化.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/config-overrides.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_ui/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1657268539" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="management-demo" />
+                    <option name="lastUsedInstant" value="1657268016" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectId" id="2BeXVpw9jpiWABo55MgCi6w4BEg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08d9258c-aea6-4c97-a01a-e3e2ad9ed1dd" name="Changes" comment="" />
+      <created>1657267550535</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657267550535</updated>
+      <workItem from="1657267552066" duration="995000" />
+      <workItem from="1657268553467" duration="341000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
