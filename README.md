@@ -46,3 +46,15 @@ const Component = React.Component
 1. v18 使用function方式去构造组件，v16用的class方式
 2. 新增reportWebVitals.js文件
 3. `ReactDOM.createRoot`
+   
+声明式开发：减少大量Dom操作，减少代码量
+
+可以与其他框架并存：
+
+组件化：
+
+单项数据流：父组件可以往子组件传数据，但是子组件绝对不能改变父组件的数据
+
+视图层框架：在处理大型项目的时候，光用它不够用，只能做搭建视图使用，需要搭配redux等处理组件之间传值的问题。
+
+函数是编程：更容易实现前端自动化测试
