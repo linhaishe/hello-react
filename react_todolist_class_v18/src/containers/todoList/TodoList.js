@@ -30,9 +30,8 @@ class TodoList extends Component {
   handlerInput(e) {
     console.log("target", e.target.value);
     const inputValue = e.target.value;
-    this.setState({
-      inputValue,
-    });
+    // 用箭头函数更新数据，提升性能
+    this.setState(() => inputValue);
   }
 
   getTodoItem() {
