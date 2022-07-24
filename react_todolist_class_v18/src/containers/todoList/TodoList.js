@@ -1,8 +1,7 @@
-import { useState } from "react";
 import "./TodoList.css";
 import TodoItem from "../../components/todoItem/TodoItem";
-
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class TodoList extends Component {
   constructor(props) {
@@ -28,7 +27,6 @@ class TodoList extends Component {
   }
 
   handlerInput(e) {
-    console.log("target", e.target.value);
     const inputValue = e.target.value;
     // 用箭头函数更新数据，提升性能,返回对象。返回对象，返回对象。
     this.setState(() => ({

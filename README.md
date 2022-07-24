@@ -58,3 +58,7 @@ const Component = React.Component
 视图层框架：在处理大型项目的时候，光用它不够用，只能做搭建视图使用，需要搭配redux等处理组件之间传值的问题。
 
 函数是编程：更容易实现前端自动化测试
+
+props states render
+当组件的state或者props发生改变的时候，render函数会重新执行
+父组件的render函数被运行时，它的自组件的render都将被重新运行
