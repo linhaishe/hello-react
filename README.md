@@ -4,11 +4,18 @@ on master branch , all notes are taking from this course:
 The react version is 16 base on this tutorial. but I'll develop this project with v18.
 
 ## refs
+
+### react
+
 1. [React Projects with tutorial videos](https://github.com/john-smilga/react-projects)
 2. [reactjs](https://reactjs.org/docs/getting-started.html)
 3. [A collection of awesome things regarding the React ecosystem](https://github.com/enaqx/awesome-react)
 4. [ruanyifeng-react-demo](https://github.com/ruanyf/react-demos)
 5. [React 18 New Features](https://www.freecodecamp.org/news/react-18-new-features/)
+
+### redux
+
+https://www.taniarascia.com/redux-react-guide/
 
 ## project tree view
 ```
