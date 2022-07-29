@@ -15,7 +15,11 @@ class TodoList extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
     //订阅store， 如果store数据修改则会出发函数
+    // constructor is the first thing which is called and componentDidMount is the last one (during mounting phase). As the warning says, the component is not yet mounted and you're calling setState, so this is the reason why this function shouldn't be called inside a constructor
     store.subscribe(this.handleStoreChange);
   }
 
