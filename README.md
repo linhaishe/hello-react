@@ -31,10 +31,10 @@ react_v18
 │   └── robots.txt
 ├── src
 │   ├── App.css
-│   ├── App.js 定义组件的文件，App组件通过继承React.Component这个基类去实现定义的
+│   ├── App.tsx 定义组件的文件，App组件通过继承React.Component这个基类去实现定义的
 │   ├── App.test.js // 自动化测试文件
 │   ├── index.css
-│   ├── index.js // entry file
+│   ├── index.tsx // entry file
 │   ├── logo.svg
 │   ├── reportWebVitals.js // Sending results to analytics
 │   └── setupTests.js
@@ -102,3 +102,8 @@ ui组件一般通过无状态组件实现，但也要根据业务来。
 
 ## redux-thunk
 处理异步请求，放在action中进行处理
+
+## reset css
+https://meyerweb.com/eric/tools/css/reset/
+不同浏览器的内核对html body等标签的默认样式是不同的。为了让所有代码在所有的浏览器上表现形式是一致的，就需要把所有浏览器上默认值进行格式化。
+
