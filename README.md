@@ -34,7 +34,7 @@ react_v18
 │   ├── App.tsx 定义组件的文件，App组件通过继承React.Component这个基类去实现定义的
 │   ├── App.test.js // 自动化测试文件
 │   ├── index.css
-│   ├── index.tsx // entry file
+│   ├── index.ts // entry file
 │   ├── logo.svg
 │   ├── reportWebVitals.js // Sending results to analytics
 │   └── setupTests.js

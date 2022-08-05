@@ -52,5 +52,6 @@ module.exports = {
     // 'react-hooks/rules-of-hooks': 'error',
     // 'import/prefer-default-export': 'off',
     // 'react/function-component-definition': 'off',
+    '@typescript-eslint/default-param-last': 1,
   },
 };
