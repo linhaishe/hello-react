@@ -91,7 +91,6 @@ ref 和 setstate 同时使用时，由于setstate是异步操作，ref更新会�
 4. shouldComponentUpdate , 避免无谓组件函数的运行。子组件会根据父组件数据更新时，重新渲染。在shouldComponentUpdate中做更新判断，提升性能。
 
 ## reduce
-
 reducer	是一个纯函数，给固定的输入，就一定会有固定输出，而且不会有任何副作用。函数中不能有时间的操作，或者异步操作。
 
 ## UI组件和容器组件

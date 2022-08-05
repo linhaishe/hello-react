@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'airbnb-typescript', 'plugin:prettier/recommended'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'airbnb-typescript',
+    'plugin:prettier/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -15,6 +20,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'max-len': [2, { code: 80 }],
     'react/jsx-filename-extension': [
       1,
       {
@@ -25,6 +31,8 @@ module.exports = {
     'object-curly-spacing': 2,
     'no-unused-vars': 1,
     '@typescript-eslint/no-unused-vars': 1,
+    'jsx-quotes': ['error', 'prefer-single'],
+    'react/self-closing-comp': 1,
     // 'react/jsx-filename-extension': ['warn', {extensions: ['.js', '.jsx']}],
     // 'react/jsx-props-no-spreading': ['off'],
     // 'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
