@@ -8,6 +8,7 @@ export const data = Mock.mock('/topSearchList', {
     'Australian walks',
     'Man charged over',
     'Los Angeles',
+    'hiwdfibwerif',
   ],
 });
 

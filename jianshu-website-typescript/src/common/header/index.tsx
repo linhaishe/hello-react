@@ -22,9 +22,9 @@ import '../../mock';
 
 function Header() {
   const [lists, setLists] = useState([]);
-  const [isF, setisF] = useState(false);
+  const [mouseIn, setMouseIn] = useState(false);
   const { isFocused, listforReducer } = useAppSelector((state) => state.header);
-  // const list222 = useAppSelector((state) => state.header);
+  // const list222 = useAppSelector((state) => state.header);44
   const dispatch = useAppDispatch();
   const { searchInputFocus, getTopSearchListforReducer } = bindActionCreators(
     actionCreators,
@@ -32,21 +32,22 @@ function Header() {
   );
 
   useEffect(() => {
-    axios
-      .get('/topSearchList')
-      .then((res) => {
-        console.log('444', res);
-        setLists(res.data.data);
-      })
-      .catch((err) => console.log(err));
+    console.log(1);
+    if (!lists.length) {
+      console.log(2);
+      axios
+        .get('/topSearchList')
+        .then((res) => {
+          setLists(res.data.data);
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
 
-  useEffect(() => {
-    getTopSearchListforReducer();
-    console.log('44ergregreg4', listforReducer);
-    console.log('22222', lists);
-    console.log('666', listforReducer, isFocused);
-  }, [lists]);
+  // useEffect(() => {
+  //   console.log(1);
+  //   getTopSearchListforReducer();
+  // }, [lists]);
   // Hooks can only be called inside of the body of a function component.
   // useAppDispatch 只能在函数组件内使用，单独文件夹下无法使用
   // 1.单独文件下下，使用redux的dispatch功能 2. 或者单独把actionCreator的对象单独都放在一的文件中
@@ -57,12 +58,15 @@ function Header() {
   //     type: 'isFocus',
   //     payload: !isFocused
   //   });
-  // };
+  // };44
 
-  function getSearchInfoArea(focusStatus: boolean) {
-    if (focusStatus) {
+  function getSearchInfoArea() {
+    if (isFocused || mouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo
+          onMouseEnter={() => setMouseIn(true)}
+          onMouseLeave={() => setMouseIn(false)}
+        >
           <TopSearch>
             <SearchInfoTitle>热门搜索</SearchInfoTitle>
             <SearchInfoSwitch>换一换</SearchInfoSwitch>
@@ -79,11 +83,10 @@ function Header() {
   return (
     <HeaderWrapper>
       <Logo />
-      <Nav onClick={() => setisF(!isF)}>
+      <Nav>
         <NavItem className='left active'>首页</NavItem>
         <NavItem className='left'>下载App</NavItem>
         <NavItem className='right'>登陆</NavItem>
-        <NavItem className='right'>{isF.toString()}</NavItem>
         <NavItem className='right'>
           <span className='iconfont icon-AApay' />
         </NavItem>
@@ -93,7 +96,7 @@ function Header() {
             onBlur={() => searchInputFocus(!isFocused)}
           />
           <span className='iconfont icon-search' />
-          {getSearchInfoArea(isFocused)}
+          {getSearchInfoArea()}
         </SearchWrapper>
       </Nav>
       <Addition>

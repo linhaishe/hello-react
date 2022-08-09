@@ -22,7 +22,6 @@ export const getTopSearchListforReducer = () => {
     axios
       .get('/topSearchList')
       .then((res) => {
-        console.log('999', res);
         dispatch(changeList(res.data.data));
       })
       .catch((err) => console.log(err));
