@@ -1,7 +1,7 @@
 // import { createStore } from "redux";
 // 方法已废弃，使用configureStore替代
 import { configureStore } from '@reduxjs/toolkit';
-import testReducer from './reducer/reducer';
+import testReducer from './reducer';
 
 const store = configureStore({ reducer: testReducer });
 

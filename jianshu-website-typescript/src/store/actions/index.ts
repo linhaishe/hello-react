@@ -3,4 +3,9 @@ interface IsFocus {
   payload: boolean;
 }
 
-export type Action = IsFocus;
+interface TopSearchList {
+  type: 'change_list';
+  payload: string[];
+}
+
+export type Action = IsFocus | TopSearchList;

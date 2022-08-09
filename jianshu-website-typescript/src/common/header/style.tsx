@@ -32,6 +32,7 @@ export const NavItem = styled.div`
   padding: 0 15px;
   font-size: 17px;
   color: #333;
+  //border: 1px solid red;
   &.left {
     float: left;
   }
@@ -68,10 +69,52 @@ export const NavSearch = styled.input.attrs({
   }
 `;
 
+export const SearchInfo = styled.div`
+  position: absolute;
+  left: 140px;
+  top: 56px;
+  width: 200px;
+  padding: 0 20px;
+  //height: 100px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+`;
+
+export const TopSearch = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const SearchInfoTitle = styled.div`
+  margin-top: 20px;
+  margin-bottom: 15px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #969696;
+`;
+
+export const SearchInfoSwitch = styled.div`
+  margin-top: 20px;
+  margin-bottom: 15px;
+  line-height: 20px;
+  font-size: 13px;
+  color: #787878;
+`;
+
+export const SearchInfoItem = styled.a`
+  display: inline-block;
+  line-height: 20px;
+  padding: 0 5px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  color: #787878;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  margin-right: 3px;
+`;
+
 export const Addition = styled.div`
   display: flex;
   height: 56px;
-  //border: 1px solid pink;
 `;
 
 export const Button = styled.div`
@@ -110,6 +153,5 @@ export const SearchWrapper = styled.div`
     box-sizing: border-box;
     text-align: center;
     font-size: 23px;
-    //color: #eee;
   }
 `;
