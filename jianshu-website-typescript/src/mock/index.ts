@@ -1,4 +1,4 @@
-import Mock from 'mockjs';
+import Mock, { Random } from 'mockjs';
 
 export const data = Mock.mock('/topSearchList', {
   success: true,
@@ -9,15 +9,37 @@ export const data = Mock.mock('/topSearchList', {
     'Man charged over',
     'Los Angeles',
     'hiwdfibwerif',
+    'Los Angeles1',
+    'Los Angeles2',
+    'Los Angeles3',
+    'Los Angeles4',
+    'Los Angeles5',
   ],
 });
 
-export const data2 = Mock.mock('/api', {
-  data: [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
-  ],
+export const homeData = Mock.mock('/home', {
+  success: true,
+  data: {
+    'topicList|1-10': [
+      {
+        id: () => Random.increment(),
+        title: () => Random.cword(5, 7),
+        imgUrl: () => Random.image('1400x900', '#02adea', '#fff', 'png', 'topicList'),
+      },
+    ],
+    'articleLists|1-10': [
+      {
+        id: () => Random.increment(),
+        title: () => Random.cword(5, 80),
+        desc: () => Random.cword(5, 200),
+        imgUrl: () => Random.image('1400x900', '#02adea', 'articleLists'),
+      },
+    ],
+    'bannerPics|4': [
+      {
+        id: () => Random.increment(),
+        imgUrl: () => Random.image('1400x900', '#02adea', 'bannerPics'),
+      },
+    ],
+  },
 });

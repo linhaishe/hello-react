@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import * as actionCreators from '../../store/actionCreators';
+import * as actionCreators from '../../store/actionCreators/headerActionCreators';
 import {
   Addition,
   Button,
@@ -26,15 +26,10 @@ function Header() {
   const { isFocused, listforReducer } = useAppSelector((state) => state.header);
   // const list222 = useAppSelector((state) => state.header);44
   const dispatch = useAppDispatch();
-  const { searchInputFocus, getTopSearchListforReducer } = bindActionCreators(
-    actionCreators,
-    dispatch,
-  );
+  const { searchInputFocus, getTopSearchListforReducer } = bindActionCreators(actionCreators, dispatch);
 
   useEffect(() => {
-    console.log(1);
     if (!lists.length) {
-      console.log(2);
       axios
         .get('/topSearchList')
         .then((res) => {
@@ -63,10 +58,7 @@ function Header() {
   function getSearchInfoArea() {
     if (isFocused || mouseIn) {
       return (
-        <SearchInfo
-          onMouseEnter={() => setMouseIn(true)}
-          onMouseLeave={() => setMouseIn(false)}
-        >
+        <SearchInfo onMouseEnter={() => setMouseIn(true)} onMouseLeave={() => setMouseIn(false)}>
           <TopSearch>
             <SearchInfoTitle>热门搜索</SearchInfoTitle>
             <SearchInfoSwitch>换一换</SearchInfoSwitch>
@@ -91,10 +83,7 @@ function Header() {
           <span className='iconfont icon-AApay' />
         </NavItem>
         <SearchWrapper>
-          <NavSearch
-            onFocus={() => searchInputFocus(!isFocused)}
-            onBlur={() => searchInputFocus(!isFocused)}
-          />
+          <NavSearch onFocus={() => searchInputFocus(!isFocused)} onBlur={() => searchInputFocus(!isFocused)} />
           <span className='iconfont icon-search' />
           {getSearchInfoArea()}
         </SearchWrapper>

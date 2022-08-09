@@ -77,6 +77,7 @@ export const SearchInfo = styled.div`
   padding: 0 20px;
   //height: 100px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  background-color: white;
 `;
 
 export const TopSearch = styled.div`

@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    'max-len': [2, { code: 80 }],
+    'max-len': [2, { code: 120 }],
     'react/jsx-filename-extension': [
       1,
       {

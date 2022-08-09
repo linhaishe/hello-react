@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import GlobalStyle from './style';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './statics/iconfont/iconfont.css';
-
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
-);
+// efewf
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
-    <GlobalStyle />
-    <App />
+    <BrowserRouter>
+      <GlobalStyle />
+      <App />
+    </BrowserRouter>
   </Provider>,
 );
 
