@@ -9,9 +9,7 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const Logo = styled.a.attrs({
-  href: '/',
-})`
+export const Logo = styled.div`
   display: inline-block;
   width: 90px;
   height: 56px;

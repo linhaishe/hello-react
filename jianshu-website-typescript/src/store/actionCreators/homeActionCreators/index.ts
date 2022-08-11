@@ -11,7 +11,6 @@ const getHomeData = (data: HomeDataType) => {
 
 export const getHomeDataList = () => {
   return (dispatch: Dispatch) => {
-    console.log('44');
     axios
       .get('/home')
       .then((res) => {

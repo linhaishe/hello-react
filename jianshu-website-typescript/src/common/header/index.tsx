@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import * as actionCreators from '../../store/actionCreators/headerActionCreators';
@@ -74,7 +75,9 @@ function Header() {
 
   return (
     <HeaderWrapper>
-      <Logo />
+      <Link to='/'>
+        <Logo />
+      </Link>
       <Nav>
         <NavItem className='left active'>首页</NavItem>
         <NavItem className='left'>下载App</NavItem>

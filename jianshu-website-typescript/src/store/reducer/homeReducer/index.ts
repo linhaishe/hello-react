@@ -10,7 +10,6 @@ const initialValue: HomeDataType = {
 const reducer = (state = initialValue, action: Action) => {
   switch (action.type) {
     case 'get_home_data': {
-      console.log('888', action.payload);
       return {
         ...state,
         topicList: action.payload.topicList,

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
-import { HomeLeft, HomeRight, HomeWrapper } from './style';
+import { HomeLeft, HomeRight, HomeWrapper, BackTop } from './style';
 import Topics from './components/topics/Topics';
 import Lists from './components/list/Lists';
 import Recommend from './components/recommend/Recommend';
@@ -11,12 +10,33 @@ import * as homeActionCreators from '../../store/actionCreators/homeActionCreato
 
 function Home() {
   const dispatch = useAppDispatch();
-  const { topicList } = useAppSelector((state) => state.home);
   const { getHomeDataList } = bindActionCreators(homeActionCreators, dispatch);
+  const [isBackToTop, setBAckToTop] = useState(false);
+  const backToTop = () => {
+    if (document.documentElement.scrollTop > 100) {
+      setBAckToTop(true);
+    } else {
+      setBAckToTop(false);
+    }
+  };
+  const handleScrollTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  function backToTopRender() {
+    if (isBackToTop) {
+      return <BackTop onClick={handleScrollTop}>顶部</BackTop>;
+    }
+    return null;
+  }
+
   useEffect(() => {
-    console.log(23);
     getHomeDataList();
-    console.log('efefef', topicList);
+    window.addEventListener('scroll', backToTop);
+
+    return () => {
+      window.removeEventListener('scroll', backToTop);
+    };
   }, []);
 
   return (
@@ -35,6 +55,7 @@ function Home() {
         <Recommend />
         <Writers />
       </HomeRight>
+      {backToTopRender()}
     </HomeWrapper>
   );
 }

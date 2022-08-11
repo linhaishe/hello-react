@@ -1,5 +1,6 @@
 import React from 'react';
-import { ListItem, ListInfo } from '../../style';
+import { Link } from 'react-router-dom';
+import { ListItem, ListInfo, LoadMore } from '../../style';
 import { useAppSelector } from '../../../../store/hooks';
 import { ArticleProps } from '../../../../store/reducer/homeReducer/model';
 
@@ -9,18 +10,25 @@ function Lists() {
     if (articleLists.length) {
       return articleLists.map((item: ArticleProps) => (
         <ListItem key={item.id}>
-          <img alt='' src={item.imgUrl} className='pic' />
-          <ListInfo>
-            <h3 className='title'>{item.title}</h3>
-            <p className='desc'>{item.desc}</p>
-          </ListInfo>
+          <Link to='/details'>
+            <img alt='' src={item.imgUrl} className='pic' />
+            <ListInfo>
+              <h3 className='title'>{item.title}</h3>
+              <p className='desc'>{item.desc}</p>
+            </ListInfo>
+          </Link>
         </ListItem>
       ));
     }
     return null;
   }
 
-  return <div>{getArticleLists()}</div>;
+  return (
+    <div>
+      {getArticleLists()}
+      <LoadMore>更多内容</LoadMore>
+    </div>
+  );
 }
 
 export default Lists;
