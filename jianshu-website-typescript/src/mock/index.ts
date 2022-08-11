@@ -43,3 +43,12 @@ export const homeData = Mock.mock('/home', {
     ],
   },
 });
+
+export const detailsData = Mock.mock('/detail', {
+  success: true,
+  data: {
+    title: () => Random.cword(5, 7),
+    imgUrl: () => Random.image('1400x900', '#02adea', 'detailImg'),
+    content: () => Random.cword(300, 1000),
+  },
+});
