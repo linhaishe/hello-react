@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ListItem, ListInfo, LoadMore } from '../../style';
 import { useAppSelector } from '../../../../store/hooks';
 import { ArticleProps } from '../../../../store/reducer/homeReducer/model';
-// rgrg
+
 function Lists() {
   const { articleLists } = useAppSelector((state) => state.home);
   function getArticleLists() {

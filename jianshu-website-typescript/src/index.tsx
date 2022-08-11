@@ -7,7 +7,8 @@ import GlobalStyle from './style';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './statics/iconfont/iconfont.css';
-// efewf
+import { useAppSelector } from './store/hooks';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>

@@ -81,7 +81,7 @@ function Header() {
       <Nav>
         <NavItem className='left active'>首页</NavItem>
         <NavItem className='left'>下载App</NavItem>
-        <NavItem className='right'>登陆</NavItem>
+        <NavItem className='right'>退出</NavItem>
         <NavItem className='right'>
           <span className='iconfont icon-AApay' />
         </NavItem>

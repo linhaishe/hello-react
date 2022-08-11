@@ -1,4 +1,5 @@
 import Mock, { Random } from 'mockjs';
+import { LoginInfoType } from '../store/reducer/login/model';
 
 export const data = Mock.mock('/topSearchList', {
   success: true,
@@ -51,4 +52,20 @@ export const detailsData = Mock.mock('/detail', {
     imgUrl: () => Random.image('1400x900', '#02adea', 'detailImg'),
     content: () => Random.cword(300, 1000),
   },
+});
+
+export const loginData = Mock.mock('/login', 'post', function (options: any) {
+  const userInfo = JSON.parse(options.body);
+  const { pwd, userName } = userInfo.data;
+  if (userName === '111' && pwd === '222') {
+    return {
+      code: 1,
+      msg: '登入成功',
+    };
+  }
+
+  return {
+    code: 0,
+    msg: '登入失败',
+  };
 });
