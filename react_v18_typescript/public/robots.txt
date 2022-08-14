@@ -1,3 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
+# https://www.robotstxt.org/robotstxt.html 允许搜索引擎搜索我们项目下的什么内容
 User-agent: *
 Disallow:
