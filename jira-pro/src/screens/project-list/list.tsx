@@ -1,10 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 如果人工收费fff
-function List({ lists, users }) {
-  console.log('ddd', lists);
-  console.log('ggg', users);
+import { User } from './search-panel';
 
+interface Project {
+  id: string;
+  name: string;
+  personId: string;
+  pin: boolean;
+  organization: string;
+}
+
+interface ListProps {
+  lists: Project[];
+  users: User[];
+}
+
+function List({ lists, users }: ListProps) {
   return (
     <div>
       <table>

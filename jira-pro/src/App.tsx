@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ProjectList from './screens/project-list';
-// huhiuh
+import UseArrayComponent from './screens/homework/use-array';
+
 function App() {
   return (
     <div className='App'>
       <ProjectList />
+      <UseArrayComponent />
     </div>
   );
 }

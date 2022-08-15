@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const isFalsy = (value: any) => (value === 0 ? false : !value);
+export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
 
 // 在一个函数里，改变传入的对象本身是不好的。
 export function cleanObject(object: any) {
@@ -18,7 +18,7 @@ export function cleanObject(object: any) {
 }
 
 // custom hook 需要用use开头，hook的使用地方需要注意，需要在component中
-export const useMount = (callback: any) => {
+export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
   }, []);
@@ -38,7 +38,7 @@ export const useMount = (callback: any) => {
 //   };
 // };
 
-export const useDebounce = (value: any, delay: number) => {
+export const useDebounce = <T>(value: T, delay?: number) => {
   const [debounceValue, setDebounce] = useState(value);
 
   useEffect(() => {

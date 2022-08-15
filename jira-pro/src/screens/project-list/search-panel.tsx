@@ -1,7 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function SearchPanel({ users, params, setParams }) {
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+  organization: string;
+}
+
+interface SearchPanelProps {
+  users: User[];
+  params: {
+    name: string;
+    personId: string;
+  };
+  setParams: (param: SearchPanelProps['params']) => void;
+}
+
+function SearchPanel({ users, params, setParams }: SearchPanelProps) {
   return (
     <div>
       <form>
