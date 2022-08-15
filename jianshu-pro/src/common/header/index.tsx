@@ -19,7 +19,6 @@ import {
   SearchWrapper,
   TopSearch,
 } from './style';
-import '../../mock';
 
 function Header() {
   const [lists, setLists] = useState([]);

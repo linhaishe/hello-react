@@ -24,7 +24,7 @@ export const homeData = Mock.mock('/home', {
     'topicList|1-10': [
       {
         id: () => Random.increment(),
-        title: () => Random.cword(5, 7),
+        title: () => Random.cword(3, 7),
         imgUrl: () => Random.image('1400x900', '#02adea', '#fff', 'png', 'topicList'),
       },
     ],
