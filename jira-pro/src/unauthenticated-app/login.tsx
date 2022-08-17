@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAuth } from '../../context/auth-context';
+import { useAuth } from '../context/auth-context';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-function Login() {
+function LoginScreen() {
   // const login = (param: { username: string; password: string }) => {
   //   fetch(`${apiUrl}/login`, {
   //     method: 'POST',
@@ -43,4 +43,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginScreen;

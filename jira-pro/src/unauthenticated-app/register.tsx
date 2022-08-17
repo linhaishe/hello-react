@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAuth } from '../../context/auth-context';
+import { useAuth } from '../context/auth-context';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-function Login() {
+function RegisterScreen() {
   // const login = (param: { username: string; password: string }) => {
   //   fetch(`${apiUrl}/login`, {
   //     method: 'POST',
@@ -15,17 +15,16 @@ function Login() {
   //     }
   //   });
   // };
-  const { login, user } = useAuth();
+  const { register, user } = useAuth();
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const username = (event.currentTarget.elements[0] as HTMLInputElement).value;
     const password = (event.currentTarget.elements[1] as HTMLInputElement).value;
-    login({ username, password });
+    register({ username, password });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {user ? <div>登录成功：用户名：{user?.name}</div> : null}
       <div>
         <label htmlFor='username'>
           用户名
@@ -38,9 +37,9 @@ function Login() {
           <input type='text' id='username' />
         </label>
       </div>
-      <button type='submit'>登录</button>
+      <button type='submit'>注册</button>
     </form>
   );
 }
 
-export default Login;
+export default RegisterScreen;
