@@ -47,6 +47,6 @@ module.exports = {
     // 'react/function-component-definition': 'off',
     '@typescript-eslint/default-param-last': 1,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'react/require-default-props': 0
+    'react/require-default-props': 0,
   },
 };
