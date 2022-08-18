@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Button, Input } from 'antd';
 import { useAuth } from '../context/auth-context';
+// eslint-disable-next-line import/no-cycle
+import { LongButton } from './index';
 
 function RegisterScreen() {
   const { register } = useAuth();
@@ -21,9 +23,9 @@ function RegisterScreen() {
         </Form.Item>
       </Form.Item>
       <Form.Item>
-        <Button type='primary' htmlType='submit'>
+        <LongButton type='primary' htmlType='submit'>
           注册
-        </Button>
+        </LongButton>
       </Form.Item>
     </Form>
   );
