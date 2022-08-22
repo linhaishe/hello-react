@@ -3,11 +3,19 @@ import { Form, Input, Button } from 'antd';
 import { useAuth } from '../context/auth-context';
 // eslint-disable-next-line import/no-cycle
 import { LongButton } from './index';
+import { useAsync } from '../utils/use-async';
 
-function LoginScreen() {
+function LoginScreen({ onError }: { onError: (error: Error) => void }) {
   const { login, user } = useAuth();
-  const handleSubmit = (values: { username: string; password: string }) => {
-    login(values);
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true });
+  const handleSubmit = async (values: { username: string; password: string }) => {
+    // login(values);
+    // try catch 中的内容是异步的操作，try中的请求被调用之后，catch就会被直接调用，try中的报错信息catch没有拿到，需要加 async await
+    try {
+      await run(login(values));
+    } catch (e: unknown) {
+      onError(e as Error);
+    }
   };
 
   return (
@@ -24,7 +32,7 @@ function LoginScreen() {
         </Form.Item>
       </Form.Item>
       <Form.Item>
-        <LongButton htmlType='submit' type='primary'>
+        <LongButton loading={isLoading} htmlType='submit' type='primary'>
           登录
         </LongButton>
       </Form.Item>

@@ -9,3 +9,17 @@ npm start 在开发环境下，webpack会读取.env.dev文件下的变量
 npm run build 在构建环境下，webpack会读取.env文件下的变量
 
 加载中和异常页面的处理，对react中的异步操作进行状态控制，使用简单的方式提高用户体验。
+```typescript jsx
+const [isLoading, setIsLoading] = useSate(false);
+const [error, setError] = useState<null | Error>(null);
+
+useEffect(()=>{
+  setIsLoading(true);
+  client('projects', {data: 'blablaxx'})
+    .then(setList)
+    .catch(error => {
+      setList([]);
+      setError(error)
+  })
+}, [])
+```

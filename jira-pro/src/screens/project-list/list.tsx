@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'antd';
+import { Table, TableProps } from 'antd';
 import dayjs from 'dayjs';
 import { User } from './search-panel';
 
-interface Project {
+export interface Project {
   id: string;
   name: string;
   personId: string;
@@ -12,13 +12,14 @@ interface Project {
   organization: string;
   created: number;
 }
-
-interface ListProps {
-  lists: Project[];
+// listProps 由两部分类型组成，TableProps + users
+interface ListProps extends TableProps<Project> {
+  // 因为继承了TableProps，且传入了Project类型，lists: Project[];这个属性可以不用写入，删除即可
+  // lists: Project[];
   users: User[];
 }
-
-function List({ lists, users }: ListProps) {
+// ...props 的类型为 type PropsType = Omit<ListProps, 'users'>
+function List({ users, ...props }: ListProps) {
   return (
     <Table
       rowKey={(record) => record.id}
@@ -39,7 +40,8 @@ function List({ lists, users }: ListProps) {
           },
         },
       ]}
-      dataSource={lists}
+      // dataSource={lists}
+      {...props}
     />
   );
 }
