@@ -50,5 +50,10 @@ module.exports = {
     'react/require-default-props': 0,
     'no-nested-ternary': 1,
     'import/prefer-default-export': 1,
+    'jsx-a11y/anchor-is-valid': 1,
+    'no-static-element-interactions': 0,
+    'click-events-have-key-events': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
   },
 };

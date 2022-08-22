@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css, jsx } from '@emotion/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Select } from 'antd';
@@ -22,34 +24,39 @@ interface SearchPanelProps {
 
 function SearchPanel({ users, params, setParams }: SearchPanelProps) {
   return (
-    <Form>
+    <Form layout='inline' css={{ marginBottom: '2rem' }}>
       {/* setParams(Object.assign({}, params, { name:evt.target.value })) */}
-      <Input
-        type='text'
-        value={params.name}
-        onChange={(evt) => {
-          setParams({
-            ...params,
-            name: evt.target.value,
-          });
-        }}
-      />
-      <Select
-        value={params.personId}
-        onChange={(value) => {
-          setParams({
-            ...params,
-            personId: value,
-          });
-        }}
-      >
-        <Select.Option value=''>负责人</Select.Option>
-        {users.map((user) => (
-          <Select.Option key={user.id} value={user.id}>
-            {user.name}
-          </Select.Option>
-        ))}
-      </Select>
+      <Form.Item>
+        <Input
+          type='text'
+          placeholder='项目名'
+          value={params.name}
+          onChange={(evt) => {
+            setParams({
+              ...params,
+              name: evt.target.value,
+            });
+          }}
+        />
+      </Form.Item>
+      <Form.Item>
+        <Select
+          value={params.personId}
+          onChange={(value) => {
+            setParams({
+              ...params,
+              personId: value,
+            });
+          }}
+        >
+          <Select.Option value=''>负责人</Select.Option>
+          {users.map((user) => (
+            <Select.Option key={user.id} value={user.id}>
+              {user.name}
+            </Select.Option>
+          ))}
+        </Select>
+      </Form.Item>
     </Form>
   );
 }
