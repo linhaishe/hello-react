@@ -13,7 +13,7 @@ function LoginScreen({ onError }: { onError: (error: Error) => void }) {
     // try catch 中的内容是异步的操作，try中的请求被调用之后，catch就会被直接调用，try中的报错信息catch没有拿到，需要加 async await
     try {
       await run(login(values));
-    } catch (e: unknown) {
+    } catch (e) {
       onError(e as Error);
     }
   };

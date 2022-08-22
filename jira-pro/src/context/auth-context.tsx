@@ -4,6 +4,8 @@ import { User } from '../screens/project-list/search-panel';
 // eslint-disable-next-line import/no-cycle
 import { http } from '../utils/http';
 import { useMount } from '../utils';
+import { useAsync } from '../utils/use-async';
+import { FullPageErrorFallBack, FullPageLoading } from '../components/libs';
 
 interface AuthForm {
   username: string;
@@ -31,21 +33,35 @@ const AuthContext = React.createContext<
     }
 >(undefined);
 AuthContext.displayName = 'AuthContext';
-
+// ff
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  // const [user, setUser] = useState<User | null>(null);
+  const { data: user, error, isLoading, isIdle, isError, run, setData: setUser } = useAsync();
   const login = (form: AuthForm) => auth.login(form).then((users) => setUser(users));
   const register = (form: AuthForm) => auth.register(form).then((users) => setUser(users));
   const logout = () => auth.logout().then(() => setUser(null));
+  const users: User | null = user as User | null;
 
   // 处理刷新时丢失用户信息，自动退出。
+  // eslint-disable-next-line consistent-return
   useMount(() => {
-    bootstrapUser().then(setUser);
+    console.log('run(bootstrapUser());');
+    run(bootstrapUser());
   });
+
+  if (isIdle || isLoading) {
+    console.log('isIdle || isLoading');
+    return <FullPageLoading />;
+  }
+
+  if (isError) {
+    console.log('isError');
+    return <FullPageErrorFallBack error={error} />;
+  }
 
   // return <AuthContext.Provider children={children} value={{ user, login, register, logout }} />;
   // eslint-disable-next-line react/jsx-no-constructed-context-values
-  return <AuthContext.Provider value={{ user, login, register, logout }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user: users, login, register, logout }}>{children}</AuthContext.Provider>;
 }
 
 export const useAuth = () => {
