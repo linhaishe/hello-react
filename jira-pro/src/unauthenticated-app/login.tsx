@@ -1,12 +1,12 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { useAuth } from '../context/auth-context';
+// eslint-disable-next-line import/no-cycle
 import { LongButton } from './index';
 
 function LoginScreen() {
   const { login, user } = useAuth();
   const handleSubmit = (values: { username: string; password: string }) => {
-    console.log(1111, values);
     login(values);
   };
 

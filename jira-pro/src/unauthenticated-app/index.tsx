@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Card, Divider } from 'antd';
 import styled from '@emotion/styled';
+// eslint-disable-next-line import/no-cycle
 import RegisterScreen from './register';
+// eslint-disable-next-line import/no-cycle
 import LoginScreen from './login';
 import logo from '../assets/logo.svg';
 import right from '../assets/right.svg';
