@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // 使得svg图片能以svg的格式进行展现，不使用img标签
-import { Dropdown, Menu } from 'antd';
+import { Dropdown, Menu, Button } from 'antd';
 import { ReactComponent as SoftwareLogo } from './assets/software-logo.svg';
 import ProjectListScreens from './screens/project-list';
 import { useAuth } from './context/auth-context';
@@ -39,12 +39,14 @@ export default function AuthenticatedApp() {
             overlay={
               <Menu>
                 <Menu.Item>
-                  <a onClick={logout}>登出</a>
+                  <Button type='link' onClick={logout}>
+                    登出
+                  </Button>
                 </Menu.Item>
               </Menu>
             }
           >
-            <a onClick={(e) => e.preventDefault()}> Hi, {user?.name}</a>
+            <Button onClick={(e) => e.preventDefault()}> Hi, {user?.name}</Button>
           </Dropdown>
         </HeaderRight>
       </Header>

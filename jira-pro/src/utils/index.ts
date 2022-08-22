@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
 
 export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
-
+export const isVoid = (value: unknown) => value === undefined || value === null || value === '';
+// let a: object; // 对象有很多种形式
+// a = { name: 'jack' };
+// a = () => {};
+// a = new RegExp('');
+// object: { [key: string]: unknown } 将类型限制为键值对类型
 // 在一个函数里，改变传入的对象本身是不好的。
-export function cleanObject(object: any) {
+export function cleanObject(object: { [key: string]: unknown }) {
   const result = { ...object };
 
   Object.keys(result).forEach((key) => {
     // 0
     const value = result[key];
-    if (isFalsy(value)) {
+    if (isVoid(value)) {
       delete result[key];
     }
   });
