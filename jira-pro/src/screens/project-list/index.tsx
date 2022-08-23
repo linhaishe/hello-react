@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import SearchPanel from './search-panel';
 import List, { Project } from './list';
-import { cleanObject, useDebounce, useMount } from '../../utils';
+import { cleanObject, useDebounce, useDocumentTitle, useMount } from '../../utils';
 import { useHttp } from '../../utils/http';
 import { useAsync } from '../../utils/use-async';
 import { useProject } from '../../utils/project';
@@ -51,6 +51,8 @@ function ProjectListScreens() {
   useMount(() => {
     client('users');
   });
+
+  useDocumentTitle('项目列表', false);
 
   return (
     <Container>
