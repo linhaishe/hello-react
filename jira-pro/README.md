@@ -36,4 +36,6 @@ uncaught errors 会导致整个rect组件树被卸载。错误边界error bounda
 
 ### react and closure
 
-
+### react & react-dom/react-native/react-vr / react-router & react-router-dom
+react核心库，主要处理虚拟的核心的理论的库，组件中的state的状态怎么虚拟dom树，diff算法处理主要都在react中处理的。
+而得出的结果会被其他的库(react-dom/react-vr)进行消化。

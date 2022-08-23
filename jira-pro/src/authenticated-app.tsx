@@ -3,10 +3,12 @@ import React from 'react';
 import styled from '@emotion/styled';
 // 使得svg图片能以svg的格式进行展现，不使用img标签
 import { Dropdown, Menu, Button } from 'antd';
+import { Route, Routes } from 'react-router';
 import { ReactComponent as SoftwareLogo } from './assets/software-logo.svg';
 import ProjectListScreens from './screens/project-list';
 import { useAuth } from './context/auth-context';
 import { Row } from './components/libs';
+import ProjectDetail from './screens/project';
 
 const Container = styled.div`
   display: grid;
@@ -23,35 +25,45 @@ const Main = styled.main`
   //height: calc(100vh - 6rem);
 `;
 
-export default function AuthenticatedApp() {
+function PageHeader() {
   const { logout, user } = useAuth();
+
+  return (
+    <Header between>
+      <HeaderLeft gap>
+        <SoftwareLogo width='18rem' color='rgb(38,132,255)' />
+        <h2>logo</h2>
+        <h2>项目</h2>
+        <h2>用户</h2>
+      </HeaderLeft>
+      <HeaderRight>
+        <Dropdown
+          overlay={
+            <Menu>
+              <Menu.Item>
+                <Button type='link' onClick={logout}>
+                  登出
+                </Button>
+              </Menu.Item>
+            </Menu>
+          }
+        >
+          <Button onClick={(e) => e.preventDefault()}> Hi, {user?.name}</Button>
+        </Dropdown>
+      </HeaderRight>
+    </Header>
+  );
+}
+
+export default function AuthenticatedApp() {
   return (
     <Container>
-      <Header between>
-        <HeaderLeft gap>
-          <SoftwareLogo width='18rem' color='rgb(38,132,255)' />
-          <h2>logo</h2>
-          <h2>项目</h2>
-          <h2>用户</h2>
-        </HeaderLeft>
-        <HeaderRight>
-          <Dropdown
-            overlay={
-              <Menu>
-                <Menu.Item>
-                  <Button type='link' onClick={logout}>
-                    登出
-                  </Button>
-                </Menu.Item>
-              </Menu>
-            }
-          >
-            <Button onClick={(e) => e.preventDefault()}> Hi, {user?.name}</Button>
-          </Dropdown>
-        </HeaderRight>
-      </Header>
+      <PageHeader />
       <Main>
-        <ProjectListScreens />
+        <Routes>
+          <Route path='/projects' element={<ProjectListScreens />} />
+          <Route path='/projects/:projectId/*' element={<ProjectDetail />} />
+        </Routes>
       </Main>
     </Container>
   );
