@@ -7,6 +7,7 @@ import { useHttp } from '../../utils/http';
 import { useAsync } from '../../utils/use-async';
 import { useProject } from '../../utils/project';
 import { useUsers } from '../../utils/user';
+import { useUrlQueryParam } from '../../utils/url';
 
 const Container = styled.div`
   padding: 3.2rem;
@@ -14,12 +15,9 @@ const Container = styled.div`
 
 function ProjectListScreens() {
   const [users, setUsers] = useState([]);
-  const [params, setParams] = useState({
-    name: '',
-    personId: '',
-  });
+  const [param, setParams] = useUrlQueryParam(['name', 'personId']);
   const [lists, setList] = useState([]);
-  const debouncedParam = useDebounce(params, 2000);
+  const debouncedParam = useDebounce(param, 2000);
   const client = useHttp();
   const { isLoading, error, data: list } = useProject(debouncedParam);
   const { data: userss } = useUsers(debouncedParam);
@@ -57,7 +55,7 @@ function ProjectListScreens() {
   return (
     <Container>
       <h1>项目列表</h1>
-      <SearchPanel params={params} setParams={setParams} users={userss || []} />
+      <SearchPanel params={param} setParams={setParams} users={userss || []} />
       <List loading={isLoading} dataSource={list || []} users={userss || []} />
     </Container>
   );

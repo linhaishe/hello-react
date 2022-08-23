@@ -37,6 +37,7 @@ function List({ users, ...props }: ListProps) {
         {
           title: '负责人',
           render(value, project) {
+            console.log('users', users);
             return <span>{users.find((user) => user.id === project.personId)?.name || '未知'}</span>;
           },
         },
