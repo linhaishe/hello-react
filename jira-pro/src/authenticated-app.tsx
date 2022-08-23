@@ -4,11 +4,13 @@ import styled from '@emotion/styled';
 // 使得svg图片能以svg的格式进行展现，不使用img标签
 import { Dropdown, Menu, Button } from 'antd';
 import { Route, Routes } from 'react-router';
+import { Navigate } from 'react-router-dom';
 import { ReactComponent as SoftwareLogo } from './assets/software-logo.svg';
 import ProjectListScreens from './screens/project-list';
 import { useAuth } from './context/auth-context';
 import { Row } from './components/libs';
 import ProjectDetail from './screens/project';
+import { resetRoute } from './utils';
 
 const Container = styled.div`
   display: grid;
@@ -31,7 +33,9 @@ function PageHeader() {
   return (
     <Header between>
       <HeaderLeft gap>
-        <SoftwareLogo width='18rem' color='rgb(38,132,255)' />
+        <Button type='link' onClick={resetRoute}>
+          <SoftwareLogo width='18rem' color='rgb(38,132,255)' />
+        </Button>
         <h2>logo</h2>
         <h2>项目</h2>
         <h2>用户</h2>
@@ -63,6 +67,8 @@ export default function AuthenticatedApp() {
         <Routes>
           <Route path='/projects' element={<ProjectListScreens />} />
           <Route path='/projects/:projectId/*' element={<ProjectDetail />} />
+          <Route path='/' element={<Navigate to='/projects' />} />
+          {/* <Navigate to='/projects' /> */}
         </Routes>
       </Main>
     </Container>
