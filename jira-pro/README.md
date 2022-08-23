@@ -33,3 +33,7 @@ uncaught errors 会导致整个rect组件树被卸载。错误边界error bounda
 1. 方法1: 找到index.html,修改title标签的内容。导航跳到对应页面的时候通过document.title修改标签内容
 2. 方法2: 使用[react helmet](https://github.com/nfl/react-helmet#readme)
 3. 方法3: 使用自定义hook
+
+### react and closure
+
+

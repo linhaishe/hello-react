@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
 export const isVoid = (value: unknown) => value === undefined || value === null || value === '';
@@ -57,7 +57,10 @@ export const useDebounce = <T>(value: T, delay?: number) => {
 };
 
 export const useDocumentTitle = (title: string, keepOnUnmount = true) => {
-  const oldTitle = document.title;
+  // 1. 利用闭包的原理实现。 2. 用useRef实现获取旧数据
+  const oldTitle = useRef(document.title).current;
+  // 页面加载时，oldtitle === 旧title 'react app
+  // 页面加载后 oldtitle === new title
 
   useEffect(() => {
     document.title = title;
@@ -69,6 +72,7 @@ export const useDocumentTitle = (title: string, keepOnUnmount = true) => {
         document.title = oldTitle;
       }
     },
-    [],
+    // 如果不指定依赖，读到的就是旧title
+    [keepOnUnmount, oldTitle],
   );
 };
