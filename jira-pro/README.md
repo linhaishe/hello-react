@@ -49,3 +49,53 @@ react 核心库，主要处理虚拟的核心的理论的库，组件中的 stat
 ### antd select
 
 当 select 中 id 在搜索的时候，后台没有返回数据，antd 会把 id 显示在下拉框里
+
+### useSate
+
+惰性初始state
+useSate传入函数的时候，会被直接执行，自动调用。惰性初始化，不能直接传入函数
+使用useState保存函数方法
+1. 函数回调函数
+```typescript jsx
+// click setCallback -> call callback -> output: updata callback
+const [callback, setCallback] = React.useState(() => () => alert('init'));
+
+<button onClick={() => setCallback(() => () => alert('updata callback'))}>setCallback</button>
+<button onClick={callback}>call callback</button>
+```
+
+2. useRef 保存函数
+会输出init，useRef定义的值不是组件的状态，只是一个普通的值，不会触发组件重新渲染。
+```typescript jsx
+// click setCallback -> call callback -> output: init
+const callbackRef = React.useRef(() => alert('init'));
+const callback = callbackRef.current;
+
+<button onClick={() => (callbackRef.current = () => alert('update'))}>setCallback</button>
+<button onClick={callback}>call callback</button>
+```
+
+```typescript jsx
+// click setCallback -> call callback -> output: update
+const callbackRef = React.useRef(() => alert('init'));
+const callback = callbackRef.current;
+
+<button onClick={() => (callbackRef.current = () => alert('update'))}>setCallback</button>
+// 强制读取callbackRef.current 最新的值
+<button onClick={() => callbackRef.current()}>call callback</button>
+```
+
+```typescript jsx
+// click setCallback -> call callback -> output: init
+const callbackRef = React.useRef(() => alert('init'));
+const callback = callbackRef.current;
+
+<button onClick={() => (callbackRef.current = () => alert('update'))}>setCallback</button>
+// callbackRef.current 只会在第一次渲染的时候发生，其实已经被读取过了，读取的就是最初始的值
+<button onClick={callbackRef.current}>call callback</button>
+```
+### 乐观更新
+
+如何让多个组件共享一个状态，全局状态管理。
+1. 状态提升，将状态放在父组件中
+2. 全局状态管理
