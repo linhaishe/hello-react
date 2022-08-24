@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Table, TableProps } from 'antd';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
+// eslint-disable-next-line import/no-cycle
 import { User } from './search-panel';
 
 export interface Project {
-  id: string;
+  id: number;
   name: string;
-  personId: string;
+  personId: number;
   pin: boolean;
   organization: string;
   created: number;
@@ -37,7 +38,6 @@ function List({ users, ...props }: ListProps) {
         {
           title: '负责人',
           render(value, project) {
-            console.log('users', users);
             return <span>{users.find((user) => user.id === project.personId)?.name || '未知'}</span>;
           },
         },

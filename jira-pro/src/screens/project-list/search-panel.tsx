@@ -1,11 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import { css, jsx } from '@emotion/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Select } from 'antd';
+// eslint-disable-next-line import/no-cycle
+import { Project } from './list';
+// eslint-disable-next-line import/no-cycle
+import UserSelect from '../../components/user-select';
 
 export interface User {
-  id: string;
+  id: number;
   name: string;
   email: string;
   title: string;
@@ -15,10 +18,7 @@ export interface User {
 
 interface SearchPanelProps {
   users: User[];
-  params: {
-    name: string;
-    personId: string;
-  };
+  params: Partial<Pick<Project, 'name' | 'personId'>>;
   setParams: (param: SearchPanelProps['params']) => void;
 }
 
@@ -40,7 +40,8 @@ function SearchPanel({ users, params, setParams }: SearchPanelProps) {
         />
       </Form.Item>
       <Form.Item>
-        <Select
+        <UserSelect
+          defaultOptionName='负责人'
           value={params.personId}
           onChange={(value) => {
             setParams({
@@ -48,14 +49,7 @@ function SearchPanel({ users, params, setParams }: SearchPanelProps) {
               personId: value,
             });
           }}
-        >
-          <Select.Option value=''>负责人</Select.Option>
-          {users.map((user) => (
-            <Select.Option key={user.id} value={String(user.id)}>
-              {user.name}
-            </Select.Option>
-          ))}
-        </Select>
+        />
       </Form.Item>
     </Form>
   );
@@ -64,7 +58,7 @@ function SearchPanel({ users, params, setParams }: SearchPanelProps) {
 SearchPanel.propTypes = {
   params: PropTypes.shape({
     name: PropTypes.string,
-    personId: PropTypes.string,
+    personId: PropTypes.number,
   }),
   setParams: PropTypes.func,
   users: PropTypes.arrayOf(

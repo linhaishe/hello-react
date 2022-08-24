@@ -1,5 +1,7 @@
 import React, { ReactNode, useState } from 'react';
+// eslint-disable-next-line import/no-cycle
 import * as auth from '../auth-provider';
+// eslint-disable-next-line import/no-cycle
 import { User } from '../screens/project-list/search-panel';
 // eslint-disable-next-line import/no-cycle
 import { http } from '../utils/http';
@@ -45,17 +47,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // 处理刷新时丢失用户信息，自动退出。
   // eslint-disable-next-line consistent-return
   useMount(() => {
-    console.log('run(bootstrapUser());');
     run(bootstrapUser());
   });
 
   if (isIdle || isLoading) {
-    console.log('isIdle || isLoading');
     return <FullPageLoading />;
   }
 
   if (isError) {
-    console.log('isError');
     return <FullPageErrorFallBack error={error} />;
   }
 

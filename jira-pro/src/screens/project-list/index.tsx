@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import SearchPanel from './search-panel';
-import List, { Project } from './list';
-import { cleanObject, useDebounce, useDocumentTitle, useMount } from '../../utils';
+import List from './list';
+import { useDebounce, useDocumentTitle, useMount } from '../../utils';
 import { useHttp } from '../../utils/http';
-import { useAsync } from '../../utils/use-async';
 import { useProject } from '../../utils/project';
 import { useUsers } from '../../utils/user';
-import { useUrlQueryParam } from '../../utils/url';
+import { useProjectSearchParams } from './utils';
 
 const Container = styled.div`
   padding: 3.2rem;
 `;
 
 function ProjectListScreens() {
-  const [users, setUsers] = useState([]);
-  const [param, setParams] = useUrlQueryParam(['name', 'personId']);
-  const [lists, setList] = useState([]);
-  const debouncedParam = useDebounce(param, 2000);
+  const [param, setParam] = useProjectSearchParams();
   const client = useHttp();
-  const { isLoading, error, data: list } = useProject(debouncedParam);
-  const { data: userss } = useUsers(debouncedParam);
+  const { isLoading, data: list } = useProject(useDebounce(param, 200));
+  //  useUsers 加入useDebounce会导致数据返回延迟，options筛选匹配时没有拿到数据显示未知
+  const { data: users } = useUsers();
   // const { run, isLoading, error, data: list } = useAsync<Project[]>();
   // `${apiUrl}/projects?name=${params.name}$personId=${params.personId}`
   // `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
@@ -55,8 +52,8 @@ function ProjectListScreens() {
   return (
     <Container>
       <h1>项目列表</h1>
-      <SearchPanel params={param} setParams={setParams} users={userss || []} />
-      <List loading={isLoading} dataSource={list || []} users={userss || []} />
+      <SearchPanel params={param} setParams={setParam} users={users || []} />
+      <List loading={isLoading} dataSource={list || []} users={users || []} />
     </Container>
   );
 }
