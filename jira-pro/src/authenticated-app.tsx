@@ -1,5 +1,5 @@
 // 一个工程分为两个app, 一个是登入状态的，一个是非登入状态的。
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 // 使得svg图片能以svg的格式进行展现，不使用img标签
 import { Dropdown, Menu, Button } from 'antd';
@@ -8,9 +8,11 @@ import { Navigate } from 'react-router-dom';
 import { ReactComponent as SoftwareLogo } from './assets/software-logo.svg';
 import ProjectListScreens from './screens/project-list';
 import { useAuth } from './context/auth-context';
-import { Row } from './components/libs';
+import { ButtonNoPadding, Row } from './components/libs';
 import ProjectDetail from './screens/project';
 import { resetRoute } from './utils';
+import ProjectModal from './screens/project-list/project-modal';
+import ProjectPopover from './components/project-popover';
 
 const Container = styled.div`
   display: grid;
@@ -33,7 +35,7 @@ function PageHeader() {
   return (
     <Header between>
       <HeaderLeft gap>
-        <Button
+        <ButtonNoPadding
           type='link'
           onClick={resetRoute}
         >
@@ -41,10 +43,9 @@ function PageHeader() {
             width='18rem'
             color='rgb(38,132,255)'
           />
-        </Button>
-        <h2>logo</h2>
-        <h2>项目</h2>
-        <h2>用户</h2>
+        </ButtonNoPadding>
+        <ProjectPopover />
+        <span>用户</span>
       </HeaderLeft>
       <HeaderRight>
         <Dropdown
@@ -74,6 +75,8 @@ function PageHeader() {
 }
 
 export default function AuthenticatedApp() {
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
+
   return (
     <Container>
       <PageHeader />
@@ -81,7 +84,7 @@ export default function AuthenticatedApp() {
         <Routes>
           <Route
             path='/projects'
-            element={<ProjectListScreens />}
+            element={<ProjectListScreens setProjectModalOpen={setProjectModalOpen} />}
           />
           <Route
             path='/projects/:projectId/*'
@@ -94,6 +97,10 @@ export default function AuthenticatedApp() {
           {/* <Navigate to='/projects' /> */}
         </Routes>
       </Main>
+      <ProjectModal
+        projectModalOpen={projectModalOpen}
+        onClose={() => setProjectModalOpen(false)}
+      />
     </Container>
   );
 }

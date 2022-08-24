@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Button } from 'antd';
 import SearchPanel from './search-panel';
 import List from './list';
 import { useDebounce, useDocumentTitle, useMount } from '../../utils';
@@ -7,12 +8,14 @@ import { useHttp } from '../../utils/http';
 import { useProject } from '../../utils/project';
 import { useUsers } from '../../utils/user';
 import { useProjectSearchParams } from './utils';
+import { Row } from '../../components/libs';
 
 const Container = styled.div`
   padding: 3.2rem;
 `;
 
-function ProjectListScreens() {
+function ProjectListScreens(props: { setProjectModalOpen: (isOpen: boolean) => void }) {
+  const { setProjectModalOpen } = props;
   const [param, setParam] = useProjectSearchParams();
   const client = useHttp();
   const { isLoading, data: list, retry } = useProject(useDebounce(param, 200));
@@ -51,7 +54,10 @@ function ProjectListScreens() {
 
   return (
     <Container>
-      <h1>项目列表</h1>
+      <Row between>
+        <h1>项目列表</h1>
+        <Button onClick={() => setProjectModalOpen(true)}>创建项目</Button>
+      </Row>
       <SearchPanel
         params={param}
         setParams={setParam}
@@ -62,6 +68,7 @@ function ProjectListScreens() {
         dataSource={list || []}
         users={users || []}
         reFresh={retry}
+        setProjectModalOpen={setProjectModalOpen}
       />
     </Container>
   );

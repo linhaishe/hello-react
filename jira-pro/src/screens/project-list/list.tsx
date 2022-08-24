@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, TableProps } from 'antd';
+import { Table, TableProps, Dropdown, Menu } from 'antd';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-cycle
@@ -8,6 +8,7 @@ import { User } from './search-panel';
 import Pin from '../../components/pin';
 // eslint-disable-next-line import/no-cycle
 import { useEditProject } from '../../utils/project';
+import { ButtonNoPadding } from '../../components/libs';
 
 export interface Project {
   id: number;
@@ -23,6 +24,7 @@ interface ListProps extends TableProps<Project> {
   // lists: Project[];
   users: User[];
   reFresh?: () => void;
+  setProjectModalOpen: (isOpen: boolean) => void;
 }
 // ...props 的类型为 type PropsType = Omit<ListProps, 'users'>
 function List({ users, ...props }: ListProps) {
@@ -71,6 +73,28 @@ function List({ users, ...props }: ListProps) {
           title: '创建时间',
           render(value, project) {
             return <span>{project.created ? dayjs(project.created).format('YYYY-MM-DD') : '无'}</span>;
+          },
+        },
+        {
+          render(value, project) {
+            return (
+              <Dropdown
+                overlay={
+                  <Menu>
+                    <Menu.Item key='edit'>
+                      <ButtonNoPadding
+                        type='link'
+                        onClick={() => props.setProjectModalOpen(true)}
+                      >
+                        编辑
+                      </ButtonNoPadding>
+                    </Menu.Item>
+                  </Menu>
+                }
+              >
+                <ButtonNoPadding type='link'>...</ButtonNoPadding>
+              </Dropdown>
+            );
           },
         },
       ]}
