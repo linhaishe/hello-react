@@ -24,10 +24,11 @@ interface ListProps extends TableProps<Project> {
   // lists: Project[];
   users: User[];
   reFresh?: () => void;
-  setProjectModalOpen: (isOpen: boolean) => void;
+  projectButton: JSX.Element;
 }
 // ...props 的类型为 type PropsType = Omit<ListProps, 'users'>
 function List({ users, ...props }: ListProps) {
+  const { projectButton } = props;
   const { mutate } = useEditProject();
   // 柯里化 point free
   // pinProject需要两个参数，但是两个参数的接受时间会是不一样的;projectid在组件渲染的时候就已经知道了，但是pin是在projectid渲染后才拿到的
@@ -81,14 +82,7 @@ function List({ users, ...props }: ListProps) {
               <Dropdown
                 overlay={
                   <Menu>
-                    <Menu.Item key='edit'>
-                      <ButtonNoPadding
-                        type='link'
-                        onClick={() => props.setProjectModalOpen(true)}
-                      >
-                        编辑
-                      </ButtonNoPadding>
-                    </Menu.Item>
+                    <Menu.Item key='edit'>{projectButton}</Menu.Item>
                   </Menu>
                 }
               >

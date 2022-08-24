@@ -14,8 +14,8 @@ const Container = styled.div`
   padding: 3.2rem;
 `;
 
-function ProjectListScreens(props: { setProjectModalOpen: (isOpen: boolean) => void }) {
-  const { setProjectModalOpen } = props;
+function ProjectListScreens(props: { projectButton: JSX.Element }) {
+  const { projectButton } = props;
   const [param, setParam] = useProjectSearchParams();
   const client = useHttp();
   const { isLoading, data: list, retry } = useProject(useDebounce(param, 200));
@@ -56,7 +56,7 @@ function ProjectListScreens(props: { setProjectModalOpen: (isOpen: boolean) => v
     <Container>
       <Row between>
         <h1>项目列表</h1>
-        <Button onClick={() => setProjectModalOpen(true)}>创建项目</Button>
+        {projectButton}
       </Row>
       <SearchPanel
         params={param}
@@ -68,7 +68,7 @@ function ProjectListScreens(props: { setProjectModalOpen: (isOpen: boolean) => v
         dataSource={list || []}
         users={users || []}
         reFresh={retry}
-        setProjectModalOpen={setProjectModalOpen}
+        projectButton={projectButton}
       />
     </Container>
   );

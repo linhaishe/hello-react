@@ -8,7 +8,8 @@ const ContentContainer = styled.div`
   min-width: 30rem;
 `;
 
-function ProjectPopover() {
+function ProjectPopover(props: { projectButton: JSX.Element }) {
+  const { projectButton } = props;
   const { data: projects, isLoading } = useProject();
   const pinnedProjects = projects?.filter((project) => project.pin);
 
@@ -23,7 +24,7 @@ function ProjectPopover() {
         ))}
       </List>
       <Divider />
-      <ButtonNoPadding type='link'>创建项目</ButtonNoPadding>
+      {projectButton}
     </ContentContainer>
   );
   return (

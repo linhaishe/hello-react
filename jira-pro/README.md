@@ -186,10 +186,14 @@ custom hook的时候，在里面要return出函数的时候，基本都需要用
 
 ### 状态提升
 
-把要共享状态的组件找到共同的最近的父组件，把要共享的状态放在这个父组件里。
+1. 把要共享状态的组件找到共同的最近的父组件，把要共享的状态放在这个父组件里。通过props进行数据传递
 
 出现的问题：
-1. prop drilling
-2. 耦合性高
+- prop drilling
+- 耦合性高
 
 
+2. component composition
+子组件只需要负责渲染，不需要知道传入的props的实现方法，减少传入的props数量。但会使得高层组件变得复杂。
+
+- [控制反转](https://www.jianshu.com/p/07af9dbbbc4b)

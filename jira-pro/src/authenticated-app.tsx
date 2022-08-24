@@ -29,7 +29,7 @@ const Main = styled.main`
   //height: calc(100vh - 6rem);
 `;
 
-function PageHeader() {
+function PageHeader(props: { projectButton: JSX.Element }) {
   const { logout, user } = useAuth();
 
   return (
@@ -44,7 +44,7 @@ function PageHeader() {
             color='rgb(38,132,255)'
           />
         </ButtonNoPadding>
-        <ProjectPopover />
+        <ProjectPopover {...props} />
         <span>用户</span>
       </HeaderLeft>
       <HeaderRight>
@@ -79,12 +79,32 @@ export default function AuthenticatedApp() {
 
   return (
     <Container>
-      <PageHeader />
+      <PageHeader
+        projectButton={
+          <ButtonNoPadding
+            type='link'
+            onClick={() => setProjectModalOpen(true)}
+          >
+            创建项目
+          </ButtonNoPadding>
+        }
+      />
       <Main>
         <Routes>
           <Route
             path='/projects'
-            element={<ProjectListScreens setProjectModalOpen={setProjectModalOpen} />}
+            element={
+              <ProjectListScreens
+                projectButton={
+                  <ButtonNoPadding
+                    type='link'
+                    onClick={() => setProjectModalOpen(true)}
+                  >
+                    创建项目
+                  </ButtonNoPadding>
+                }
+              />
+            }
           />
           <Route
             path='/projects/:projectId/*'
