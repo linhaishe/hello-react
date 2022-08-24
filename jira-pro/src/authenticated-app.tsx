@@ -49,16 +49,21 @@ function PageHeader() {
       <HeaderRight>
         <Dropdown
           overlay={
-            <Menu>
-              <Menu.Item>
-                <Button
-                  type='link'
-                  onClick={logout}
-                >
-                  登出
-                </Button>
-              </Menu.Item>
-            </Menu>
+            <Menu
+              items={[
+                {
+                  key: '1',
+                  label: (
+                    <Button
+                      type='link'
+                      onClick={logout}
+                    >
+                      登出
+                    </Button>
+                  ),
+                },
+              ]}
+            />
           }
         >
           <Button onClick={(e) => e.preventDefault()}> Hi, {user?.name}</Button>

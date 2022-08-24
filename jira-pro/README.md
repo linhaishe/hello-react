@@ -99,3 +99,87 @@ const callback = callbackRef.current;
 如何让多个组件共享一个状态，全局状态管理。
 1. 状态提升，将状态放在父组件中
 2. 全局状态管理
+
+### useCallback
+
+The 'fetchPeojects' function makes the dependencies of useEffect Hook (at line 14) change on every render.
+只有在依赖列表改变的时候，整个函数才会被重新定义。这样当函数放在useEffect依赖项中不会造成内存泄漏。
+在useCallback 或 依赖中 用到state，又把state加入到依赖中，会造成无限循环。
+在回调函数中不要直接用到State
+```typescript
+  const run = useCallback(
+    (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
+      if (!promise || !promise.then) {
+        throw new Error('请传入 Promise 类型数据');
+      }
+
+      setRetry(() => () => {
+        //  run(promise) 中这里只拿到了callback的实例，没有拿到callback的数据
+        if (runConfig?.retry) {
+          run(runConfig?.retry(), runConfig);
+        }
+      });
+
+      setState({ ...state, stat: 'loading' });
+      return promise
+        .then((data) => {
+          if (mountedRef.current) setData(data);
+          return data;
+        })
+        .catch((error) => {
+          // catch 会消化异常，如果不主动抛出异常，外面是不会接收到异常的
+          setError(error);
+          if (config.throwOnError) {
+            return Promise.reject(error);
+          }
+          return error;
+        });
+    },
+    [config.throwOnError, mountedRef, setData, state, setError],
+  );
+```
+**setState的函数用法**
+```typescript
+  const run = useCallback(
+    (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
+      if (!promise || !promise.then) {
+        throw new Error('请传入 Promise 类型数据');
+      }
+
+      setRetry(() => () => {
+        //  run(promise) 中这里只拿到了callback的实例，没有拿到callback的数据
+        if (runConfig?.retry) {
+          run(runConfig?.retry(), runConfig);
+        }
+      });
+
+      setState((prevState) => ({ ...prevState, stat: 'loading' }));
+      return promise
+        .then((data) => {
+          if (mountedRef.current) setData(data);
+          return data;
+        })
+        .catch((error) => {
+          // catch 会消化异常，如果不主动抛出异常，外面是不会接收到异常的
+          setError(error);
+          if (config.throwOnError) {
+            return Promise.reject(error);
+          }
+          return error;
+        });
+    },
+    [config.throwOnError, mountedRef, setData, setError],
+  );
+```
+
+### 不可以在已卸载或未挂载的组件上进行状态管理
+
+users and projectlist 在请求未有响应的时候，被用户登出操作所打断，会造成报错。
+组件被卸载的时候，设置state的状态，会报错。
+不可以在已卸载或未挂载的组件上进行状态管理。
+
+useMemo 和 useCallback 都是为了依赖而存在的。
+非基本类型的依赖，如果我们定义了非基本类型想要做依赖的时候，就需要使用memoand callback进行处理
+不要再每次页面渲染的时候进行重建。
+
+custom hook的时候，在里面要return出函数的时候，基本都需要用到useCallback进行处理

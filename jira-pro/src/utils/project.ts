@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAsync } from './use-async';
 import { Project } from '../screens/project-list/list';
 import { cleanObject } from './index';
@@ -7,11 +7,12 @@ import { useHttp } from './http';
 export const useProject = (param?: Partial<Project>) => {
   const client = useHttp();
   const { run, ...result } = useAsync<Project[]>();
-  const fetchPeojects = () => client('projects', { data: cleanObject(param || {}) });
+  // The 'fetchPeojects' function makes the dependencies of useEffect Hook (at line 14) change on every render.
+  const fetchPeojects = useCallback(() => client('projects', { data: cleanObject(param || {}) }), [client, param]);
 
   useEffect(() => {
     run(fetchPeojects(), { retry: fetchPeojects });
-  }, [param]);
+  }, [param, fetchPeojects, run]);
 
   return result;
 };

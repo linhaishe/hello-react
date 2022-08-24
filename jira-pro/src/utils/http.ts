@@ -1,4 +1,5 @@
 import qs from 'qs';
+import { useCallback } from 'react';
 import * as auth from '../auth-provider';
 // eslint-disable-next-line import/no-cycle
 import { useAuth } from '../context/auth-context';
@@ -45,6 +46,10 @@ export async function http(endpoint: string, { data, token, headers, ...customCo
 
 export const useHttp = () => {
   const { user } = useAuth();
+  // 在组件渲染的时候都会返回一个新的函数
   // [endpoint, config]: [string, IConfig]
-  return (...[endpoint, config]: Parameters<typeof http>) => http(endpoint, { ...config, token: user?.token });
+  return useCallback(
+    (...[endpoint, config]: Parameters<typeof http>) => http(endpoint, { ...config, token: user?.token }),
+    [user?.token],
+  );
 };
