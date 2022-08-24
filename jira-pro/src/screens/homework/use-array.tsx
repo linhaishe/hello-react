@@ -32,13 +32,22 @@ function UseArrayComponent() {
 
   return (
     <div>
-      <button type='button' onClick={() => add({ name: 'jhone', age: 22 })}>
+      <button
+        type='button'
+        onClick={() => add({ name: 'jhone', age: 22 })}
+      >
         add jhon
       </button>
-      <button type='button' onClick={() => removeIndex(0)}>
+      <button
+        type='button'
+        onClick={() => removeIndex(0)}
+      >
         remove 0
       </button>
-      <button type='button' onClick={() => clear()}>
+      <button
+        type='button'
+        onClick={() => clear()}
+      >
         clear
       </button>
       {value.map((person, index) => (

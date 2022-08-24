@@ -29,13 +29,19 @@ function Login() {
       <div>
         <label htmlFor='username'>
           用户名
-          <input type='text' id='username' />
+          <input
+            type='text'
+            id='username'
+          />
         </label>
       </div>
       <div>
         <label htmlFor='password'>
           密码
-          <input type='text' id='username' />
+          <input
+            type='text'
+            id='username'
+          />
         </label>
       </div>
       <button type='submit'>登录</button>

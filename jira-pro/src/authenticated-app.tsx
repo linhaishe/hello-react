@@ -33,8 +33,14 @@ function PageHeader() {
   return (
     <Header between>
       <HeaderLeft gap>
-        <Button type='link' onClick={resetRoute}>
-          <SoftwareLogo width='18rem' color='rgb(38,132,255)' />
+        <Button
+          type='link'
+          onClick={resetRoute}
+        >
+          <SoftwareLogo
+            width='18rem'
+            color='rgb(38,132,255)'
+          />
         </Button>
         <h2>logo</h2>
         <h2>项目</h2>
@@ -45,7 +51,10 @@ function PageHeader() {
           overlay={
             <Menu>
               <Menu.Item>
-                <Button type='link' onClick={logout}>
+                <Button
+                  type='link'
+                  onClick={logout}
+                >
                   登出
                 </Button>
               </Menu.Item>
@@ -65,9 +74,18 @@ export default function AuthenticatedApp() {
       <PageHeader />
       <Main>
         <Routes>
-          <Route path='/projects' element={<ProjectListScreens />} />
-          <Route path='/projects/:projectId/*' element={<ProjectDetail />} />
-          <Route path='/' element={<Navigate to='/projects' />} />
+          <Route
+            path='/projects'
+            element={<ProjectListScreens />}
+          />
+          <Route
+            path='/projects/:projectId/*'
+            element={<ProjectDetail />}
+          />
+          <Route
+            path='/'
+            element={<Navigate to='/projects' />}
+          />
           {/* <Navigate to='/projects' /> */}
         </Routes>
       </Main>

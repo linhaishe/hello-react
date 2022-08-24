@@ -52,8 +52,16 @@ function ProjectListScreens() {
   return (
     <Container>
       <h1>项目列表</h1>
-      <SearchPanel params={param} setParams={setParam} users={users || []} />
-      <List loading={isLoading} dataSource={list || []} users={users || []} />
+      <SearchPanel
+        params={param}
+        setParams={setParam}
+        users={users || []}
+      />
+      <List
+        loading={isLoading}
+        dataSource={list || []}
+        users={users || []}
+      />
     </Container>
   );
 }

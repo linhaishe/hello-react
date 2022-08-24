@@ -24,7 +24,10 @@ interface SearchPanelProps {
 
 function SearchPanel({ users, params, setParams }: SearchPanelProps) {
   return (
-    <Form layout='inline' css={{ marginBottom: '2rem' }}>
+    <Form
+      layout='inline'
+      css={{ marginBottom: '2rem' }}
+    >
       {/* setParams(Object.assign({}, params, { name:evt.target.value })) */}
       <Form.Item>
         <Input

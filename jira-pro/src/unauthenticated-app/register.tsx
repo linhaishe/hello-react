@@ -25,21 +25,37 @@ function RegisterScreen({ onError }: { onError: (error: Error) => void }) {
     <Form onFinish={handleSubmit}>
       <Form.Item label='Username'>
         <Form.Item name='username'>
-          <Input type='text' id='username' placeholder='请输入用户名' />
+          <Input
+            type='text'
+            id='username'
+            placeholder='请输入用户名'
+          />
         </Form.Item>
       </Form.Item>
       <Form.Item label='Password'>
         <Form.Item name='password'>
-          <Input type='password' id='password' placeholder='请输入密码' />
+          <Input
+            type='password'
+            id='password'
+            placeholder='请输入密码'
+          />
         </Form.Item>
       </Form.Item>
       <Form.Item label='Password'>
         <Form.Item name='cpassword'>
-          <Input type='password' id='cpassword' placeholder='请确认密码' />
+          <Input
+            type='password'
+            id='cpassword'
+            placeholder='请确认密码'
+          />
         </Form.Item>
       </Form.Item>
       <Form.Item>
-        <LongButton loading={isLoading} type='primary' htmlType='submit'>
+        <LongButton
+          loading={isLoading}
+          type='primary'
+          htmlType='submit'
+        >
           注册
         </LongButton>
       </Form.Item>

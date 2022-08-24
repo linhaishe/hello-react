@@ -13,10 +13,19 @@ function ProjectDetail() {
       <Link to='kanban'>看板</Link>
       <Link to='epic'>任务组</Link>
       <Routes>
-        <Route path='/kanban' element={<Kanban />} />
-        <Route path='/epic' element={<Epic />} />
+        <Route
+          path='/kanban'
+          element={<Kanban />}
+        />
+        <Route
+          path='/epic'
+          element={<Epic />}
+        />
         {/* // todo 路有需要优化 不应该是* */}
-        <Route path='*' element={<Navigate to={`${window.location.pathname}/kanban`} />} />
+        <Route
+          path='*'
+          element={<Navigate to={`${window.location.pathname}/kanban`} />}
+        />
       </Routes>
     </div>
   );

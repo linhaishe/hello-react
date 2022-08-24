@@ -30,6 +30,7 @@ module.exports = {
       'error',
       {
         endOfLine: 'auto',
+        singleAttributePerLine: true,
       },
     ],
     '@typescript-eslint/default-param-last': 1,
@@ -38,5 +39,14 @@ module.exports = {
     'no-nested-ternary': 1,
     'import/prefer-default-export': 1,
     'react/jsx-props-no-spreading': 1,
+    'react/no-unused-prop-types': 1,
+    'react/jsx-first-prop-new-line': [1, 'multiline'],
+    'react/jsx-max-props-per-line': [
+      1,
+      {
+        maximum: 1,
+      },
+    ],
+    'import/no-cycle': 1,
   },
 };

@@ -20,7 +20,7 @@ interface IdSelectProps extends Omit<SelectProps, 'value' | 'onChange' | 'option
  * @param props
  * @constructor
  */
-// hh
+
 const toNumber = (value: unknown) => (Number.isNaN(Number(value)) ? 0 : Number(value));
 
 export function IdSelect(props: IdSelectProps) {
@@ -34,7 +34,10 @@ export function IdSelect(props: IdSelectProps) {
     >
       {defaultOptionName ? <Select.Option value={0}>{defaultOptionName}</Select.Option> : null}
       {options?.map((option) => (
-        <Select.Option key={option.id} value={option.id}>
+        <Select.Option
+          key={option.id}
+          value={option.id}
+        >
           {option.name}
         </Select.Option>
       ))}
