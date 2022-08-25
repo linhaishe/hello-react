@@ -202,3 +202,58 @@ custom hook的时候，在里面要return出函数的时候，基本都需要用
 useState and useReducer 在功能上两个是可以互换的
 useReducer适合定义一群会互相影响的状态
 useState 适合定义一个状态
+
+### react / react-redux
+
+1. react-redux
+作为一个桥梁，b把store中的状态state和react component 链接在一起。
+把state变成组件的状态
+```typescript
+function render() {
+  valueEl.innnerHTML = store.getState().toString()
+};
+
+render();
+store.subscribe(render);
+```
+2. 容器组件与展示组件分离 separation of container presidential
+```typescript
+// higher order component
+export default connect(
+  mapStateToPtops,
+  mapDispatchToProps
+)(Link)
+```
+3. reducer 一定必须是同步函数，保持可预测性。异步请求具有不可预测性，相同请求可能会有不同的结果。
+
+4. redux-thunk
+```typescript
+// 不同之处在于 action，普通的 action 大多长这样
+
+export function toggleTodo(index) {
+  return { type: TOGGLE_TODO, index }
+}
+
+
+// 而 redux-thunk 的 action 可以是一 异步的 higher order function 高阶函数
+
+export const fetchData = args => async (dispatch, getState) => {
+  const state = getState();
+  const url = 'https://jsonplaceholder.typicode.com/users/' + args;
+
+  try {
+    const response = await fetch(url)
+      .then(resp => {
+        return resp;
+      })
+      .then(resp => resp.json());
+
+    dispatch({
+      type: REMOTE_DATA_RECEIVED,
+      data: response
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
