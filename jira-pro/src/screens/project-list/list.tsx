@@ -4,11 +4,13 @@ import { Table, TableProps, Dropdown, Menu } from 'antd';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-cycle
+import { useDispatch } from 'react-redux';
 import { User } from './search-panel';
 import Pin from '../../components/pin';
 // eslint-disable-next-line import/no-cycle
 import { useEditProject } from '../../utils/project';
 import { ButtonNoPadding } from '../../components/libs';
+import { projectListsActions } from './project-list.slice';
 
 export interface Project {
   id: number;
@@ -24,16 +26,16 @@ interface ListProps extends TableProps<Project> {
   // lists: Project[];
   users: User[];
   reFresh?: () => void;
-  projectButton: JSX.Element;
 }
 // ...props 的类型为 type PropsType = Omit<ListProps, 'users'>
 function List({ users, ...props }: ListProps) {
-  const { projectButton } = props;
   const { mutate } = useEditProject();
   // 柯里化 point free
   // pinProject需要两个参数，但是两个参数的接受时间会是不一样的;projectid在组件渲染的时候就已经知道了，但是pin是在projectid渲染后才拿到的
   // const pinProject = (id: number, pin: boolean) => mutate({ id, pin });
   const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin }).then(props.reFresh);
+  const dispatch = useDispatch();
+
   return (
     <Table
       rowKey={(record) => record.id}
@@ -82,7 +84,14 @@ function List({ users, ...props }: ListProps) {
               <Dropdown
                 overlay={
                   <Menu>
-                    <Menu.Item key='edit'>{projectButton}</Menu.Item>
+                    <Menu.Item key='edit'>
+                      <ButtonNoPadding
+                        type='link'
+                        onClick={() => dispatch(projectListsActions.openProjectModal())}
+                      >
+                        编辑
+                      </ButtonNoPadding>
+                    </Menu.Item>
                   </Menu>
                 }
               >

@@ -257,3 +257,5 @@ export const fetchData = args => async (dispatch, getState) => {
   }
 };
 ```
+redux 和 context 等其他管理方案是成竞争关系的。
+这条分支使用redux实现异步管理。

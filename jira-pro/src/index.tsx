@@ -1,23 +1,27 @@
 import './wdyr';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { loadServer, DevTools } from 'jira-dev-tool';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppProviders from './context';
 import 'antd/dist/antd.less';
+import { store } from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 loadServer(() =>
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <AppProviders>
-          <DevTools />
-          <App />
-        </AppProviders>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <AppProviders>
+            <DevTools />
+            <App />
+          </AppProviders>
+        </BrowserRouter>
+      </Provider>
     </React.StrictMode>,
   ),
 );

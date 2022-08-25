@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { useDispatch } from 'react-redux';
 import { Button } from 'antd';
 import SearchPanel from './search-panel';
 import List from './list';
@@ -8,14 +9,15 @@ import { useHttp } from '../../utils/http';
 import { useProject } from '../../utils/project';
 import { useUsers } from '../../utils/user';
 import { useProjectSearchParams } from './utils';
-import { Row } from '../../components/libs';
+import { ButtonNoPadding, Row } from '../../components/libs';
+import { projectListsActions } from './project-list.slice';
 
 const Container = styled.div`
   padding: 3.2rem;
 `;
 
-function ProjectListScreens(props: { projectButton: JSX.Element }) {
-  const { projectButton } = props;
+function ProjectListScreens() {
+  const dispatch = useDispatch();
   const [param, setParam] = useProjectSearchParams();
   const client = useHttp();
   const { isLoading, data: list, retry } = useProject(useDebounce(param, 200));
@@ -56,7 +58,7 @@ function ProjectListScreens(props: { projectButton: JSX.Element }) {
     <Container>
       <Row between>
         <h1>项目列表</h1>
-        {projectButton}
+        <Button onClick={() => dispatch(projectListsActions.openProjectModal())}>创建项目</Button>
       </Row>
       <SearchPanel
         params={param}
@@ -68,7 +70,6 @@ function ProjectListScreens(props: { projectButton: JSX.Element }) {
         dataSource={list || []}
         users={users || []}
         reFresh={retry}
-        projectButton={projectButton}
       />
     </Container>
   );
