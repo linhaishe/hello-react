@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useReducer, useState } from 'react';
 import { useMountedRef } from './index';
 
 interface State<D> {
@@ -7,7 +7,7 @@ interface State<D> {
   stat: 'idle' | 'loading' | 'error' | 'success';
 }
 
-const defaultIntialState: State<null> = {
+const defaultInitialState: State<null> = {
   stat: 'idle',
   data: null,
   error: null,
@@ -17,64 +17,71 @@ const defaultConfig = {
   throwOnError: false,
 };
 
-export const useAsync = <D>(initialState?: State<D>, initialConfig?: typeof defaultConfig) => {
-  const config = { defaultConfig, ...initialConfig };
-  const [state, setState] = useState<State<D>>({
-    ...defaultIntialState,
-    ...initialState,
-  });
+const useSafeDispatch = <T>(dispatch: (...args: T[]) => void) => {
   const mountedRef = useMountedRef();
+  // eslint-disable-next-line no-void
+  return useCallback((...args: T[]) => (mountedRef.current ? dispatch(...args) : void 0), [dispatch, mountedRef]);
+};
+
+export const useAsync = <D>(initialState?: State<D>, initialConfig?: typeof defaultConfig) => {
+  const config = { ...defaultConfig, ...initialConfig };
+  const [state, dispatch] = useReducer(
+    (stateData: State<D>, action: Partial<State<D>>) => ({ ...stateData, ...action }),
+    {
+      ...defaultInitialState,
+      ...initialState,
+    },
+  );
+  const safeDispatch = useSafeDispatch(dispatch);
+  // useState直接传入函数的含义是：惰性初始化；所以，要用useState保存函数，不能直接传入函数
+  // https://codesandbox.io/s/blissful-water-230u4?file=/src/App.js
   const [retry, setRetry] = useState(() => () => {});
 
   const setData = useCallback(
     (data: D) =>
-      setState({
+      safeDispatch({
         data,
         stat: 'success',
         error: null,
       }),
-    [],
+    [safeDispatch],
   );
 
   const setError = useCallback(
     (error: Error) =>
-      setState({
+      safeDispatch({
         error,
         stat: 'error',
         data: null,
       }),
-    [],
+    [safeDispatch],
   );
 
+  // run 用来触发异步请求
   const run = useCallback(
     (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
       if (!promise || !promise.then) {
         throw new Error('请传入 Promise 类型数据');
       }
-
       setRetry(() => () => {
-        //  run(promise) 中这里只拿到了callback的实例，没有拿到callback的数据
         if (runConfig?.retry) {
           run(runConfig?.retry(), runConfig);
         }
       });
-
-      setState((prevState) => ({ ...prevState, stat: 'loading' }));
+      safeDispatch({ stat: 'loading' });
       return promise
         .then((data) => {
-          if (mountedRef.current) setData(data);
+          setData(data);
           return data;
         })
         .catch((error) => {
-          // catch 会消化异常，如果不主动抛出异常，外面是不会接收到异常的
+          // catch会消化异常，如果不主动抛出，外面是接收不到异常的
           setError(error);
-          if (config.throwOnError) {
-            return Promise.reject(error);
-          }
+          if (config.throwOnError) return Promise.reject(error);
           return error;
         });
     },
-    [config.throwOnError, mountedRef, setData, setError],
+    [config.throwOnError, setData, setError, safeDispatch],
   );
 
   return {
@@ -85,6 +92,7 @@ export const useAsync = <D>(initialState?: State<D>, initialConfig?: typeof defa
     run,
     setData,
     setError,
+    // retry 被调用时重新跑一遍run，让state刷新一遍
     retry,
     ...state,
   };

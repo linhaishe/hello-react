@@ -197,3 +197,8 @@ custom hook的时候，在里面要return出函数的时候，基本都需要用
 子组件只需要负责渲染，不需要知道传入的props的实现方法，减少传入的props数量。但会使得高层组件变得复杂。
 
 - [控制反转](https://www.jianshu.com/p/07af9dbbbc4b)
+
+### use-undo那节听的有点晕
+useState and useReducer 在功能上两个是可以互换的
+useReducer适合定义一群会互相影响的状态
+useState 适合定义一个状态
