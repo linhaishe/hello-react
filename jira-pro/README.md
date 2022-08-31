@@ -20,13 +20,13 @@ const [isLoading, setIsLoading] = useSate(false);
 const [error, setError] = useState<null | Error>(null);
 
 useEffect(() => {
-  setIsLoading(true);
-  client('projects', { data: 'blablaxx' })
-    .then(setList)
-    .catch((error) => {
-      setList([]);
-      setError(error);
-    });
+   setIsLoading(true);
+   client('projects', { data: 'blablaxx' })
+           .then(setList)
+           .catch((error) => {
+              setList([]);
+              setError(error);
+           });
 }, []);
 ```
 
@@ -65,7 +65,7 @@ const [callback, setCallback] = React.useState(() => () => alert('init'));
 ```
 
 2. useRef 保存函数
-会输出init，useRef定义的值不是组件的状态，只是一个普通的值，不会触发组件重新渲染。
+   会输出init，useRef定义的值不是组件的状态，只是一个普通的值，不会触发组件重新渲染。
 ```typescript jsx
 // click setCallback -> call callback -> output: init
 const callbackRef = React.useRef(() => alert('init'));
@@ -108,68 +108,68 @@ The 'fetchPeojects' function makes the dependencies of useEffect Hook (at line 1
 在回调函数中不要直接用到State
 ```typescript
   const run = useCallback(
-    (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
-      if (!promise || !promise.then) {
-        throw new Error('请传入 Promise 类型数据');
-      }
+        (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
+           if (!promise || !promise.then) {
+              throw new Error('请传入 Promise 类型数据');
+           }
 
-      setRetry(() => () => {
-        //  run(promise) 中这里只拿到了callback的实例，没有拿到callback的数据
-        if (runConfig?.retry) {
-          run(runConfig?.retry(), runConfig);
-        }
-      });
+           setRetry(() => () => {
+              //  run(promise) 中这里只拿到了callback的实例，没有拿到callback的数据
+              if (runConfig?.retry) {
+                 run(runConfig?.retry(), runConfig);
+              }
+           });
 
-      setState({ ...state, stat: 'loading' });
-      return promise
-        .then((data) => {
-          if (mountedRef.current) setData(data);
-          return data;
-        })
-        .catch((error) => {
-          // catch 会消化异常，如果不主动抛出异常，外面是不会接收到异常的
-          setError(error);
-          if (config.throwOnError) {
-            return Promise.reject(error);
-          }
-          return error;
-        });
-    },
-    [config.throwOnError, mountedRef, setData, state, setError],
-  );
+           setState({ ...state, stat: 'loading' });
+           return promise
+                   .then((data) => {
+                      if (mountedRef.current) setData(data);
+                      return data;
+                   })
+                   .catch((error) => {
+                      // catch 会消化异常，如果不主动抛出异常，外面是不会接收到异常的
+                      setError(error);
+                      if (config.throwOnError) {
+                         return Promise.reject(error);
+                      }
+                      return error;
+                   });
+        },
+        [config.throwOnError, mountedRef, setData, state, setError],
+);
 ```
 **setState的函数用法**
 ```typescript
   const run = useCallback(
-    (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
-      if (!promise || !promise.then) {
-        throw new Error('请传入 Promise 类型数据');
-      }
+        (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
+           if (!promise || !promise.then) {
+              throw new Error('请传入 Promise 类型数据');
+           }
 
-      setRetry(() => () => {
-        //  run(promise) 中这里只拿到了callback的实例，没有拿到callback的数据
-        if (runConfig?.retry) {
-          run(runConfig?.retry(), runConfig);
-        }
-      });
+           setRetry(() => () => {
+              //  run(promise) 中这里只拿到了callback的实例，没有拿到callback的数据
+              if (runConfig?.retry) {
+                 run(runConfig?.retry(), runConfig);
+              }
+           });
 
-      setState((prevState) => ({ ...prevState, stat: 'loading' }));
-      return promise
-        .then((data) => {
-          if (mountedRef.current) setData(data);
-          return data;
-        })
-        .catch((error) => {
-          // catch 会消化异常，如果不主动抛出异常，外面是不会接收到异常的
-          setError(error);
-          if (config.throwOnError) {
-            return Promise.reject(error);
-          }
-          return error;
-        });
-    },
-    [config.throwOnError, mountedRef, setData, setError],
-  );
+           setState((prevState) => ({ ...prevState, stat: 'loading' }));
+           return promise
+                   .then((data) => {
+                      if (mountedRef.current) setData(data);
+                      return data;
+                   })
+                   .catch((error) => {
+                      // catch 会消化异常，如果不主动抛出异常，外面是不会接收到异常的
+                      setError(error);
+                      if (config.throwOnError) {
+                         return Promise.reject(error);
+                      }
+                      return error;
+                   });
+        },
+        [config.throwOnError, mountedRef, setData, setError],
+);
 ```
 
 ### 不可以在已卸载或未挂载的组件上进行状态管理
@@ -194,7 +194,7 @@ custom hook的时候，在里面要return出函数的时候，基本都需要用
 
 
 2. component composition
-子组件只需要负责渲染，不需要知道传入的props的实现方法，减少传入的props数量。但会使得高层组件变得复杂。
+   子组件只需要负责渲染，不需要知道传入的props的实现方法，减少传入的props数量。但会使得高层组件变得复杂。
 
 - [控制反转](https://www.jianshu.com/p/07af9dbbbc4b)
 
@@ -206,11 +206,11 @@ useState 适合定义一个状态
 ### react / react-redux
 
 1. react-redux
-作为一个桥梁，b把store中的状态state和react component 链接在一起。
-把state变成组件的状态
+   作为一个桥梁，b把store中的状态state和react component 链接在一起。
+   把state变成组件的状态
 ```typescript
 function render() {
-  valueEl.innnerHTML = store.getState().toString()
+   valueEl.innnerHTML = store.getState().toString()
 };
 
 render();
@@ -220,8 +220,8 @@ store.subscribe(render);
 ```typescript
 // higher order component
 export default connect(
-  mapStateToPtops,
-  mapDispatchToProps
+        mapStateToPtops,
+        mapDispatchToProps
 )(Link)
 ```
 3. reducer 一定必须是同步函数，保持可预测性。异步请求具有不可预测性，相同请求可能会有不同的结果。
@@ -231,29 +231,32 @@ export default connect(
 // 不同之处在于 action，普通的 action 大多长这样
 
 export function toggleTodo(index) {
-  return { type: TOGGLE_TODO, index }
+   return { type: TOGGLE_TODO, index }
 }
 
 
 // 而 redux-thunk 的 action 可以是一 异步的 higher order function 高阶函数
 
 export const fetchData = args => async (dispatch, getState) => {
-  const state = getState();
-  const url = 'https://jsonplaceholder.typicode.com/users/' + args;
+   const state = getState();
+   const url = 'https://jsonplaceholder.typicode.com/users/' + args;
 
-  try {
-    const response = await fetch(url)
-      .then(resp => {
-        return resp;
-      })
-      .then(resp => resp.json());
+   try {
+      const response = await fetch(url)
+              .then(resp => {
+                 return resp;
+              })
+              .then(resp => resp.json());
 
-    dispatch({
-      type: REMOTE_DATA_RECEIVED,
-      data: response
-    });
-  } catch (error) {
-    console.log(error);
-  }
+      dispatch({
+         type: REMOTE_DATA_RECEIVED,
+         data: response
+      });
+   } catch (error) {
+      console.log(error);
+   }
 };
 ```
+redux 和 context 等其他管理方案是成竞争关系的。
+jira-redux-toolkit 这条分支使用redux实现异步管理。
+master 分支使用 context进行数据管理
