@@ -22,4 +22,3 @@ export const useUrlQueryParam = <K extends string>(keys: K[]) => {
 const a = ['jack', 12, { gender: 'male' }] as const;
 // keys.reduces会不断创建新的对象，在useEffect中会不断重新调用，造成无限循环
 // 基本类型可以放到依赖里；组件状态，可以放到依赖里；非组件状态的对象，绝不可以放到依赖里。
-// ff

@@ -13,6 +13,7 @@ import ProjectDetail from './screens/project';
 import { resetRoute } from './utils';
 import ProjectModal from './screens/project-list/project-modal';
 import ProjectPopover from './components/project-popover';
+import { useProjectModal } from './screens/project-list/utils';
 
 const Container = styled.div`
   display: grid;
@@ -29,7 +30,7 @@ const Main = styled.main`
   //height: calc(100vh - 6rem);
 `;
 
-function PageHeader(props: { projectButton: JSX.Element }) {
+function PageHeader() {
   const { logout, user } = useAuth();
 
   return (
@@ -44,7 +45,7 @@ function PageHeader(props: { projectButton: JSX.Element }) {
             color='rgb(38,132,255)'
           />
         </ButtonNoPadding>
-        <ProjectPopover {...props} />
+        <ProjectPopover />
         <span>用户</span>
       </HeaderLeft>
       <HeaderRight>
@@ -75,36 +76,14 @@ function PageHeader(props: { projectButton: JSX.Element }) {
 }
 
 export default function AuthenticatedApp() {
-  const [projectModalOpen, setProjectModalOpen] = useState(false);
-
   return (
     <Container>
-      <PageHeader
-        projectButton={
-          <ButtonNoPadding
-            type='link'
-            onClick={() => setProjectModalOpen(true)}
-          >
-            创建项目
-          </ButtonNoPadding>
-        }
-      />
+      <PageHeader />
       <Main>
         <Routes>
           <Route
             path='/projects'
-            element={
-              <ProjectListScreens
-                projectButton={
-                  <ButtonNoPadding
-                    type='link'
-                    onClick={() => setProjectModalOpen(true)}
-                  >
-                    创建项目
-                  </ButtonNoPadding>
-                }
-              />
-            }
+            element={<ProjectListScreens />}
           />
           <Route
             path='/projects/:projectId/*'
@@ -117,10 +96,7 @@ export default function AuthenticatedApp() {
           {/* <Navigate to='/projects' /> */}
         </Routes>
       </Main>
-      <ProjectModal
-        projectModalOpen={projectModalOpen}
-        onClose={() => setProjectModalOpen(false)}
-      />
+      <ProjectModal />
     </Container>
   );
 }

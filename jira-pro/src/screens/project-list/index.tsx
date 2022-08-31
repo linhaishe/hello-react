@@ -7,15 +7,15 @@ import { useDebounce, useDocumentTitle, useMount } from '../../utils';
 import { useHttp } from '../../utils/http';
 import { useProject } from '../../utils/project';
 import { useUsers } from '../../utils/user';
-import { useProjectSearchParams } from './utils';
+import { useProjectModal, useProjectSearchParams } from './utils';
 import { Row } from '../../components/libs';
-
+// jj
 const Container = styled.div`
   padding: 3.2rem;
 `;
 
-function ProjectListScreens(props: { projectButton: JSX.Element }) {
-  const { projectButton } = props;
+function ProjectListScreens() {
+  const { open } = useProjectModal();
   const [param, setParam] = useProjectSearchParams();
   const client = useHttp();
   const { isLoading, data: list, retry } = useProject(useDebounce(param, 200));
@@ -56,7 +56,7 @@ function ProjectListScreens(props: { projectButton: JSX.Element }) {
     <Container>
       <Row between>
         <h1>项目列表</h1>
-        {projectButton}
+        <Button onClick={open}>创建项目</Button>
       </Row>
       <SearchPanel
         params={param}
@@ -68,7 +68,6 @@ function ProjectListScreens(props: { projectButton: JSX.Element }) {
         dataSource={list || []}
         users={users || []}
         reFresh={retry}
-        projectButton={projectButton}
       />
     </Container>
   );
