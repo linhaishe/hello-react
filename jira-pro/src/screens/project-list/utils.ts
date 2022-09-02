@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useUrlQueryParam } from '../../utils/url';
+import { useProjects } from '../../utils/project';
 
 export const useProjectSearchParams = () => {
   const [param, setParam] = useUrlQueryParam(['name', 'personId']);
@@ -8,18 +10,31 @@ export const useProjectSearchParams = () => {
 };
 
 export const useProjectModal = () => {
+  const [{ editProjectId }, setEditingProjectId] = useUrlQueryParam(['editProjectId']);
+  const { data: editingProject, isLoading } = useProjects(Number(editProjectId));
+  const startEdit = (id: number) => setEditingProjectId({ editProjectId: id });
+
   const [{ projectCreate }, setProjectCreate] = useUrlQueryParam(['projectCreate']);
   const open = () => setProjectCreate({ projectCreate: true });
-  const close = () => setProjectCreate({ projectCreate: undefined });
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const [_, setUrlParams] = useSearchParams();
+  // const close = () => {
+  //   setProjectCreate({ projectCreate: undefined });
+  //   setEditingProjectId({ editProjectId: undefined });
+  // };
+  const close = () => setUrlParams({ projectCreate: '', editingProjectId: '' });
 
   // 这里返回的是 tuple,像setState样，可以自己随意命名，固定了顺序
   // return [projectCreate === 'true', open, close] as const;
 
   // 不用纠结顺序，但是名字是被固定了
   return {
-    projectModalOpen: projectCreate === 'true',
+    projectModalOpen: projectCreate === 'true' || Boolean(editingProject),
     open,
     close,
+    startEdit,
+    editingProject,
+    isLoading,
   };
 };
 

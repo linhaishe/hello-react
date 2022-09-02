@@ -34,11 +34,25 @@ export function FullPageLoading() {
   );
 }
 
+// 抽象出来一个组件，可以接受任意的类型，只有当它是error类型的时候显示error的信息
+
+// 类型守卫
+// 当符合value?.message的时候，value就是Error
+const isError = (value: any): value is Error => value?.message;
+
+export function ErrorBox({ error }: { error: unknown }) {
+  if (isError(error)) {
+    return <Typography.Text type='danger'> {error?.message}</Typography.Text>;
+  }
+
+  return null;
+}
+
 export function FullPageErrorFallBack({ error }: { error: Error | null }) {
   return (
     <FullPage>
       <DevTools />
-      <Typography.Text type='danger'> {error?.message}</Typography.Text>
+      <ErrorBox error={error} />
     </FullPage>
   );
 }

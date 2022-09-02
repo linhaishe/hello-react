@@ -8,6 +8,7 @@ import LoginScreen from './login';
 import logo from '../assets/logo.svg';
 import right from '../assets/right.svg';
 import left from '../assets/left.svg';
+import { ErrorBox } from '../components/libs';
 
 const Container = styled.div`
   display: flex;
@@ -64,7 +65,7 @@ export default function UnauthenticatedApp() {
       <Background />
       <ShadowCard>
         <Title>{isRegister ? '请注册' : '请登录'}</Title>
-        {error ? <Typography.Text type='danger'>{error.message}</Typography.Text> : null}
+        <ErrorBox error={error} />
         {isRegister ? <RegisterScreen onError={setError} /> : <LoginScreen onError={setError} />}
         <Divider />
         <Button

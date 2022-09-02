@@ -24,16 +24,16 @@ interface ListProps extends TableProps<Project> {
   // 因为继承了TableProps，且传入了Project类型，lists: Project[];这个属性可以不用写入，删除即可
   // lists: Project[];
   users: User[];
-  reFresh?: () => void;
 }
 // ...props 的类型为 type PropsType = Omit<ListProps, 'users'>
 function List({ users, ...props }: ListProps) {
-  const { open } = useProjectModal();
+  const { startEdit } = useProjectModal();
   const { mutate } = useEditProject();
   // 柯里化 point free
   // pinProject需要两个参数，但是两个参数的接受时间会是不一样的;projectid在组件渲染的时候就已经知道了，但是pin是在projectid渲染后才拿到的
   // const pinProject = (id: number, pin: boolean) => mutate({ id, pin });
-  const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin }).then(props.reFresh);
+  const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });
+  const editProject = (id: number) => () => startEdit(id);
   return (
     <Table
       rowKey={(record) => record.id}
@@ -82,14 +82,13 @@ function List({ users, ...props }: ListProps) {
               <Dropdown
                 overlay={
                   <Menu>
-                    <Menu.Item key='edit'>
-                      <ButtonNoPadding
-                        onClick={open}
-                        type='link'
-                      >
-                        编辑
-                      </ButtonNoPadding>
+                    <Menu.Item
+                      onClick={editProject(project.id)}
+                      key='edit'
+                    >
+                      编辑
                     </Menu.Item>
+                    <Menu.Item key='delete'>删除</Menu.Item>
                   </Menu>
                 }
               >
