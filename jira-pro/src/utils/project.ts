@@ -1,9 +1,11 @@
 import { useCallback, useEffect } from 'react';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { QueryKey, useMutation, useQuery, useQueryClient } from 'react-query';
 import { useAsync } from './use-async';
 import { Project } from '../screens/project-list/list';
 import { cleanObject } from './index';
 import { useHttp } from './http';
+import { useProjectSearchParams } from '../screens/project-list/utils';
+import { useAddConfig, useDeleteConfig, useEditConfig } from './use-optimistic-options';
 
 export const useProject = (param?: Partial<Project>) => {
   const client = useHttp();
@@ -22,9 +24,11 @@ export const useProject = (param?: Partial<Project>) => {
   return useQuery<Project[], Error>(['projects', param], () => client('projects', { data: param }));
 };
 
-export const useEditProject = () => {
+export const useEditProject = (queryKey: QueryKey) => {
   const client = useHttp();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
+  // const [searchParams] = useProjectSearchParams();
+  // const queryKey = ['projects', searchParams];
 
   return useMutation(
     (params: Partial<Project>) =>
@@ -32,13 +36,29 @@ export const useEditProject = () => {
         method: 'PATCH',
         data: params,
       }),
-    {
-      onSuccess: () => queryClient.invalidateQueries('projects'),
-    },
+    useEditConfig(queryKey),
+    // {
+    // onSuccess: () => queryClient.invalidateQueries(queryKey),
+    // async onMutate(target) {
+    //   const previousItems = queryClient.getQueryData(queryKey);
+    //   // ts error notice 删除map后的[]
+    //   queryClient.setQueryData(
+    //     queryKey,
+    //     (old?: Project[]) =>
+    //       old?.map((project) => (project.id === target.id ? { ...project, ...target } : project)) || [],
+    //   );
+    //
+    //   return { previousItems };
+    // },
+    // // 操作没成功的时候，需要一个回滚机制
+    // onError(error, newItem, context) {
+    //   queryClient.setQueryData(queryKey, (context as { previousItems: Project[] }).previousItems);
+    // },
+    // },
   );
 };
 
-export const useAddProject = () => {
+export const useAddProject = (queryKey: QueryKey) => {
   const client = useHttp();
   const queryClient = useQueryClient();
 
@@ -48,9 +68,23 @@ export const useAddProject = () => {
         method: 'POST',
         data: params,
       }),
-    {
-      onSuccess: () => queryClient.invalidateQueries('projects'),
-    },
+    useAddConfig(queryKey),
+
+    // {
+    //   onSuccess: () => queryClient.invalidateQueries('projects'),
+    // },
+  );
+};
+
+export const useDeleteProject = (queryKey: QueryKey) => {
+  const client = useHttp();
+
+  return useMutation(
+    ({ id }: { id: number }) =>
+      client(`projects/${id}`, {
+        method: 'DELETE',
+      }),
+    useDeleteConfig(queryKey),
   );
 };
 

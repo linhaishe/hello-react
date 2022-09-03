@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, TableProps, Dropdown, Menu } from 'antd';
+import { Table, TableProps, Dropdown, Menu, Modal } from 'antd';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-cycle
 import { User } from './search-panel';
 import Pin from '../../components/pin';
 // eslint-disable-next-line import/no-cycle
-import { useEditProject } from '../../utils/project';
+import { useDeleteProject, useEditProject } from '../../utils/project';
 import { ButtonNoPadding } from '../../components/libs';
-import { useProjectModal } from './utils';
+import { useProjectModal, useProjectsQueryKey } from './utils';
 
 export interface Project {
   id: number;
@@ -25,15 +25,53 @@ interface ListProps extends TableProps<Project> {
   // lists: Project[];
   users: User[];
 }
+
+function More({ project }: { project: Project }) {
+  const { startEdit } = useProjectModal();
+  const editProject = (id: number) => () => startEdit(id);
+  const { mutate: deleteProject } = useDeleteProject(useProjectsQueryKey());
+  const confirmDelete = (id: number) => {
+    Modal.confirm({
+      title: '确定删除这个项目吗',
+      content: '点击确定删除',
+      okText: '确定',
+      onOk() {
+        deleteProject({ id });
+      },
+    });
+  };
+
+  return (
+    <Dropdown
+      overlay={
+        <Menu>
+          <Menu.Item
+            onClick={editProject(project.id)}
+            key='edit'
+          >
+            编辑
+          </Menu.Item>
+          <Menu.Item
+            onClick={() => confirmDelete(project.id)}
+            key='delete'
+          >
+            删除
+          </Menu.Item>
+        </Menu>
+      }
+    >
+      <ButtonNoPadding type='link'>...</ButtonNoPadding>
+    </Dropdown>
+  );
+}
+
 // ...props 的类型为 type PropsType = Omit<ListProps, 'users'>
 function List({ users, ...props }: ListProps) {
-  const { startEdit } = useProjectModal();
-  const { mutate } = useEditProject();
+  const { mutate } = useEditProject(useProjectsQueryKey());
   // 柯里化 point free
   // pinProject需要两个参数，但是两个参数的接受时间会是不一样的;projectid在组件渲染的时候就已经知道了，但是pin是在projectid渲染后才拿到的
   // const pinProject = (id: number, pin: boolean) => mutate({ id, pin });
   const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });
-  const editProject = (id: number) => () => startEdit(id);
   return (
     <Table
       rowKey={(record) => record.id}
@@ -78,23 +116,7 @@ function List({ users, ...props }: ListProps) {
         },
         {
           render(value, project) {
-            return (
-              <Dropdown
-                overlay={
-                  <Menu>
-                    <Menu.Item
-                      onClick={editProject(project.id)}
-                      key='edit'
-                    >
-                      编辑
-                    </Menu.Item>
-                    <Menu.Item key='delete'>删除</Menu.Item>
-                  </Menu>
-                }
-              >
-                <ButtonNoPadding type='link'>...</ButtonNoPadding>
-              </Dropdown>
-            );
+            return <More project={project} />;
           },
         },
       ]}
