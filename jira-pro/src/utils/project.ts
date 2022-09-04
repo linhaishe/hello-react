@@ -1,13 +1,9 @@
-import { useCallback, useEffect } from 'react';
 import { QueryKey, useMutation, useQuery, useQueryClient } from 'react-query';
-import { useAsync } from './use-async';
 import { Project } from '../screens/project-list/list';
-import { cleanObject } from './index';
 import { useHttp } from './http';
-import { useProjectSearchParams } from '../screens/project-list/utils';
 import { useAddConfig, useDeleteConfig, useEditConfig } from './use-optimistic-options';
 
-export const useProject = (param?: Partial<Project>) => {
+export const useProjects = (param?: Partial<Project>) => {
   const client = useHttp();
   // const { run, ...result } = useAsync<Project[]>();
   // // The 'fetchPeojects' function makes the dependencies of useEffect Hook (at line 14) change on every render.
@@ -60,7 +56,7 @@ export const useEditProject = (queryKey: QueryKey) => {
 
 export const useAddProject = (queryKey: QueryKey) => {
   const client = useHttp();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   return useMutation(
     (params: Partial<Project>) =>
@@ -69,10 +65,6 @@ export const useAddProject = (queryKey: QueryKey) => {
         data: params,
       }),
     useAddConfig(queryKey),
-
-    // {
-    //   onSuccess: () => queryClient.invalidateQueries('projects'),
-    // },
   );
 };
 
@@ -88,7 +80,7 @@ export const useDeleteProject = (queryKey: QueryKey) => {
   );
 };
 
-export const useProjects = (id?: number) => {
+export const useProject = (id?: number) => {
   const client = useHttp();
   // !!id === Boolean(id)
   return useQuery<Project>(['project', { id }], () => client(`projects/${id}`), { enabled: Boolean(id) });
