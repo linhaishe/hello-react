@@ -11,7 +11,7 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.json'],
   },
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier', 'react-hooks'],
   rules: {
     'max-len': [2, { code: 120 }],
     'react/jsx-filename-extension': [
@@ -48,5 +48,8 @@ module.exports = {
       },
     ],
     'import/no-cycle': 1,
+    'react-hooks/rules-of-hooks': 2, // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 1, // Checks effect dependencies
+    'no-debugger': 1,
   },
 };

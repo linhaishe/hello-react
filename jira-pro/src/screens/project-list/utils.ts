@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useUrlQueryParam } from '../../utils/url';
+import { useSetUrlSearchParam, useUrlQueryParam } from '../../utils/url';
 import { useProject } from '../../utils/project';
 
 export const useProjectSearchParams = () => {
@@ -22,19 +22,18 @@ export const useProjectModal = () => {
   const [{ projectCreate }, setProjectCreate] = useUrlQueryParam(['projectCreate']);
   const open = () => setProjectCreate({ projectCreate: true });
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  const [_, setUrlParams] = useSearchParams();
+  const setUrlParams = useSetUrlSearchParam();
   // const close = () => {
   //   setProjectCreate({ projectCreate: undefined });
   //   setEditingProjectId({ editProjectId: undefined });
   // };
-  const close = () => setUrlParams({ projectCreate: '', editingProjectId: '' });
-
+  const close = () => setUrlParams({ projectCreate: '', editProjectId: '' });
   // 这里返回的是 tuple,像setState样，可以自己随意命名，固定了顺序
   // return [projectCreate === 'true', open, close] as const;
 
   // 不用纠结顺序，但是名字是被固定了
   return {
-    projectModalOpen: projectCreate === 'true' || Boolean(editingProject),
+    projectModalOpen: projectCreate === 'true' || Boolean(editProjectId),
     open,
     close,
     startEdit,

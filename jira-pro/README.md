@@ -260,3 +260,31 @@ export const fetchData = args => async (dispatch, getState) => {
 redux 和 context 等其他管理方案是成竞争关系的。
 jira-redux-toolkit 这条分支使用redux实现异步管理。
 master 分支使用 context进行数据管理
+
+refs: https://ithelp.ithome.com.tw/articles/10246939
+```typescript
+ const mounted=useRef(false);
+    useEffect(()=>{
+      if(mounted.current===false){
+        mounted.current=true;
+        /* 下面是 第一次渲染後 */
+    
+    
+        /* 上面是 第一次渲染後 */      
+      }
+      else{
+        /* 下面是元件更新後 */
+    
+    
+        /* 上面是元件更新後 */
+
+      }
+      
+      return (()=>{
+           /* 下面是元件移除前 */
+      
+      
+          /* 上面是元件移除前 */
+      })
+    },[dependencies參數]);
+```
