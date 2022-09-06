@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 // eslint-disable-next-line import/no-cycle
+import { useQueryClient } from 'react-query';
 import * as auth from '../auth-provider';
 // eslint-disable-next-line import/no-cycle
 import { User } from '../screens/project-list/search-panel';
@@ -35,13 +36,18 @@ const AuthContext = React.createContext<
     }
 >(undefined);
 AuthContext.displayName = 'AuthContext';
-// ff
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   // const [user, setUser] = useState<User | null>(null);
+  const queryClient = useQueryClient();
   const { data: user, error, isLoading, isIdle, isError, run, setData: setUser } = useAsync();
   const login = (form: AuthForm) => auth.login(form).then((users) => setUser(users));
   const register = (form: AuthForm) => auth.register(form).then((users) => setUser(users));
-  const logout = () => auth.logout().then(() => setUser(null));
+  const logout = () =>
+    auth.logout().then(() => {
+      setUser(null);
+      queryClient.clear();
+    });
   const users: User | null = user as User | null;
 
   // 处理刷新时丢失用户信息，自动退出。
