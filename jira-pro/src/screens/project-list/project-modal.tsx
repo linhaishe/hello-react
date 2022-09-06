@@ -24,9 +24,7 @@ function ProjectModal() {
   };
   const closeModal = () => {
     form.resetFields();
-    console.log(1);
     close();
-    console.log(2);
   };
 
   const title = editingProject ? '编辑项目' : '创建项目';

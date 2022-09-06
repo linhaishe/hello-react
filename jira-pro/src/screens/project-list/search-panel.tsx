@@ -1,20 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Select } from 'antd';
+import { Form, Input } from 'antd';
 // eslint-disable-next-line import/no-cycle
-import { Project } from './list';
 // eslint-disable-next-line import/no-cycle
 import UserSelect from '../../components/user-select';
-
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  title: string;
-  organization: string;
-  token: string;
-}
+import { Project } from '../../types/project';
+import { User } from '../../types/user';
 
 interface SearchPanelProps {
   users: User[];

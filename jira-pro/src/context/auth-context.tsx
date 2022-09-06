@@ -3,12 +3,12 @@ import React, { ReactNode, useState } from 'react';
 import { useQueryClient } from 'react-query';
 import * as auth from '../auth-provider';
 // eslint-disable-next-line import/no-cycle
-import { User } from '../screens/project-list/search-panel';
 // eslint-disable-next-line import/no-cycle
 import { http } from '../utils/http';
 import { useMount } from '../utils';
 import { useAsync } from '../utils/use-async';
 import { FullPageErrorFallBack, FullPageLoading } from '../components/libs';
+import { User } from '../types/user';
 
 interface AuthForm {
   username: string;

@@ -24,7 +24,12 @@ function ProjectDetail() {
         {/* // todo 路有需要优化 不应该是* */}
         <Route
           path='*'
-          element={<Navigate to={`${window.location.pathname}/kanban`} />}
+          element={
+            <Navigate
+              to={`${window.location.pathname}/kanban`}
+              replace
+            />
+          }
         />
       </Routes>
     </div>

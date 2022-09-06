@@ -1,24 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, TableProps, Dropdown, Menu, Modal } from 'antd';
+import { Dropdown, Menu, Modal, Table, TableProps } from 'antd';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-cycle
-import { User } from './search-panel';
 import Pin from '../../components/pin';
 // eslint-disable-next-line import/no-cycle
 import { useDeleteProject, useEditProject } from '../../utils/project';
 import { ButtonNoPadding } from '../../components/libs';
 import { useProjectModal, useProjectsQueryKey } from './utils';
+import { Project } from '../../types/project';
+import { User } from '../../types/user';
 
-export interface Project {
-  id: number;
-  name: string;
-  personId: number;
-  pin: boolean;
-  organization: string;
-  created: number;
-}
 // listProps 由两部分类型组成，TableProps + users
 interface ListProps extends TableProps<Project> {
   // 因为继承了TableProps，且传入了Project类型，lists: Project[];这个属性可以不用写入，删除即可

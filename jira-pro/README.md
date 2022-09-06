@@ -288,3 +288,7 @@ refs: https://ithelp.ithome.com.tw/articles/10246939
       })
     },[dependencies參數]);
 ```
+react-query
+
+1. 两秒内如果有相同的query key 发出请求的话，会catch住其他的，合并起来只发送一个请求。
+2. 
