@@ -6,6 +6,7 @@ import { useTasks } from '../../utils/task';
 import { useTaskTypes } from '../../utils/task-type';
 import taskIcon from '../../assets/finished.svg';
 import bugIcon from '../../assets/recorder.svg';
+import { useTasksSearchParams } from './utils';
 
 const Container = styled.div`
   min-width: 27rem;
@@ -43,7 +44,7 @@ function TaskTypeIcon({ id }: { id: number }) {
 }
 
 function KanbanColumn({ kanban }: { kanban: Kanban }) {
-  const { data: allTasks } = useTasks();
+  const { data: allTasks } = useTasks(useTasksSearchParams());
   const tasks = allTasks?.filter((task) => task.kanbanId === kanban.id);
 
   return (

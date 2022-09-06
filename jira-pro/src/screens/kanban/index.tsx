@@ -4,6 +4,7 @@ import { useDocumentTitle } from '../../utils';
 import { useKanbansSearchParams, useProjectInUrl } from './utils';
 import KanbanColumn from './kanban-column';
 import { useKanbans } from '../../utils/kanban';
+import SearchPanel from './search-panel';
 
 const ColumnsContainer = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ function Kanban() {
   return (
     <div>
       <h1>{currentProject?.name}看板</h1>
+      <SearchPanel />
       <ColumnsContainer>
         {kanbans?.map((kanban) => (
           <KanbanColumn
