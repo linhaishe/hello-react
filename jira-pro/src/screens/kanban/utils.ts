@@ -1,8 +1,8 @@
 import { useLocation } from 'react-router';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useProject } from '../../utils/project';
 import { useKanbans } from '../../utils/kanban';
-import { useTasks } from '../../utils/task';
+import { useTask, useTasks } from '../../utils/task';
 import { useUrlQueryParam } from '../../utils/url';
 
 // 获取地址栏里的项目id
@@ -38,3 +38,25 @@ export const useTasksSearchParams = () => {
   );
 };
 export const useTasksQueryKey = () => ['tasks', useTasksSearchParams()];
+
+export const useTasksModal = () => {
+  const [{ editingTaskId }, setEditingTaskId] = useUrlQueryParam(['editingTaskId']);
+  const { data: editingTask, isLoading } = useTask(Number(editingTaskId));
+  const startEdit = useCallback(
+    (id: number) => {
+      setEditingTaskId({ editingTaskId: id });
+    },
+    [setEditingTaskId],
+  );
+  const close = useCallback(() => {
+    setEditingTaskId({ editingTaskId: '' });
+  }, [setEditingTaskId]);
+
+  return {
+    editingTask,
+    editingTaskId,
+    startEdit,
+    close,
+    isLoading,
+  };
+};

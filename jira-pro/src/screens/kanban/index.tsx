@@ -9,6 +9,7 @@ import SearchPanel from './search-panel';
 import { ScreenContainer } from '../../components/libs';
 import { useTasks } from '../../utils/task';
 import CreateKanban from './create-kanban';
+import TaskModal from './task-modal';
 
 export const ColumnsContainer = styled.div`
   display: flex;
@@ -41,6 +42,7 @@ function Kanban() {
           <CreateKanban />
         </ColumnsContainer>
       )}
+      <TaskModal />
     </ScreenContainer>
   );
 }
