@@ -5,11 +5,12 @@ import { useKanbansSearchParams, useProjectInUrl } from './utils';
 import KanbanColumn from './kanban-column';
 import { useKanbans } from '../../utils/kanban';
 import SearchPanel from './search-panel';
+import { ScreenContainer } from '../../components/libs';
 
 const ColumnsContainer = styled.div`
   display: flex;
-  overflow: hidden;
-  margin-right: 2rem;
+  //overflow-x: scroll;
+  flex: 1;
 `;
 
 function Kanban() {
@@ -19,7 +20,7 @@ function Kanban() {
   const { data: kanbans } = useKanbans(useKanbansSearchParams());
 
   return (
-    <div>
+    <ScreenContainer>
       <h1>{currentProject?.name}看板</h1>
       <SearchPanel />
       <ColumnsContainer>
@@ -30,7 +31,7 @@ function Kanban() {
           />
         ))}
       </ColumnsContainer>
-    </div>
+    </ScreenContainer>
   );
 }
 

@@ -13,7 +13,6 @@ import ProjectDetail from './screens/project';
 import { resetRoute } from './utils';
 import ProjectModal from './screens/project-list/project-modal';
 import ProjectPopover from './components/project-popover';
-import { useProjectModal } from './screens/project-list/utils';
 
 const Container = styled.div`
   display: grid;
@@ -28,6 +27,8 @@ const HeaderLeft = styled(Row)``;
 const HeaderRight = styled.div``;
 const Main = styled.main`
   //height: calc(100vh - 6rem);
+  display: flex;
+  overflow: hidden;
 `;
 
 function PageHeader() {
