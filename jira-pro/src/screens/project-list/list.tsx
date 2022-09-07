@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Menu, Modal, Table, TableProps } from 'antd';
+import { Button, Dropdown, Menu, Modal, Table, TableProps } from 'antd';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line import/no-cycle
@@ -21,7 +21,6 @@ interface ListProps extends TableProps<Project> {
 
 function More({ project }: { project: Project }) {
   const { startEdit } = useProjectModal();
-  const editProject = (id: number) => () => startEdit(id);
   const { mutate: deleteProject } = useDeleteProject(useProjectsQueryKey());
   const confirmDelete = (id: number) => {
     Modal.confirm({
@@ -34,25 +33,34 @@ function More({ project }: { project: Project }) {
     });
   };
 
+  const onClick = ({ key }: { key: string }) => {
+    if (key === 'edit') {
+      startEdit(project.id);
+    }
+
+    if (key === 'delete') {
+      confirmDelete(project.id);
+    }
+  };
+
+  const menu = (
+    <Menu
+      onClick={onClick}
+      items={[
+        {
+          key: 'edit',
+          label: '编辑',
+        },
+        {
+          key: 'delete',
+          label: '删除',
+        },
+      ]}
+    />
+  );
+
   return (
-    <Dropdown
-      overlay={
-        <Menu>
-          <Menu.Item
-            onClick={editProject(project.id)}
-            key='edit'
-          >
-            编辑
-          </Menu.Item>
-          <Menu.Item
-            onClick={() => confirmDelete(project.id)}
-            key='delete'
-          >
-            删除
-          </Menu.Item>
-        </Menu>
-      }
-    >
+    <Dropdown overlay={menu}>
       <ButtonNoPadding type='link'>...</ButtonNoPadding>
     </Dropdown>
   );
@@ -71,6 +79,7 @@ function List({ users, ...props }: ListProps) {
       pagination={false}
       columns={[
         {
+          key: 'project-collect',
           title: (
             <Pin
               checked
@@ -88,20 +97,23 @@ function List({ users, ...props }: ListProps) {
           },
         },
         {
+          key: 'project-name',
           title: '名称',
           sorter: (a, b) => a.name.localeCompare(b.name),
           render(value, project) {
             return <Link to={String(project.id)}>{project.name}</Link>;
           },
         },
-        { title: '部门', dataIndex: 'organization' },
+        { key: 'project-organization', title: '部门', dataIndex: 'organization' },
         {
+          key: 'project-charger',
           title: '负责人',
           render(value, project) {
             return <span>{users.find((user) => user.id === project.personId)?.name || '未知'}</span>;
           },
         },
         {
+          key: 'project-create-time',
           title: '创建时间',
           render(value, project) {
             return <span>{project.created ? dayjs(project.created).format('YYYY-MM-DD') : '无'}</span>;

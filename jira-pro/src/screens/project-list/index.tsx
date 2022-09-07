@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Button, Typography } from 'antd';
+import { Button } from 'antd';
 import SearchPanel from './search-panel';
 import List from './list';
 import { useDebounce, useDocumentTitle, useMount } from '../../utils';
@@ -18,7 +18,7 @@ function ProjectListScreens() {
   const { open } = useProjectModal();
   const [param, setParam] = useProjectSearchParams();
   const client = useHttp();
-  const { isLoading, data: list } = useProjects(useDebounce(param, 200));
+  const { isLoading, data: list, error } = useProjects(useDebounce(param, 200));
   //  useUsers 加入useDebounce会导致数据返回延迟，options筛选匹配时没有拿到数据显示未知
   const { data: users } = useUsers();
   // const { run, isLoading, error, data: list } = useAsync<Project[]>();
@@ -63,7 +63,7 @@ function ProjectListScreens() {
         setParams={setParam}
         users={users || []}
       />
-      {/* <ErrorBox error={error}/> */}
+      <ErrorBox error={error} />
       <List
         loading={isLoading}
         dataSource={list || []}

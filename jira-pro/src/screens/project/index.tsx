@@ -19,12 +19,24 @@ const Main = styled.div`
 const Container = styled.div`
   display: grid;
   grid-template-columns: 16rem 1fr;
+  overflow: hidden;
 `;
 
 const useRouteType = () => {
   const units = useLocation().pathname.split('/');
   return units[units.length - 1];
 };
+
+const items = [
+  {
+    key: 'kanban',
+    label: <Link to='kanban'>看板</Link>,
+  },
+  {
+    key: 'task',
+    label: <Link to='epic'>任务组</Link>,
+  },
+];
 
 function ProjectDetail() {
   const routeType = useRouteType();
@@ -37,14 +49,8 @@ function ProjectDetail() {
         <Menu
           mode='inline'
           selectedKeys={[routeType]}
-        >
-          <Menu.Item key='kanban'>
-            <Link to='kanban'>看板</Link>
-          </Menu.Item>
-          <Menu.Item key='epic'>
-            <Link to='epic'>任务组</Link>
-          </Menu.Item>
-        </Menu>
+          items={items}
+        />
       </Aside>
       <Main>
         <Routes>
