@@ -12,6 +12,7 @@ import { Task } from '../../types/task';
 import { Mark } from '../../components/mark';
 import { useDeleteKanban } from '../../utils/kanban';
 import { Row } from '../../components/libs';
+import { Drag, Drop, DropChild } from '../../components/drag-and-drop';
 
 export const Container = styled.div`
   min-width: 27rem;
@@ -98,27 +99,49 @@ function More({ kanban }: { kanban: Kanban }) {
   );
 }
 
-function KanbanColumn({ kanban }: { kanban: Kanban }) {
+export const KanbanColumn = React.forwardRef<HTMLDivElement, { kanban: Kanban }>(({ kanban, ...props }, ref) => {
   const { data: allTasks } = useTasks(useTasksSearchParams());
   const tasks = allTasks?.filter((task) => task.kanbanId === kanban.id);
 
   return (
-    <Container>
+    <Container
+      {...props}
+      ref={ref}
+    >
       <Row between>
         <h3>{kanban.name}</h3>
-        <More kanban={kanban} />
+        <More
+          kanban={kanban}
+          key={kanban.id}
+        />
       </Row>
       <TasksContainer>
-        {tasks?.map((task) => (
-          <TaskCard
-            task={task}
-            key={Math.random()}
-          />
-        ))}
+        <Drop
+          droppableId={`task${kanban.id}`}
+          type='ROW'
+          direction='vertical'
+        >
+          <DropChild>
+            {tasks?.map((task, index) => (
+              <Drag
+                draggableId={`task${task.id}`}
+                index={index}
+                key={task.id}
+              >
+                <div>
+                  <TaskCard
+                    task={task}
+                    key={Math.random()}
+                  />
+                </div>
+              </Drag>
+            ))}
+          </DropChild>
+        </Drop>
         <CreateTask kanbanId={kanban.id} />
       </TasksContainer>
     </Container>
   );
-}
+});
 
 export default KanbanColumn;
