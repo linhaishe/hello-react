@@ -117,11 +117,11 @@ export const KanbanColumn = React.forwardRef<HTMLDivElement, { kanban: Kanban }>
       </Row>
       <TasksContainer>
         <Drop
-          droppableId={`task${kanban.id}`}
+          droppableId={String(kanban.id)}
           type='ROW'
           direction='vertical'
         >
-          <DropChild>
+          <DropChild style={{ minHeight: '1rem' }}>
             {tasks?.map((task, index) => (
               <Drag
                 draggableId={`task${task.id}`}
@@ -131,7 +131,7 @@ export const KanbanColumn = React.forwardRef<HTMLDivElement, { kanban: Kanban }>
                 <div>
                   <TaskCard
                     task={task}
-                    key={Math.random()}
+                    key={task.id}
                   />
                 </div>
               </Drag>
