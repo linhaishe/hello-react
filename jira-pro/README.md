@@ -301,3 +301,14 @@ function TaskTypeIcon(_ref) {
    var id = _ref.id;
 }
 ```
+### react的性能优化
+1. useMemo / useCallback
+2. [代码分割](https://zh-hans.reactjs.org/docs/code-splitting.html)
+处理的问题点主要是：用户有时候只用访问一部分代码/页面，可能很大部分用户都不会去访问，等真正需要访问的时候才加载。
+项目中的例子：已登录页面和未登录页面使用React.lazy去做代码分割
+```typescript
+`React.lazy 函数能让你像渲染常规组件一样处理动态引入（的组件）。`
+
+const AuthenticatedApp = React.lazy(() => import('./authenticated-app'));
+const UnauthenticatedApp = React.lazy(() => import('./unauthenticated-app'));
+```
