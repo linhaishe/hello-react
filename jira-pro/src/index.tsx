@@ -7,16 +7,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppProviders from './context';
 import 'antd/dist/antd.less';
+import { Profiler } from './components/profiler';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 loadServer(() =>
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <AppProviders>
-          <DevTools />
-          <App />
-        </AppProviders>
+        <Profiler
+          id='root app'
+          phases={['mount']}
+        >
+          <AppProviders>
+            <DevTools />
+            <App />
+          </AppProviders>
+        </Profiler>
       </BrowserRouter>
     </React.StrictMode>,
   ),

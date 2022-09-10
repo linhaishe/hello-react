@@ -9,6 +9,7 @@ import { useProjects } from '../../utils/project';
 import { useUsers } from '../../utils/user';
 import { useProjectModal, useProjectSearchParams } from './utils';
 import { ErrorBox, Row } from '../../components/libs';
+import { Profiler } from '../../components/profiler';
 
 const Container = styled.div`
   padding: 3.2rem;
@@ -53,23 +54,25 @@ function ProjectListScreens() {
   useDocumentTitle('项目列表', false);
 
   return (
-    <Container>
-      <Row between>
-        <h1>项目列表</h1>
-        <Button onClick={open}>创建项目</Button>
-      </Row>
-      <SearchPanel
-        params={param}
-        setParams={setParam}
-        users={users || []}
-      />
-      <ErrorBox error={error} />
-      <List
-        loading={isLoading}
-        dataSource={list || []}
-        users={users || []}
-      />
-    </Container>
+    <Profiler id='项目列表'>
+      <Container>
+        <Row between>
+          <h1>项目列表</h1>
+          <Button onClick={open}>创建项目</Button>
+        </Row>
+        <SearchPanel
+          params={param}
+          setParams={setParam}
+          users={users || []}
+        />
+        <ErrorBox error={error} />
+        <List
+          loading={isLoading}
+          dataSource={list || []}
+          users={users || []}
+        />
+      </Container>
+    </Profiler>
   );
 }
 

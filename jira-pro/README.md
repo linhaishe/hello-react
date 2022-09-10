@@ -312,3 +312,17 @@ function TaskTypeIcon(_ref) {
 const AuthenticatedApp = React.lazy(() => import('./authenticated-app'));
 const UnauthenticatedApp = React.lazy(() => import('./unauthenticated-app'));
 ```
+3. React.Memo
+父组件数据在改变的时候，子组件也会随即更新。如果子组件中有非常耗费性能的运算时，不想因为父组件的更新而进行更新，则可以通过React.Memo把子组件包裹。
+React.Memo进行的是浅对比，当子组件内的props和影响组件内的State改变时，子组件才会更行。
+
+React.Memo适用于组件，useMemo使用与一个值。
+
+4. 性能追踪
+如何知道那些性能需要优化。
+
+[profiler API](https://zh-hans.reactjs.org/docs/profiler.html)
+
+Profiler 测量一个 React 应用多久渲染一次以及渲染一次的“代价”。 它的目的是识别出应用中渲染较慢的部分，或是可以使用类似 memoization 优化的部分，并从相关优化中获益。
+
+Build的时候不会被打包，因为不建议在生产环境中使用
