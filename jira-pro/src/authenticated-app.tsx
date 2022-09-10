@@ -13,6 +13,7 @@ import ProjectDetail from './screens/project';
 import { resetRoute } from './utils';
 import ProjectModal from './screens/project-list/project-modal';
 import ProjectPopover from './components/project-popover';
+import { UserPopover } from './components/user-popover';
 
 const Container = styled.div`
   display: grid;
@@ -47,7 +48,7 @@ function PageHeader() {
           />
         </ButtonNoPadding>
         <ProjectPopover />
-        <span>用户</span>
+        <UserPopover />
       </HeaderLeft>
       <HeaderRight>
         <Dropdown
