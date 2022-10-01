@@ -179,7 +179,7 @@ users and projectlist 在请求未有响应的时候，被用户登出操作所�
 不可以在已卸载或未挂载的组件上进行状态管理。
 
 useMemo 和 useCallback 都是为了依赖而存在的。
-非基本类型的依赖，如果我们定义了非基本类型想要做依赖的时候，就需要使用memoand callback进行处理
+非基本类型的依赖，如果我们定义了非基本类型想要做依赖的时候，就需要使用memo and callback进行处理
 不要再每次页面渲染的时候进行重建。
 
 custom hook的时候，在里面要return出函数的时候，基本都需要用到useCallback进行处理
